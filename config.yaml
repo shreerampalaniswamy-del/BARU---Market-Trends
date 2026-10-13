@@ -1,0 +1,80 @@
+# Trend agent v1 configuration.
+# Edit keywords, markets and Wikipedia articles freely; the code reads everything from here.
+
+keywords:
+  - High Jewellery
+  - High Jewelry
+  - Contemporary Art
+  - High Art
+
+# name:           label used in the brief
+# trends_geo:     Google Trends geo code. Google has no city-level geo for these, so the closest
+#                 region is used: Mumbai -> Maharashtra (IN-MH), New York -> New York state (US-NY),
+#                 London -> England (GB-ENG).
+# youtube_region: country-level relevance hint for YouTube search (not a hard filter).
+# youtube_lang:   language hint for YouTube search.
+# local_terms:    extra search terms tracked in this market only.
+markets:
+  - name: France
+    trends_geo: FR
+    youtube_region: FR
+    youtube_lang: fr
+    local_terms: ["haute joaillerie", "art contemporain"]
+  - name: New York
+    trends_geo: US-NY
+    youtube_region: US
+    youtube_lang: en
+    local_terms: []
+  - name: Mumbai
+    trends_geo: IN-MH
+    youtube_region: IN
+    youtube_lang: en
+    local_terms: []
+  - name: Hong Kong
+    trends_geo: HK
+    youtube_region: HK
+    youtube_lang: zh
+    local_terms: ["高級珠寶", "當代藝術"]
+  - name: Italy
+    trends_geo: IT
+    youtube_region: IT
+    youtube_lang: it
+    local_terms: ["alta gioielleria", "arte contemporanea"]
+  - name: London
+    trends_geo: GB-ENG
+    youtube_region: GB
+    youtube_lang: en
+    local_terms: []
+
+trends:
+  timeframe: "today 3-m"   # daily data for roughly the last 90 days
+  sleep_seconds: 8         # pause between requests; Google rate-limits aggressively
+
+# Wikipedia is split by language edition, not by country, so "market" here is the edition.
+wikipedia:
+  lookback_days: 90
+  articles:
+    - {market: en-wiki, project: en.wikipedia, article: Contemporary_art}
+    - {market: en-wiki, project: en.wikipedia, article: Jewellery}
+    - {market: en-wiki, project: en.wikipedia, article: High_culture}
+    - {market: fr-wiki, project: fr.wikipedia, article: Art_contemporain}
+    - {market: fr-wiki, project: fr.wikipedia, article: Joaillerie}
+    - {market: it-wiki, project: it.wikipedia, article: Arte_contemporanea}
+    - {market: it-wiki, project: it.wikipedia, article: Gioielleria}
+    - {market: zh-wiki, project: zh.wikipedia, article: 當代藝術}
+
+youtube:
+  window_days: 7           # videos published in the last N days
+
+analysis:
+  lookback_days: 90        # history window for daily sources
+  z_threshold: 2.0         # how unusual the latest week must be versus prior weeks
+  min_change: 0.20         # and it must also have moved at least this much week over week
+  min_weeks_for_z: 4       # prior weeks required before a z-score is trusted
+  top_n: 10                # rows shown in the headline tables
+
+# Optional: a Claude-written "Analyst read" on top of the brief. Runs only if ANTHROPIC_API_KEY is set.
+narrative:
+  enabled: true
+  model: claude-sonnet-5-5
+  context: "The reader is a brand strategist at a luxury high jewellery house who wants early signals on high jewellery and contemporary art interest across France, New York, Mumbai, Hong Kong, Italy and London."
