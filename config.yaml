@@ -132,6 +132,7 @@ gdelt:
   enabled: true
   timespan: "3months"      # GDELT's search API keeps a rolling window of about 3 months
   sleep_seconds: 6         # GDELT asks for at most one request every 5 seconds
+  retry_wait_seconds: 20   # after an HTTP 429 (too many requests) wait 20s, then 40s, then 60s before giving up on a series
   skip_if_fresh_days: 3
 
 analysis:

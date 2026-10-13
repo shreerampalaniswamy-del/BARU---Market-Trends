@@ -46,7 +46,7 @@ def log(conn, run_ts, source, market, term, status, message=""):
     print(line + (f" ({message})" if message else ""), flush=True)
 
 
-def get_json(url, params=None, headers=None, tries=3):
+def get_json(url, params=None, headers=None, tries=3, wait=5):
     """GET with retry on rate limits / transient errors. Returns the Response."""
     last = None
     for attempt in range(tries):
@@ -59,7 +59,7 @@ def get_json(url, params=None, headers=None, tries=3):
             )
             if r.status_code in (429, 500, 502, 503, 504):
                 last = f"HTTP {r.status_code}"
-                time.sleep(5 * (attempt + 1))
+                time.sleep(wait * (attempt + 1))
                 continue
             return r
         except requests.RequestException as e:
@@ -69,7 +69,37 @@ def get_json(url, params=None, headers=None, tries=3):
 
 
 def all_terms(cfg, market):
-    return list(cfg["keywords"]) + list(market.get("local_terms", []))
+    """Core keywords + this market's local terms + the terms of every theme scoped to this market."""
+    terms = list(cfg["keywords"]) + list(market.get("local_terms", []))
+    for theme in cfg.get("themes", []):
+        if market["name"] in theme.get("markets", []):
+            terms += [t for t in theme["terms"] if t not in terms]
+    return terms
+
+
+def ordered_markets(cfg):
+    """Focus markets (India first) are collected first, so a rate limit cuts off the least important ones."""
+    rank = {name: i for i, name in enumerate(cfg.get("analysis", {}).get("focus_markets", []))}
+    return sorted(cfg["markets"], key=lambda m: rank.get(m["name"], len(rank)))
+
+
+def recent_status(conn, source, market, term, days):
+    """'ok' or 'empty' if this series was really collected within the last `days` days, else None.
+
+    Lets a re-run fetch only what is missing instead of hitting the rate limits all over again.
+    """
+    if not days or days <= 0:
+        return None
+    cutoff = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=days)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    row = conn.execute(
+        "SELECT status FROM runs WHERE source=? AND market=? AND term=? AND status IN ('ok','empty') "
+        "AND run_ts>=? AND message NOT LIKE 'not refetched%' ORDER BY run_ts DESC LIMIT 1",
+        (source, market, term, cutoff)).fetchone()
+    return row[0] if row else None
+
+
+def kept_message(days):
+    return f"not refetched (collected within {days} days)"
 
 
 # ---------------------------------------------------------------- Google Trends
@@ -89,13 +119,18 @@ def collect_trends(conn, cfg, run_ts):
     tcfg = cfg.get("trends", {})
     timeframe = tcfg.get("timeframe", "today 3-m")
     pause = float(tcfg.get("sleep_seconds", 8))
+    fresh_days = int(tcfg.get("skip_if_fresh_days", 3))
     # Do not pass retries/backoff_factor: they break against current urllib3.
     pt = TrendReq(hl="en-US", tz=0, timeout=(10, 30))
 
-    jobs = [(m, t) for m in cfg["markets"] for t in all_terms(cfg, m)]
+    jobs = [(m, t) for m in ordered_markets(cfg) for t in all_terms(cfg, m)]
     stored = 0
     consecutive_errors = 0
     for i, (m, term) in enumerate(jobs):
+        prior = recent_status(conn, "google_trends", m["name"], term, fresh_days)
+        if prior:
+            log(conn, run_ts, "google_trends", m["name"], term, prior, kept_message(fresh_days))
+            continue
         df, err = None, ""
         for attempt in range(3):
             try:
@@ -184,8 +219,12 @@ def collect_wikipedia(conn, cfg, run_ts):
 # ---------------------------------------------------------------- YouTube
 
 def collect_youtube(conn, cfg, run_ts):
-    """Snapshot of the top-50 most-viewed videos published in the last N days, per term and market.
+    """Snapshot of the most-viewed videos published in the last N days, per term and market.
 
+    The search asks YouTube for the exact phrase, and each result is then kept only if its title or
+    description really contains the term, so unrelated videos (a basketball player for "High Art",
+    toy merchandise for "High Jewelry") do not inflate the numbers. Metrics are stored as
+    matched_* so their history starts clean and is never mixed with the older unfiltered numbers.
     Region/language are relevance hints, so markets sharing a language will overlap heavily.
     """
     key = os.environ.get("YOUTUBE_API_KEY")
@@ -193,20 +232,32 @@ def collect_youtube(conn, cfg, run_ts):
         log(conn, run_ts, "youtube", None, None, "skipped", "YOUTUBE_API_KEY not set")
         return 0
 
-    days = int(cfg.get("youtube", {}).get("window_days", 7))
+    ycfg = cfg.get("youtube", {})
+    days = int(ycfg.get("window_days", 7))
+    exact = bool(ycfg.get("exact_phrase", True))
+    must_name = bool(ycfg.get("require_phrase_in_text", True))
+    fresh_days = int(ycfg.get("skip_if_fresh_days", 3))
     since = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=days)).strftime("%Y-%m-%dT%H:%M:%SZ")
     today = dt.date.today().isoformat()
     base = "https://www.googleapis.com/youtube/v3"
     stored = 0
 
-    for m in cfg["markets"]:
+    for m in ordered_markets(cfg):
         for term in all_terms(cfg, m):
+            prior = recent_status(conn, "youtube", m["name"], term, fresh_days)
+            if prior:
+                log(conn, run_ts, "youtube", m["name"], term, prior, kept_message(fresh_days))
+                continue
             try:
-                s = get_json(f"{base}/search", params={
-                    "part": "snippet", "q": term, "type": "video", "order": "viewCount",
-                    "publishedAfter": since, "regionCode": m["youtube_region"],
-                    "relevanceLanguage": m["youtube_lang"], "maxResults": 50, "key": key,
-                })
+                search_params = {
+                    "part": "snippet", "q": (f'"{term}"' if exact else term), "type": "video",
+                    "order": "viewCount", "publishedAfter": since, "maxResults": 50, "key": key,
+                }
+                if m.get("youtube_region"):          # the Global market has no region or language hint
+                    search_params["regionCode"] = m["youtube_region"]
+                if m.get("youtube_lang"):
+                    search_params["relevanceLanguage"] = m["youtube_lang"]
+                s = get_json(f"{base}/search", params=search_params)
                 if s.status_code == 403 and "quotaExceeded" in s.text:
                     log(conn, run_ts, "youtube", None, None, "error",
                         "daily quota exhausted; stopping YouTube for this run")
@@ -235,26 +286,39 @@ def collect_youtube(conn, cfg, run_ts):
                 def stat(x, name):
                     return int(x.get("statistics", {}).get(name, 0) or 0)
 
-                views = [stat(x, "viewCount") for x in vids]
-                likes = sum(stat(x, "likeCount") for x in vids)
-                comments = sum(stat(x, "commentCount") for x in vids)
+                needle = term.casefold()
+
+                def names_term(x):
+                    sn = x.get("snippet", {})
+                    return needle in f"{sn.get('title', '')} {sn.get('description', '')}".casefold()
+
+                matched = [x for x in vids if names_term(x)] if must_name else list(vids)
+                views = [stat(x, "viewCount") for x in matched] or [0]
                 for metric, value in (
-                    ("views_sum", sum(views)),
-                    ("views_median", statistics.median(views)),
-                    ("likes_sum", likes),
-                    ("comments_sum", comments),
+                    ("matched_views_sum", sum(views)),
+                    ("matched_views_median", statistics.median(views)),
+                    ("matched_likes_sum", sum(stat(x, "likeCount") for x in matched)),
+                    ("matched_comments_sum", sum(stat(x, "commentCount") for x in matched)),
+                    ("matched_videos", len(matched)),
+                    ("returned_videos", len(vids)),
                     ("results_est", sj.get("pageInfo", {}).get("totalResults", 0)),
                 ):
                     put_metric(conn, run_ts, today, "youtube", m["name"], term, metric, value)
-                for x in sorted(vids, key=lambda x: stat(x, "viewCount"), reverse=True)[:5]:
+                top = sorted(matched, key=lambda x: stat(x, "viewCount"), reverse=True)[:5]
+                for x in top:
                     sn = x.get("snippet", {})
                     put_item(conn, run_ts, "youtube", m["name"], term,
                              f"https://www.youtube.com/watch?v={x['id']}", sn.get("title"),
                              sn.get("channelTitle"), sn.get("publishedAt"),
                              stat(x, "viewCount"), stat(x, "likeCount") + stat(x, "commentCount"))
                 conn.commit()
-                stored += 5
-                log(conn, run_ts, "youtube", m["name"], term, "ok", f"{len(vids)} videos")
+                stored += len(top)
+                if matched:
+                    log(conn, run_ts, "youtube", m["name"], term, "ok",
+                        f"{len(matched)} of {len(vids)} videos name the term")
+                else:
+                    log(conn, run_ts, "youtube", m["name"], term, "empty",
+                        f"{len(vids)} videos returned, none name the term")
             except Exception as e:
                 log(conn, run_ts, "youtube", m["name"], term, "error", f"{type(e).__name__}: {e}"[:200])
     return stored
@@ -331,9 +395,8 @@ def collect_gdelt(conn, cfg, run_ts):
 
     'articles' is the raw daily count. 'article_share_pct' is that count as a percentage of all
     articles GDELT monitored that day, which corrects for GDELT's own volume drifting over time.
-    Markets are filtered by the PUBLISHER's country, not the country an article is about.
-    A 'Global' series (no country filter) is added for each keyword, because English phrases
-    rarely appear in French, Italian or Hong Kong publications.
+    Markets are filtered by the PUBLISHER's country, not the country an article is about. A market
+    whose gdelt_country is empty (Global) has no filter; a market without the key is left out.
     """
     gcfg = cfg.get("gdelt", {})
     if not gcfg.get("enabled", True):
@@ -341,23 +404,28 @@ def collect_gdelt(conn, cfg, run_ts):
         return 0
     timespan = gcfg.get("timespan", "3months")
     pause = float(gcfg.get("sleep_seconds", 6))  # GDELT asks for at most one request per 5 seconds
+    fresh_days = int(gcfg.get("skip_if_fresh_days", 3))
     today = dt.datetime.now(dt.timezone.utc).date()
 
     jobs = []
-    if gcfg.get("include_global", True):
-        jobs += [("Global", t, f'"{t}"') for t in cfg["keywords"]]
-    for m in cfg["markets"]:
-        country = m.get("gdelt_country")
-        if country:
-            jobs += [(m["name"], t, f'"{t}" sourcecountry:{country}') for t in all_terms(cfg, m)]
+    for m in ordered_markets(cfg):
+        if "gdelt_country" not in m:
+            continue                              # this market is not covered by GDELT
+        country = m["gdelt_country"]              # "" means worldwide, no country filter
+        suffix = f" sourcecountry:{country}" if country else ""
+        jobs += [(m["name"], t, f'"{t}"{suffix}') for t in all_terms(cfg, m)]
 
     stored, consecutive_errors = 0, 0
     for i, (market, term, query) in enumerate(jobs):
+        prior = recent_status(conn, "gdelt", market, term, fresh_days)
+        if prior:
+            log(conn, run_ts, "gdelt", market, term, prior, kept_message(fresh_days))
+            continue
         err, points = "", []
         try:
             r = get_json(GDELT_URL, params={
                 "query": query, "mode": "timelinevolraw", "format": "json", "timespan": timespan,
-            })
+            }, wait=float(gcfg.get("retry_wait_seconds", 20)))
             if r.status_code != 200:
                 err = f"HTTP {r.status_code}"
             elif not r.text.strip():
@@ -442,8 +510,9 @@ def main():
         except Exception as e:
             log(conn, run_ts, name, None, None, "error", f"{type(e).__name__}: {e}"[:200])
         conn.commit()
-    print(f"Done: {total} data points stored.")
-    return 0 if total > 0 else 1
+    ok = conn.execute("SELECT COUNT(*) FROM runs WHERE run_ts=? AND status='ok'", (run_ts,)).fetchone()[0]
+    print(f"Done: {total} data points stored, {ok} series ok.")
+    return 0 if ok > 0 else 1
 
 
 if __name__ == "__main__":

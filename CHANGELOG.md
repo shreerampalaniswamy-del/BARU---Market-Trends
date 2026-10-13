@@ -7,6 +7,16 @@
   and Global only; new "Themes (India first)" section and a Theme column in the signal tables.
 - **Gentler on free limits**: series collected within 3 days are skipped on re-runs, each source stops after 3
   failures in a row, and YouTube moves to a weekly pass on Monday, with Tuesday picking up any searches the 100 a day quota could not cover (about 104 in total).
+- **Fixes found by checking a real brief**:
+  - A series jumping from zero (France "High Jewellery" 0 to 14) produced a z-score of 14 billion and a "Rising"
+    flag. The z-score now has a sensible floor, and a jump from zero is listed as a change, never flagged.
+  - A series that was still above its norm but had fallen week over week (Italy "alta gioielleria", -24%) was
+    listed under Rising. A flag now needs the week-over-week move and the z-score to point the same way.
+  - Terms removed from `config.yaml` (such as "High Art") no longer appear in the brief; their old rows stay in
+    the database.
+  - "Largest other changes" no longer lists low-volume noise (|z| below 1).
+  - GDELT HTTP 429 (too many requests): waits 20s, 40s, 60s before giving up on a series
+    (`gdelt.retry_wait_seconds`).
 - **Workflow**: timeout raised to 90 minutes; YouTube now runs on Mondays and Tuesdays.
 
 ## Refinement update

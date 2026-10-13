@@ -76,4 +76,4 @@ later; a series collected within the last 3 days is not fetched again, so a re-r
 ## Files
 
 `config.yaml` (terms, markets, thresholds) · `collect.py` · `analyze.py` · `narrate.py` · `common.py` ·
-`tests/` (run each of `test_analyze.py`, `test_gdelt.py`, `test_youtube.py`, `test_trends.py`) · `.github/workflows/trends.yml` · `data/trends.db` (created on first run)
+`tests/` (run each of `test_analyze.py`, `test_gdelt.py`, `test_youtube.py`, `test_trends.py`, `test_regressions.py`) · `.github/workflows/trends.yml` · `data/trends.db` (created on first run)

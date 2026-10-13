@@ -23,7 +23,7 @@ from narrate import narrate
 PRIMARY = {
     "google_trends": ["interest_index"],
     "wikipedia": ["pageviews"],
-    "youtube": ["views_sum", "views_median"],
+    "youtube": ["matched_views_sum", "matched_views_median"],
     "reddit": ["posts_7d", "engagement"],
     "gdelt": ["articles"],
 }
@@ -31,8 +31,8 @@ DAILY = {"google_trends", "wikipedia", "gdelt"}
 MIN_LEVEL = {
     ("google_trends", "interest_index"): 10,
     ("wikipedia", "pageviews"): 20,
-    ("youtube", "views_sum"): 1000,
-    ("youtube", "views_median"): 500,
+    ("youtube", "matched_views_sum"): 1000,
+    ("youtube", "matched_views_median"): 500,
     ("reddit", "posts_7d"): 3,
     ("reddit", "engagement"): 20,
     ("gdelt", "articles"): 3,
@@ -40,8 +40,8 @@ MIN_LEVEL = {
 SHORT = {
     ("google_trends", "interest_index"): "Google search interest",
     ("wikipedia", "pageviews"): "Wikipedia daily views",
-    ("youtube", "views_sum"): "YouTube views (top-50 new videos)",
-    ("youtube", "views_median"): "YouTube median views",
+    ("youtube", "matched_views_sum"): "YouTube views (new videos naming the term)",
+    ("youtube", "matched_views_median"): "YouTube median views",
     ("reddit", "posts_7d"): "Reddit posts",
     ("reddit", "engagement"): "Reddit engagement",
     ("gdelt", "articles"): "News articles per day",
@@ -103,11 +103,21 @@ def analyze_series(key, points, acfg):
 
     wow = (cur / prev - 1) if (prev is not None and prev > 0) else None
 
+    # A series that is just settling back after a one-off spike (last week far above its older norm,
+    # this week back near it) says little about interest, so the brief sets it aside.
+    older = blocks[2:]
+    rolloff = False
+    if prev is not None and len(older) >= acfg["min_weeks_for_z"]:
+        norm = statistics.median(older)
+        rolloff = norm > 0 and prev > 4 * norm and cur < 0.5 * prev
+
+    min_level = MIN_LEVEL.get((source, metric), 0)
     z = None
     if len(hist) >= acfg["min_weeks_for_z"]:
         mu = statistics.fmean(hist)
-        # Floor the spread at 10% of the mean so a very flat history cannot inflate z-scores.
-        sd = max(statistics.pstdev(hist), 0.10 * abs(mu), 1e-9)
+        # Floor the spread so a very flat (or all-zero) history cannot inflate z-scores: at least 10% of
+        # the mean and at least a quarter of the smallest level worth reading for this source.
+        sd = max(statistics.pstdev(hist), 0.10 * abs(mu), 0.25 * min_level, 1e-9)
         z = (cur - mu) / sd
 
     streak, direction = 0, 0
@@ -123,22 +133,36 @@ def analyze_series(key, points, acfg):
     streak *= direction
 
     last_date = points[-1][0]
-    min_level = MIN_LEVEL.get((source, metric), 0)
-    big_move = wow is None or abs(wow) >= acfg["min_change"]
+    # Flag only when the week is unusual against history AND the week-over-week move points the same way.
+    # (A week that is still above the long-run norm but fell from last week is "easing", not "rising".)
+    # A jump from exactly zero has no meaningful percentage, so it is listed as a change, never flagged.
+    big_move = wow is not None and abs(wow) >= acfg["min_change"]
     flagged = (
         z is not None and abs(z) >= acfg["z_threshold"] and big_move
+        and (z > 0) == (wow > 0)
         and max(cur, prev or 0) >= min_level
     )
     return {
         "source": source, "market": market, "term": term, "metric": metric,
         "current": cur, "previous": prev, "wow": wow, "z": z, "streak": streak,
         "weeks": len(blocks), "last_date": last_date.isoformat(), "flagged": flagged,
-        "direction": ("rising" if (z or 0) > 0 else "cooling") if flagged else "",
+        "direction": ("rising" if wow > 0 else "cooling") if flagged else "",
         "low_level": max(cur, prev or 0) < min_level,
+        "rolloff": rolloff,
     }
 
 
-def compute_signals(conn, acfg, today=None):
+CONFIG_BOUND = ("google_trends", "gdelt", "youtube")   # sources whose series come from the term lists in config
+
+
+def configured_pairs(cfg):
+    """(market, term) pairs currently in config.yaml. Series for terms that were later removed stay in the
+    database but are left out of the brief, so editing the term list never leaves stale rows behind."""
+    from collect import all_terms
+    return {(m["name"], t) for m in cfg["markets"] for t in all_terms(cfg, m)}
+
+
+def compute_signals(conn, acfg, today=None, allowed=None):
     today = today or dt.date.today()
     rows = conn.execute(
         "SELECT source, market, term, metric, date, value FROM metrics "
@@ -146,6 +170,8 @@ def compute_signals(conn, acfg, today=None):
     ).fetchall()
     series = {}
     for s, m, t, mt, d, v in rows:
+        if allowed is not None and s in CONFIG_BOUND and (m, t) not in allowed:
+            continue
         if mt in PRIMARY.get(s, []):
             series.setdefault((s, m, t, mt), []).append((dt.date.fromisoformat(d), v))
     out = []
@@ -192,15 +218,57 @@ def md_table(headers, rows):
     return "\n".join(out)
 
 
-def sig_row(s):
+def sig_row(s, theme_of=None):
     return [
-        SHORT[(s["source"], s["metric"])], s["market"], s["term"],
+        SHORT[(s["source"], s["metric"])], s["market"], s["term"], (theme_of or {}).get(s["term"].casefold(), "–"),
         fmt_val(s["source"], s["current"]), fmt_val(s["source"], s["previous"]),
         fmt_pct(s), f"{s['z']:+.1f}" if s["z"] is not None else "–", fmt_streak(s["streak"]),
     ]
 
 
-SIG_HEADERS = ["Signal", "Market", "Term", "This week", "Last week", "Change", "z-score", "Streak"]
+SIG_HEADERS = ["Signal", "Market", "Term", "Theme", "This week", "Last week", "Change", "z-score", "Streak"]
+
+
+def cell_text(s):
+    """One table cell for a series: week-over-week change with a flag mark, or why there is no number."""
+    if s is None:
+        return "no data"
+    if s["low_level"]:
+        return "low volume"
+    if s["wow"] is None:
+        return "new" if s["current"] > 0 else "–"
+    mark = {"rising": " ▲", "cooling": " ▼"}.get(s["direction"], "")
+    return f"{s['wow'] * 100:+.0f}%{mark}"
+
+
+def theme_lookup(cfg):
+    """term (case-insensitive) -> theme label, for the Theme column."""
+    out = {t.casefold(): "Core" for t in cfg["keywords"]}
+    for m in cfg["markets"]:
+        for t in m.get("local_terms", []):
+            out.setdefault(t.casefold(), "Core (local language)")
+    for th in cfg.get("themes", []):
+        for t in th["terms"]:
+            out.setdefault(t.casefold(), th["name"])
+    return out
+
+
+def theme_tables(signals, cfg):
+    """One table per theme: search and news change for each term, in each market the theme is scoped to."""
+    idx = {(sg["source"], sg["market"], sg["term"].casefold()): sg
+           for sg in signals if sg["source"] in ("google_trends", "gdelt")}
+    present = [(src, label) for src, label in (("google_trends", "search"), ("gdelt", "news"))
+               if any(k[0] == src for k in idx)]
+    if not present:
+        return []
+    out = []
+    for th in cfg.get("themes", []):
+        markets = th.get("markets", [])
+        heads = ["Term"] + [f"{m}: {label}" for m in markets for _, label in present]
+        rows = [[t] + [cell_text(idx.get((src, m, t.casefold()))) for m in markets for src, _ in present]
+                for t in th["terms"]]
+        out.append((th["name"], md_table(heads, rows)))
+    return out
 
 
 def trends_grid(signals, cfg):
@@ -213,20 +281,14 @@ def trends_grid(signals, cfg):
         for t in m.get("local_terms", []):
             if t not in terms:
                 terms.append(t)
+    tracked = {(m["name"], t) for m in cfg["markets"]
+               for t in list(cfg["keywords"]) + list(m.get("local_terms", []))}
     rows = []
     for t in terms:
         row = [t]
         for m in markets:
             s = by.get((m, t))
-            if s is None:
-                row.append("·")
-            elif s["low_level"]:
-                row.append("low volume")
-            elif s["wow"] is None:
-                row.append("new" if s["current"] > 0 else "–")
-            else:
-                mark = {"rising": " ▲", "cooling": " ▼"}.get(s["direction"], "")
-                row.append(f"{s['wow'] * 100:+.0f}%{mark}")
+            row.append("·" if (m, t) not in tracked else cell_text(s))
         rows.append(row)
     return md_table(["Search term"] + markets, rows)
 
@@ -236,28 +298,72 @@ def clean(text, n=90):
     return text if len(text) <= n else text[: n - 1] + "…"
 
 
-def top_items(conn, source, per_term=3):
+def item_table(conn, source, cfg, per_term=3):
+    """Top items of the latest collection as one table. Each item appears once, with every term
+    and market it was found under."""
     latest = conn.execute("SELECT MAX(collected_at) FROM items WHERE source=?", (source,)).fetchone()[0]
     if not latest:
-        return []
+        return None
     rows = conn.execute(
-        "SELECT term, url, title, author, views, engagement FROM items "
+        "SELECT market, term, url, title, author, views, engagement FROM items "
         "WHERE source=? AND collected_at=?", (source, latest)).fetchall()
     by_term = {}
-    for term, url, title, author, views, eng in rows:
-        by_term.setdefault(term, {})[url] = (title, author, views, eng)
-    lines = []
-    for term, items in by_term.items():
-        ranked = sorted(items.items(),
-                        key=lambda kv: (kv[1][2] or 0) if source == "youtube" else (kv[1][3] or 0),
-                        reverse=True)[:per_term]
-        for url, (title, author, views, eng) in ranked:
-            if source == "youtube":
-                stat = f"{int(views or 0):,} views"
-            else:
-                stat = f"{int(eng or 0):,} score+comments"
-            lines.append(f"- **{term}**: [{clean(title)}]({url}) — {clean(author, 40)}, {stat}")
-    return lines
+    for market, term, url, title, author, views, eng in rows:
+        e = by_term.setdefault(term, {}).setdefault(
+            url, {"title": title, "author": author, "views": views, "eng": eng, "markets": []})
+        if market not in e["markets"]:
+            e["markets"].append(market)
+
+    core = list(cfg["keywords"]) + [t for m in cfg["markets"] for t in m.get("local_terms", [])]
+    themed = [t for th in cfg.get("themes", []) for t in th["terms"]]
+    order = core + [t for t in themed if t not in core]
+    order += [t for t in by_term if t not in order]
+
+    def score(e):
+        return (e["views"] or 0) if source == "youtube" else (e["eng"] or 0)
+
+    shown = {}
+    for term in order:
+        ranked = sorted(by_term.get(term, {}).items(), key=lambda kv: -score(kv[1]))[: per_term if term in core else 1]
+        for url, e in ranked:
+            if url not in shown:
+                shown[url] = {**e, "terms": [term], "markets": list(e["markets"])}
+                continue
+            if term not in shown[url]["terms"]:
+                shown[url]["terms"].append(term)
+            for mk in e["markets"]:
+                if mk not in shown[url]["markets"]:
+                    shown[url]["markets"].append(mk)
+    if not shown:
+        return None
+
+    table = []
+    for url, e in shown.items():
+        mk = ", ".join(e["markets"]) if len(e["markets"]) <= 3 else f"{len(e['markets'])} markets"
+        stat = f"{int(score(e)):,}"
+        table.append([", ".join(e["terms"]), f"[{clean(e['title'])}]({url})", clean(e["author"], 40), stat, mk])
+    heads = (["Term", "Video", "Channel", "Views", "Markets"] if source == "youtube"
+             else ["Term", "Post", "Subreddit", "Score + comments", "Markets"])
+    return md_table(heads, table)
+
+
+def agreement_table(flagged):
+    """Terms flagged in the same direction in 2+ markets or 2+ sources: a stronger hint than one series."""
+    groups = {}
+    for sg in flagged:
+        g = groups.setdefault((sg["term"].casefold(), sg["direction"]),
+                              {"term": sg["term"], "markets": [], "sources": []})
+        if sg["market"] not in g["markets"]:
+            g["markets"].append(sg["market"])
+        name = SOURCE_NAME[sg["source"]]
+        if name not in g["sources"]:
+            g["sources"].append(name)
+    picked = [(d, g) for (_, d), g in groups.items() if len(g["markets"]) >= 2 or len(g["sources"]) >= 2]
+    picked.sort(key=lambda dg: (-len(dg[1]["markets"]), -len(dg[1]["sources"]), dg[1]["term"]))
+    if not picked:
+        return None
+    return md_table(["Term", "Direction", "Where", "Sources"],
+                    [[g["term"], d, ", ".join(g["markets"]), ", ".join(g["sources"])] for d, g in picked])
 
 
 def coverage(conn, signals):
@@ -296,17 +402,30 @@ def coverage(conn, signals):
 def render_brief(conn, cfg, signals, today):
     acfg = cfg["analysis"]
     top_n = int(acfg.get("top_n", 10))
-    live = [s for s in signals if not s["stale"]]
+    everything = [s for s in signals if not s["stale"]]
+    settling = [s for s in everything if s.get("rolloff")]
+    live = [s for s in everything if not s.get("rolloff")]
     flagged = [s for s in live if s["flagged"]]
-    rising = sorted([s for s in flagged if s["direction"] == "rising"], key=lambda s: -s["z"])[:top_n]
-    cooling = sorted([s for s in flagged if s["direction"] == "cooling"], key=lambda s: s["z"])[:top_n]
+    focus = list(acfg.get("focus_markets", []))
+    theme_of = theme_lookup(cfg)
+
+    def lead(sg):                       # focus markets (India first) are listed before the others
+        return 0 if sg["market"] in focus else 1
+
+    rising = sorted([s for s in flagged if s["direction"] == "rising"],
+                    key=lambda s: (lead(s), -s["z"]))[:top_n]
+    cooling = sorted([s for s in flagged if s["direction"] == "cooling"],
+                     key=lambda s: (lead(s), s["z"]))[:top_n]
 
     latest = max((s["last_date"] for s in live), default=today.isoformat())
     header = (
         f"# Trend brief, {today.isoformat()}\n\n"
         f"Markets: {', '.join(m['name'] for m in cfg['markets'])}. "
-        f"Terms: {', '.join(cfg['keywords'])} (plus local-language terms where configured). "
-        f"Latest data point: {latest}.\n\n"
+        f"Core terms: {', '.join(cfg['keywords'])}, plus local-language terms and "
+        f"{sum(len(th['terms']) for th in cfg.get('themes', []))} theme terms in {len(cfg.get('themes', []))} themes. "
+        + (f"{' and '.join(focus)} come first in the tables; the other markets are leading indicators. "
+           if focus else "")
+        + f"Latest data point: {latest}.\n\n"
         "*This week* is the 7-day average ending on each source's latest complete day; *last week* is "
         "the 7 days before it. A signal is flagged only when it is statistically unusual against its own "
         "history (|z| ≥ "
@@ -315,37 +434,64 @@ def render_brief(conn, cfg, signals, today):
 
     body = []
     body.append("## Rising\n")
-    body.append(md_table(SIG_HEADERS, [sig_row(s) for s in rising]) if rising
+    body.append(md_table(SIG_HEADERS, [sig_row(s, theme_of) for s in rising]) if rising
                 else "Nothing flagged as rising this week.")
     body.append("\n## Cooling\n")
-    body.append(md_table(SIG_HEADERS, [sig_row(s) for s in cooling]) if cooling
+    body.append(md_table(SIG_HEADERS, [sig_row(s, theme_of) for s in cooling]) if cooling
                 else "Nothing flagged as cooling this week.")
 
-    unflagged = [s for s in live if not s["flagged"] and s["wow"] is not None and not s["low_level"]]
+    body.append("\n## Where signals agree\n")
+    agree = agreement_table(flagged)
+    body.append(
+        "The same term flagged the same way in two or more markets or sources, which is a stronger hint "
+        "than a single series.\n\n" + agree if agree
+        else "No term is flagged in more than one market or source this week.")
+
+    themes = theme_tables(everything, cfg)
+    if themes:
+        body.append("\n## Themes (India first)\n")
+        body.append("Week-over-week change in search interest and news coverage for each theme term, in India "
+                    "and worldwide. ▲ / ▼ = flagged. **no data** = nothing returned, usually because the term "
+                    "is too rare; **low volume** = too few to read. Single weeks are noisy, so look for themes "
+                    "that rise in both search and news, or in India and Global together.")
+        for name, table in themes:
+            body.append(f"\n### {name}\n")
+            body.append(table)
+
+    unflagged = [s for s in live if not s["flagged"] and s["wow"] is not None and not s["low_level"]
+                 and (s["z"] is None or abs(s["z"]) >= 1.0)]   # |z| < 1 is within the series' normal wobble
     movers = sorted(unflagged, key=lambda s: -abs(s["wow"]))[:8]
     if movers:
         body.append("\n## Largest other changes (not statistically confirmed; treat as directional)\n")
-        body.append(md_table(SIG_HEADERS, [sig_row(s) for s in movers]))
+        body.append(md_table(SIG_HEADERS, [sig_row(s, theme_of) for s in movers]))
 
-    grid = trends_grid(live, cfg)
+    grid = trends_grid(everything, cfg)
     if grid:
         body.append("\n## Google search interest, week over week by market\n")
         body.append(grid)
-        body.append("\n▲ / ▼ = flagged. Each term is indexed to its own 90-day peak, so compare "
+        body.append("\n▲ / ▼ = flagged. **·** = term not tracked in that market. **no data** = tracked, but Google "
+                    "returned nothing (volume too low). **low volume** = too few searches to read. "
+                    "Each term is indexed to its own 90-day peak, so compare "
                     "*changes* across cells, not levels. Mumbai = Maharashtra, New York = New York "
                     "state, London = England (Google has no city-level data here).")
 
-    yt = top_items(conn, "youtube")
+    yt = item_table(conn, "youtube", cfg)
     if yt:
-        body.append("\n## Top new YouTube videos this week\n")
-        body.append("\n".join(yt))
-    rd = top_items(conn, "reddit")
+        body.append("\n## Top new YouTube videos that name each term\n")
+        body.append(yt)
+    rd = item_table(conn, "reddit", cfg)
     if rd:
         body.append("\n## Top Reddit posts this week\n")
-        body.append("\n".join(rd))
+        body.append(rd)
 
     body.append("\n## Coverage and data quality\n")
-    body.append("\n".join(coverage(conn, signals)))
+    cov = coverage(conn, signals)
+    if settling:
+        names = "; ".join(f"{SOURCE_NAME[x['source']]}, {x['market']}, {x['term']}" for x in settling[:4])
+        more = f" (and {len(settling) - 4} more)" if len(settling) > 4 else ""
+        cov.append(f"- **Set aside**: {len(settling)} series {'is' if len(settling) == 1 else 'are'} settling back after a one-off spike "
+                   f"(last week was more than 4x their norm) and are left out of the tables above: {names}{more}")
+    body.append("\n".join(cov))
     body.append(
         "\nEvery number above comes from `data/trends.db`; the full per-series table is in "
         "`briefs/latest-signals.csv`. YouTube and Reddit snapshots only start accumulating from the "
@@ -369,7 +515,7 @@ def main():
     cfg = load_config(args.config)
     conn = open_db(Path(args.db))
     today = dt.date.today()
-    signals = compute_signals(conn, cfg["analysis"], today)
+    signals = compute_signals(conn, cfg["analysis"], today, allowed=configured_pairs(cfg))
     if not signals:
         print("No data yet. Run collect.py first.")
         return 1
@@ -390,7 +536,7 @@ def main():
     (out / f"{today.isoformat()}.md").write_text(md, encoding="utf-8")
     (out / "latest.md").write_text(md, encoding="utf-8")
     fields = ["source", "market", "term", "metric", "current", "previous", "wow", "z", "streak",
-              "weeks", "last_date", "flagged", "direction", "low_level", "stale"]
+              "weeks", "last_date", "flagged", "direction", "low_level", "stale", "rolloff"]
     with open(out / "latest-signals.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=fields, extrasaction="ignore")
         w.writeheader()
