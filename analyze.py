@@ -25,8 +25,9 @@ PRIMARY = {
     "wikipedia": ["pageviews"],
     "youtube": ["views_sum", "views_median"],
     "reddit": ["posts_7d", "engagement"],
+    "gdelt": ["articles"],
 }
-DAILY = {"google_trends", "wikipedia"}
+DAILY = {"google_trends", "wikipedia", "gdelt"}
 MIN_LEVEL = {
     ("google_trends", "interest_index"): 10,
     ("wikipedia", "pageviews"): 20,
@@ -34,6 +35,7 @@ MIN_LEVEL = {
     ("youtube", "views_median"): 500,
     ("reddit", "posts_7d"): 3,
     ("reddit", "engagement"): 20,
+    ("gdelt", "articles"): 3,
 }
 SHORT = {
     ("google_trends", "interest_index"): "Google search interest",
@@ -42,12 +44,14 @@ SHORT = {
     ("youtube", "views_median"): "YouTube median views",
     ("reddit", "posts_7d"): "Reddit posts",
     ("reddit", "engagement"): "Reddit engagement",
+    ("gdelt", "articles"): "News articles per day",
 }
 SOURCE_NAME = {
     "google_trends": "Google Trends",
     "wikipedia": "Wikipedia",
     "youtube": "YouTube",
     "reddit": "Reddit",
+    "gdelt": "GDELT news",
 }
 STALE_DAYS = 10
 
@@ -257,9 +261,9 @@ def top_items(conn, source, per_term=3):
 
 
 def coverage(conn, signals):
-    run_ts = conn.execute("SELECT MAX(run_ts) FROM runs").fetchone()[0]
     lines = []
     for source in PRIMARY:
+        run_ts = conn.execute("SELECT MAX(run_ts) FROM runs WHERE source=?", (source,)).fetchone()[0]
         mine = [s for s in signals if s["source"] == source]
         status = {}
         errors = []
@@ -345,7 +349,9 @@ def render_brief(conn, cfg, signals, today):
     body.append(
         "\nEvery number above comes from `data/trends.db`; the full per-series table is in "
         "`briefs/latest-signals.csv`. YouTube and Reddit snapshots only start accumulating from the "
-        "first run, so their flags appear after about five weeks."
+        "first run, so their flags appear after about five weeks. GDELT counts news articles by the "
+        "publisher's country, not the country an article is about; Mumbai, New York and London map to "
+        "India, the United States and the United Kingdom."
     )
     return header, "\n".join(body) + "\n"
 

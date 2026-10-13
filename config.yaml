@@ -13,36 +13,44 @@ keywords:
 #                 London -> England (GB-ENG).
 # youtube_region: country-level relevance hint for YouTube search (not a hard filter).
 # youtube_lang:   language hint for YouTube search.
+# gdelt_country:  GDELT filters by the PUBLISHER's country (not the country an article is about) and
+#                 works at country level: Mumbai -> India, New York -> United States, London -> United Kingdom.
 # local_terms:    extra search terms tracked in this market only.
 markets:
   - name: France
     trends_geo: FR
     youtube_region: FR
+    gdelt_country: france
     youtube_lang: fr
     local_terms: ["haute joaillerie", "art contemporain"]
   - name: New York
     trends_geo: US-NY
     youtube_region: US
+    gdelt_country: unitedstates
     youtube_lang: en
     local_terms: []
   - name: Mumbai
     trends_geo: IN-MH
     youtube_region: IN
+    gdelt_country: india
     youtube_lang: en
     local_terms: []
   - name: Hong Kong
     trends_geo: HK
     youtube_region: HK
+    gdelt_country: hongkong
     youtube_lang: zh
     local_terms: ["高級珠寶", "當代藝術"]
   - name: Italy
     trends_geo: IT
     youtube_region: IT
+    gdelt_country: italy
     youtube_lang: it
     local_terms: ["alta gioielleria", "arte contemporanea"]
   - name: London
     trends_geo: GB-ENG
     youtube_region: GB
+    gdelt_country: unitedkingdom
     youtube_lang: en
     local_terms: []
 
@@ -65,6 +73,13 @@ wikipedia:
 
 youtube:
   window_days: 7           # videos published in the last N days
+
+# GDELT: daily count of news articles mentioning each term. No key needed.
+gdelt:
+  enabled: true
+  timespan: "3months"      # GDELT's search API keeps a rolling window of about 3 months
+  sleep_seconds: 6         # GDELT asks for at most one request every 5 seconds
+  include_global: true     # also track each keyword with no country filter
 
 analysis:
   lookback_days: 90        # history window for daily sources

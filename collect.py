@@ -321,6 +321,94 @@ def collect_reddit(conn, cfg, run_ts):
     return stored
 
 
+# ---------------------------------------------------------------- GDELT
+
+GDELT_URL = "https://api.gdeltproject.org/api/v2/doc/doc"
+
+
+def collect_gdelt(conn, cfg, run_ts):
+    """Daily count of news articles mentioning each term (GDELT DOC 2.0 API, no key needed).
+
+    'articles' is the raw daily count. 'article_share_pct' is that count as a percentage of all
+    articles GDELT monitored that day, which corrects for GDELT's own volume drifting over time.
+    Markets are filtered by the PUBLISHER's country, not the country an article is about.
+    A 'Global' series (no country filter) is added for each keyword, because English phrases
+    rarely appear in French, Italian or Hong Kong publications.
+    """
+    gcfg = cfg.get("gdelt", {})
+    if not gcfg.get("enabled", True):
+        log(conn, run_ts, "gdelt", None, None, "skipped", "disabled in config.yaml")
+        return 0
+    timespan = gcfg.get("timespan", "3months")
+    pause = float(gcfg.get("sleep_seconds", 6))  # GDELT asks for at most one request per 5 seconds
+    today = dt.datetime.now(dt.timezone.utc).date()
+
+    jobs = []
+    if gcfg.get("include_global", True):
+        jobs += [("Global", t, f'"{t}"') for t in cfg["keywords"]]
+    for m in cfg["markets"]:
+        country = m.get("gdelt_country")
+        if country:
+            jobs += [(m["name"], t, f'"{t}" sourcecountry:{country}') for t in all_terms(cfg, m)]
+
+    stored, consecutive_errors = 0, 0
+    for i, (market, term, query) in enumerate(jobs):
+        err, points = "", []
+        try:
+            r = get_json(GDELT_URL, params={
+                "query": query, "mode": "timelinevolraw", "format": "json", "timespan": timespan,
+            })
+            if r.status_code != 200:
+                err = f"HTTP {r.status_code}"
+            elif not r.text.strip():
+                points = []  # an empty body means no matching articles
+            else:
+                try:
+                    data = r.json()
+                except ValueError:
+                    # GDELT answers a bad query with a plain-text message instead of JSON
+                    err = "not JSON: " + r.text.strip().replace("\n", " ")[:120]
+                else:
+                    series = data.get("timeline") or []
+                    points = series[0].get("data", []) if series else []
+        except Exception as e:
+            err = f"{type(e).__name__}: {e}"
+
+        if err:
+            consecutive_errors += 1
+            log(conn, run_ts, "gdelt", market, term, "error", err[:200])
+            if consecutive_errors >= 3:
+                log(conn, run_ts, "gdelt", None, None, "error",
+                    "3 failures in a row (likely rate-limited); stopping GDELT for this run")
+                break
+        else:
+            consecutive_errors = 0
+            n = 0
+            for p in points:
+                try:
+                    day = dt.datetime.strptime(str(p["date"])[:8], "%Y%m%d").date()
+                    value = float(p.get("value", 0))
+                    norm = float(p.get("norm") or 0)
+                except (KeyError, ValueError, TypeError):
+                    continue
+                if day >= today:
+                    continue  # today's bucket is still filling up
+                put_metric(conn, run_ts, day.isoformat(), "gdelt", market, term, "articles", value)
+                if norm > 0:
+                    put_metric(conn, run_ts, day.isoformat(), "gdelt", market, term,
+                               "article_share_pct", value / norm * 100)
+                n += 1
+            conn.commit()
+            stored += n
+            if n:
+                log(conn, run_ts, "gdelt", market, term, "ok", f"{n} days")
+            else:
+                log(conn, run_ts, "gdelt", market, term, "empty", "no matching articles in window")
+        if i < len(jobs) - 1:
+            time.sleep(pause + random.uniform(0, 2))
+    return stored
+
+
 # ---------------------------------------------------------------- main
 
 SOURCES = {
@@ -328,6 +416,7 @@ SOURCES = {
     "wikipedia": collect_wikipedia,
     "youtube": collect_youtube,
     "reddit": collect_reddit,
+    "gdelt": collect_gdelt,
 }
 
 
