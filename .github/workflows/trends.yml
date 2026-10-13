@@ -15,7 +15,7 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-24.04
-    timeout-minutes: 60
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
 
@@ -27,12 +27,11 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Collect daily sources (Wikipedia, YouTube, Reddit)
+      - name: Collect daily sources (Wikipedia, Reddit)
         env:
-          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
           REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
-        run: python collect.py --sources wikipedia,youtube,reddit
+        run: python collect.py --sources wikipedia,reddit
 
       # Each Google Trends request back-fills 90 days, so weekly is enough, and it keeps us
       # well clear of Google's rate limits on shared cloud IPs.
@@ -47,8 +46,24 @@ jobs:
             echo "Not Monday; skipping Google Trends."
           fi
 
+      # YouTube search is capped at about 100 searches a day by the free quota, and a full pass needs about 104.
+      # It runs Monday, and again Tuesday to pick up whatever Monday could not reach (series collected within
+      # the last 3 days are skipped, so Tuesday only fetches the leftovers).
+      - name: Collect YouTube (Mondays and Tuesdays, or when run by hand)
+        continue-on-error: true
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: |
+          DOW="$(date -u +%u)"
+          if [ "$EVENT_NAME" = "workflow_dispatch" ] || [ "$DOW" = "1" ] || [ "$DOW" = "2" ]; then
+            python collect.py --sources youtube
+          else
+            echo "Not Monday or Tuesday; skipping YouTube."
+          fi
+
       # GDELT also back-fills about 3 months per request and asks for one request every 5 seconds,
-      # so it runs weekly alongside Google Trends (about 4 minutes).
+      # so it runs weekly alongside Google Trends (about 10 minutes).
       - name: Collect GDELT news volume (Mondays, or when run by hand)
         continue-on-error: true
         env:
