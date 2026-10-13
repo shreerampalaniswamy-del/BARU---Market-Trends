@@ -1,62 +1,112 @@
-# Trend agent v1 configuration.
-# Edit keywords, markets and Wikipedia articles freely; the code reads everything from here.
+# Trend agent configuration.
+# Edit keywords, themes, markets and Wikipedia articles freely; the code reads everything from here.
+#
+# How the tracking is laid out (India first):
+#   keywords  -> "core" terms, tracked in EVERY market below (India, Mumbai and the global hubs as leading indicators)
+#   themes    -> groups of more specific terms (rare stones, heritage and craft, houses ...), tracked only in the
+#                markets listed for each theme (India and Global), so the free request limits are not exceeded
+#   markets   -> where to look; focus_markets (under analysis) are listed first in the brief and collected first
 
 keywords:
   - High Jewellery
   - High Jewelry
   - Contemporary Art
-  - High Art
+  - art jewellery
 
 # name:           label used in the brief
-# trends_geo:     Google Trends geo code. Google has no city-level geo for these, so the closest
+# trends_geo:     Google Trends geo code ("" = worldwide). Google has no city-level geo for these, so the closest
 #                 region is used: Mumbai -> Maharashtra (IN-MH), New York -> New York state (US-NY),
-#                 London -> England (GB-ENG).
-# youtube_region: country-level relevance hint for YouTube search (not a hard filter).
-# youtube_lang:   language hint for YouTube search.
-# gdelt_country:  GDELT filters by the PUBLISHER's country (not the country an article is about) and
-#                 works at country level: Mumbai -> India, New York -> United States, London -> United Kingdom.
+#                 London -> England (GB-ENG). India = the whole country (IN).
+# youtube_region: country-level relevance hint for YouTube search (omit for worldwide; not a hard filter).
+# youtube_lang:   language hint for YouTube search (omit for none).
+# gdelt_country:  GDELT filters by the PUBLISHER's country (not the country an article is about) and works at
+#                 country level. "" = no filter (worldwide). Omit the key to leave GDELT out for a market.
 # local_terms:    extra search terms tracked in this market only.
 markets:
-  - name: France
-    trends_geo: FR
-    youtube_region: FR
-    gdelt_country: france
-    youtube_lang: fr
-    local_terms: ["haute joaillerie", "art contemporain"]
-  - name: New York
-    trends_geo: US-NY
-    youtube_region: US
-    gdelt_country: unitedstates
+  - name: India
+    trends_geo: IN
+    youtube_region: IN
     youtube_lang: en
+    gdelt_country: india
     local_terms: []
   - name: Mumbai
     trends_geo: IN-MH
     youtube_region: IN
-    gdelt_country: india
     youtube_lang: en
+    gdelt_country: india
+    local_terms: []
+  - name: France
+    trends_geo: FR
+    youtube_region: FR
+    youtube_lang: fr
+    gdelt_country: france
+    local_terms: ["haute joaillerie", "art contemporain"]
+  - name: New York
+    trends_geo: US-NY
+    youtube_region: US
+    youtube_lang: en
+    gdelt_country: unitedstates
     local_terms: []
   - name: Hong Kong
     trends_geo: HK
     youtube_region: HK
-    gdelt_country: hongkong
     youtube_lang: zh
+    gdelt_country: hongkong
     local_terms: ["高級珠寶", "當代藝術"]
   - name: Italy
     trends_geo: IT
     youtube_region: IT
-    gdelt_country: italy
     youtube_lang: it
+    gdelt_country: italy
     local_terms: ["alta gioielleria", "arte contemporanea"]
   - name: London
     trends_geo: GB-ENG
     youtube_region: GB
-    gdelt_country: unitedkingdom
     youtube_lang: en
+    gdelt_country: unitedkingdom
+    local_terms: []
+  - name: Global
+    trends_geo: ""
+    gdelt_country: ""
     local_terms: []
 
+# Each theme is tracked only in the markets listed (India = the country, Global = worldwide).
+# Single distinctive words (polki, kundan, jadau, padparadscha) match far better than long phrases.
+themes:
+  - name: Art and jewellery
+    markets: [India, Global]
+    terms: ["sculptural jewellery", "artist jewellery"]
+  - name: Rare stones and materials
+    markets: [India, Global]
+    terms: ["Colombian emerald", "Kashmir sapphire", "padparadscha", "natural pearls",
+            "fancy colour diamond", "lab grown diamond"]
+  - name: Heritage and craft
+    markets: [India, Global]
+    terms: ["polki", "kundan", "jadau", "temple jewellery", "heirloom jewellery"]
+  - name: Bespoke and provenance
+    markets: [India, Global]
+    terms: ["bespoke jewellery", "jewellery auction"]
+  - name: Occasions and value
+    markets: [India, Global]
+    terms: ["bridal jewellery", "jewellery investment"]
+  - name: International houses
+    markets: [India, Global]
+    terms: ["Cartier", "Van Cleef", "Bulgari", "Tiffany", "Harry Winston", "Boucheron", "Buccellati", "JAR jewelry"]
+  - name: Indian heritage houses
+    markets: [India, Global]
+    terms: ["Sabyasachi jewellery", "Zoya jewellery", "Gem Palace", "Hazoorilal", "Amrapali"]
+  - name: Hong Kong high jewellers
+    markets: [India, Global]
+    terms: ["Wallace Chan", "Michelle Ong", "Edmond Chin"]
+  # Independent studios (Studio Renn, Viren Bhagat and similar) are left out on purpose: they live on Instagram,
+  # so free public data shows almost nothing for them. Revisit with the paid listening tool.
+
+# Skip_if_fresh_days: a series collected within this many days is not fetched again, so re-running the workflow
+# only fills gaps (for example after a rate limit) instead of repeating everything.
 trends:
   timeframe: "today 3-m"   # daily data for roughly the last 90 days
   sleep_seconds: 8         # pause between requests; Google rate-limits aggressively
+  skip_if_fresh_days: 3
 
 # Wikipedia is split by language edition, not by country, so "market" here is the edition.
 wikipedia:
@@ -72,14 +122,17 @@ wikipedia:
     - {market: zh-wiki, project: zh.wikipedia, article: 當代藝術}
 
 youtube:
-  window_days: 7           # videos published in the last N days
+  window_days: 7           # videos published in the last N days (collected weekly, matching this window)
+  exact_phrase: true       # ask YouTube for the exact phrase, not loosely related videos
+  require_phrase_in_text: true   # count a video only if its title or description contains the term
+  skip_if_fresh_days: 3
 
 # GDELT: daily count of news articles mentioning each term. No key needed.
 gdelt:
   enabled: true
   timespan: "3months"      # GDELT's search API keeps a rolling window of about 3 months
   sleep_seconds: 6         # GDELT asks for at most one request every 5 seconds
-  include_global: true     # also track each keyword with no country filter
+  skip_if_fresh_days: 3
 
 analysis:
   lookback_days: 90        # history window for daily sources
@@ -87,9 +140,10 @@ analysis:
   min_change: 0.20         # and it must also have moved at least this much week over week
   min_weeks_for_z: 4       # prior weeks required before a z-score is trusted
   top_n: 10                # rows shown in the headline tables
+  focus_markets: [India, Mumbai]   # listed first in the tables and collected first
 
 # Optional: a Claude-written "Analyst read" on top of the brief. Runs only if ANTHROPIC_API_KEY is set.
 narrative:
   enabled: true
   model: claude-sonnet-5-5
-  context: "The reader is a brand strategist at a luxury high jewellery house who wants early signals on high jewellery and contemporary art interest across France, New York, Mumbai, Hong Kong, Italy and London."
+  context: "The reader is a brand strategist at a luxury high jewellery house in India who wants early signals on what HNI and UHNI jewellery buyers will want. India is the focus market; France, New York, Hong Kong, Italy, London and Global are leading indicators. Public attention data mostly reflects the general public, so be sceptical of mass-market spikes (gold rates, wedding and festive seasons) and say when a signal may not reflect HNI or UHNI behaviour."
