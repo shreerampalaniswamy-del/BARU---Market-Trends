@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   run:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
@@ -45,6 +45,19 @@ jobs:
             python collect.py --sources trends
           else
             echo "Not Monday; skipping Google Trends."
+          fi
+
+      # GDELT also back-fills about 3 months per request and asks for one request every 5 seconds,
+      # so it runs weekly alongside Google Trends (about 4 minutes).
+      - name: Collect GDELT news volume (Mondays, or when run by hand)
+        continue-on-error: true
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          if [ "$EVENT_NAME" = "workflow_dispatch" ] || [ "$(date -u +%u)" = "1" ]; then
+            python collect.py --sources gdelt
+          else
+            echo "Not Monday; skipping GDELT."
           fi
 
       - name: Write weekly brief (Mondays, or when run by hand)
