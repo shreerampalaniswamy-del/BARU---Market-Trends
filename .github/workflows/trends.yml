@@ -1,0 +1,67 @@
+name: trend-agent
+
+on:
+  schedule:
+    - cron: "30 2 * * *"   # 08:00 IST every day: collect data
+  workflow_dispatch: {}      # lets you run it by hand from the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: trend-agent
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Collect daily sources (Wikipedia, YouTube, Reddit)
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
+          REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
+        run: python collect.py --sources wikipedia,youtube,reddit
+
+      # Each Google Trends request back-fills 90 days, so weekly is enough, and it keeps us
+      # well clear of Google's rate limits on shared cloud IPs.
+      - name: Collect Google Trends (Mondays, or when run by hand)
+        continue-on-error: true
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          if [ "$EVENT_NAME" = "workflow_dispatch" ] || [ "$(date -u +%u)" = "1" ]; then
+            python collect.py --sources trends
+          else
+            echo "Not Monday; skipping Google Trends."
+          fi
+
+      - name: Write weekly brief (Mondays, or when run by hand)
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ "$EVENT_NAME" = "workflow_dispatch" ] || [ "$(date -u +%u)" = "1" ]; then
+            python analyze.py
+          else
+            echo "Not Monday; skipping brief."
+          fi
+
+      - name: Commit data and brief
+        run: |
+          git config user.name "trend-agent"
+          git config user.email "trend-agent@users.noreply.github.com"
+          git add data briefs
+          git diff --cached --quiet || git commit -m "Update trend data $(date -u +%F)"
+          git push
