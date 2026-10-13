@@ -1,30 +1,46 @@
 source,market,term,metric,current,previous,wow,z,streak,weeks,last_date,flagged,direction,low_level,stale
-google_trends,France,Contemporary Art,interest_index,22.0,21.428571428571427,0.02666666666666684,1.8362501399897806,2,12,2026-10-12,False,,False,False
+google_trends,France,Contemporary Art,interest_index,22.285714285714285,21.714285714285715,0.02631578947368407,1.831288984760959,2,12,2026-10-12,False,,False,False
 google_trends,France,High Art,interest_index,10.571428571428571,10.571428571428571,0.0,0.9777619841721639,0,12,2026-10-12,False,,False,False
-google_trends,France,High Jewelry,interest_index,14.285714285714286,21.571428571428573,-0.337748344370861,1.9874182115892662,-1,12,2026-10-12,False,,False,False
-google_trends,France,art contemporain,interest_index,57.142857142857146,56.285714285714285,0.015228426395939243,1.681619194819536,3,12,2026-10-12,False,,False,False
-google_trends,France,haute joaillerie,interest_index,23.0,27.285714285714285,-0.15706806282722507,2.6159155513434764,-1,12,2026-10-12,False,,False,False
-google_trends,Hong Kong,Contemporary Art,interest_index,63.0,76.0,-0.17105263157894735,2.56727015305775,-1,12,2026-10-12,False,,False,False
+google_trends,France,High Jewellery,interest_index,14.285714285714286,0.0,,14285714285.714285,1,12,2026-10-12,True,rising,False,False
+google_trends,France,High Jewelry,interest_index,34.285714285714285,30.142857142857142,0.13744075829383884,3.6403660836725087,2,12,2026-10-12,False,,False,False
+google_trends,France,art contemporain,interest_index,57.857142857142854,56.42857142857143,0.025316455696202445,1.7160408376012184,3,12,2026-10-12,False,,False,False
+google_trends,France,haute joaillerie,interest_index,23.285714285714285,27.285714285714285,-0.1465968586387435,2.652339691931803,-1,12,2026-10-12,False,,False,False
+google_trends,Global,Contemporary Art,interest_index,23.142857142857142,24.0,-0.0357142857142857,-1.3664298989291648,-3,12,2026-10-12,False,,False,False
+google_trends,Global,High Jewellery,interest_index,11.571428571428571,11.714285714285714,-0.012195121951219523,0.5169673628418262,-1,12,2026-10-12,False,,False,False
+google_trends,Global,High Jewelry,interest_index,14.285714285714286,12.714285714285714,0.12359550561797761,0.09990468963620003,2,12,2026-10-12,False,,False,False
+google_trends,Global,art jewellery,interest_index,24.714285714285715,23.857142857142858,0.03592814371257491,2.5638781100887558,2,12,2026-10-12,False,,False,False
+google_trends,Hong Kong,Contemporary Art,interest_index,61.42857142857143,76.28571428571429,-0.19475655430711614,2.48481592922594,-1,12,2026-10-12,False,,False,False
 google_trends,Hong Kong,High Art,interest_index,42.142857142857146,9.428571428571429,3.4696969696969697,15.231637396477694,2,12,2026-10-12,True,rising,False,False
 google_trends,Hong Kong,High Jewellery,interest_index,0.0,0.0,,-0.45895348116376716,0,12,2026-10-12,False,,True,False
-google_trends,Hong Kong,High Jewelry,interest_index,14.285714285714286,11.714285714285714,0.21951219512195141,3.925852022013915,2,12,2026-10-12,True,rising,False,False
-google_trends,Hong Kong,當代藝術,interest_index,45.142857142857146,45.0,0.0031746031746031633,3.1733205345372215,2,12,2026-10-12,False,,False,False
-google_trends,Italy,Contemporary Art,interest_index,31.571428571428573,31.285714285714285,0.009132420091324311,2.1189834365247786,2,12,2026-10-12,False,,False,False
+google_trends,Hong Kong,High Jewelry,interest_index,14.285714285714286,0.0,,14285714285.714285,1,12,2026-10-12,True,rising,False,False
+google_trends,Hong Kong,art jewellery,interest_index,0.0,0.0,,0.0,0,12,2026-10-12,False,,True,False
+google_trends,Hong Kong,當代藝術,interest_index,37.142857142857146,18.714285714285715,0.9847328244274809,6.587676133282066,2,12,2026-10-12,True,rising,False,False
+google_trends,Hong Kong,高級珠寶,interest_index,0.0,0.0,,-0.31622776601683794,0,12,2026-10-12,False,,True,False
+google_trends,India,Contemporary Art,interest_index,8.428571428571429,7.428571428571429,0.13461538461538458,-0.2607177927572375,2,12,2026-10-12,False,,True,False
+google_trends,India,High Jewellery,interest_index,31.857142857142858,32.714285714285715,-0.026200873362445476,1.9354035588921807,-1,12,2026-10-12,False,,False,False
+google_trends,India,High Jewelry,interest_index,13.142857142857142,12.714285714285714,0.03370786516853941,2.0484936236206583,2,12,2026-10-12,False,,False,False
+google_trends,India,art jewellery,interest_index,48.142857142857146,52.714285714285715,-0.086720867208672,1.6630577633148471,-1,12,2026-10-12,False,,False,False
+google_trends,Italy,Contemporary Art,interest_index,31.714285714285715,30.714285714285715,0.032558139534883734,2.1585416683648786,2,12,2026-10-12,False,,False,False
 google_trends,Italy,High Art,interest_index,10.714285714285714,11.142857142857142,-0.038461538461538436,1.3266734386356855,-1,12,2026-10-12,False,,False,False
 google_trends,Italy,High Jewellery,interest_index,0.0,0.0,,-0.31622776601683794,0,12,2026-10-12,False,,True,False
-google_trends,Italy,High Jewelry,interest_index,14.285714285714286,23.571428571428573,-0.3939393939393939,1.7919573407620817,-1,12,2026-10-12,False,,False,False
-google_trends,Italy,alta gioielleria,interest_index,35.42857142857143,71.14285714285714,-0.5020080321285141,1.4160399964207804,-1,12,2026-10-12,False,,False,False
-google_trends,Italy,arte contemporanea,interest_index,68.71428571428571,58.714285714285715,0.1703163017031628,2.693404709930093,2,12,2026-10-12,False,,False,False
+google_trends,Italy,High Jewelry,interest_index,18.714285714285715,26.142857142857142,-0.28415300546448086,2.173849888793345,-1,12,2026-10-12,True,rising,False,False
+google_trends,Italy,alta gioielleria,interest_index,53.57142857142857,70.28571428571429,-0.2378048780487806,2.3350721015023823,-1,12,2026-10-12,True,rising,False,False
+google_trends,Italy,art jewellery,interest_index,0.0,0.0,,-0.31622776601683794,0,12,2026-10-12,False,,True,False
+google_trends,Italy,arte contemporanea,interest_index,70.28571428571429,60.42857142857143,0.16312056737588665,2.669923396608989,2,12,2026-10-12,False,,False,False
 google_trends,London,Contemporary Art,interest_index,23.0,23.571428571428573,-0.024242424242424288,-1.3703256616705082,-3,12,2026-10-12,False,,False,False
 google_trends,London,High Art,interest_index,24.857142857142858,26.142857142857142,-0.0491803278688524,-1.6916020323125105,-3,12,2026-10-12,False,,False,False
-google_trends,London,High Jewellery,interest_index,11.571428571428571,11.285714285714286,0.025316455696202445,0.5251917166516024,2,12,2026-10-12,False,,False,False
-google_trends,London,High Jewelry,interest_index,7.0,7.142857142857143,-0.020000000000000018,-0.2911172967995966,-1,12,2026-10-12,False,,True,False
-google_trends,Mumbai,Contemporary Art,interest_index,5.428571428571429,3.5714285714285716,0.52,0.5484869136564042,2,12,2026-10-12,False,,True,False
+google_trends,London,High Jewellery,interest_index,11.571428571428571,11.714285714285714,-0.012195121951219523,0.5169673628418262,-1,12,2026-10-12,False,,False,False
+google_trends,London,High Jewelry,interest_index,14.285714285714286,12.714285714285714,0.12359550561797761,0.09990468963620003,2,12,2026-10-12,False,,False,False
+google_trends,London,art jewellery,interest_index,24.714285714285715,23.857142857142858,0.03592814371257491,2.5638781100887558,2,12,2026-10-12,False,,False,False
+google_trends,Mumbai,Contemporary Art,interest_index,5.571428571428571,5.0,0.11428571428571432,0.5467441497455743,2,12,2026-10-12,False,,True,False
 google_trends,Mumbai,High Art,interest_index,1.2857142857142858,1.7142857142857142,-0.2499999999999999,-0.07945473861784569,-1,12,2026-10-12,False,,True,False
-google_trends,Mumbai,High Jewellery,interest_index,63.285714285714285,27.0,1.3439153439153437,7.837094476311475,2,12,2026-10-12,True,rising,False,False
-google_trends,New York,Contemporary Art,interest_index,35.857142857142854,34.285714285714285,0.04583333333333317,1.6025190254379995,1,12,2026-10-12,False,,False,False
+google_trends,Mumbai,High Jewellery,interest_index,32.285714285714285,26.142857142857142,0.23497267759562845,3.979631394190042,2,12,2026-10-12,True,rising,False,False
+google_trends,Mumbai,art jewellery,interest_index,21.428571428571427,21.714285714285715,-0.013157894736842257,2.193268596337072,-1,12,2026-10-12,False,,False,False
+google_trends,New York,Contemporary Art,interest_index,36.714285714285715,34.285714285714285,0.0708333333333333,1.6648073825866307,1,12,2026-10-12,False,,False,False
 google_trends,New York,High Art,interest_index,31.285714285714285,28.0,0.11734693877551017,1.4982084825431636,1,12,2026-10-12,False,,False,False
-google_trends,New York,High Jewelry,interest_index,76.42857142857143,60.714285714285715,0.2588235294117647,4.062596711651612,2,12,2026-10-12,True,rising,False,False
+google_trends,New York,High Jewellery,interest_index,0.0,14.285714285714286,-1.0,-0.31622776601683794,-1,12,2026-10-12,False,,False,False
+google_trends,New York,High Jewelry,interest_index,75.85714285714286,61.57142857142857,0.23201856148491884,3.9693554852693587,2,12,2026-10-12,True,rising,False,False
+google_trends,New York,art jewellery,interest_index,0.0,0.0,,-0.31622776601683794,0,12,2026-10-12,False,,True,False
 wikipedia,en-wiki,Contemporary art,pageviews,238.57142857142858,241.71428571428572,-0.013002364066193817,-0.21258458095796162,-2,12,2026-10-12,False,,False,False
 wikipedia,en-wiki,High culture,pageviews,172.14285714285714,176.71428571428572,-0.025869037995149613,-0.6858267163235191,-2,12,2026-10-12,False,,False,False
 wikipedia,en-wiki,Jewellery,pageviews,358.85714285714283,344.14285714285717,0.042756330427563105,0.5389221556886227,1,12,2026-10-12,False,,False,False
@@ -33,63 +49,83 @@ wikipedia,fr-wiki,Joaillerie,pageviews,39.42857142857143,35.42857142857143,0.112
 wikipedia,it-wiki,Arte contemporanea,pageviews,38.142857142857146,38.857142857142854,-0.018382352941176294,1.5792094072509717,-1,12,2026-10-12,False,,False,False
 wikipedia,it-wiki,Gioielleria,pageviews,10.571428571428571,12.142857142857142,-0.12941176470588234,-1.0661945982728984,-2,12,2026-10-12,False,,True,False
 wikipedia,zh-wiki,當代藝術,pageviews,26.142857142857142,551.5714285714286,-0.9526029526029526,-0.43001998873976743,-2,12,2026-10-12,False,,False,False
-youtube,France,Contemporary Art,views_median,28555.0,,,,0,1,2026-10-13,False,,False,False
-youtube,France,Contemporary Art,views_sum,4415836.0,,,,0,1,2026-10-13,False,,False,False
+youtube,France,Contemporary Art,views_median,25945.0,,,,0,1,2026-10-13,False,,False,False
+youtube,France,Contemporary Art,views_sum,4378042.0,,,,0,1,2026-10-13,False,,False,False
 youtube,France,High Art,views_median,5702.0,,,,0,1,2026-10-13,False,,False,False
 youtube,France,High Art,views_sum,1657229.0,,,,0,1,2026-10-13,False,,False,False
-youtube,France,High Jewellery,views_median,1512.0,,,,0,1,2026-10-13,False,,False,False
-youtube,France,High Jewellery,views_sum,1492192.0,,,,0,1,2026-10-13,False,,False,False
-youtube,France,High Jewelry,views_median,2089.5,,,,0,1,2026-10-13,False,,False,False
-youtube,France,High Jewelry,views_sum,1622322.0,,,,0,1,2026-10-13,False,,False,False
-youtube,France,art contemporain,views_median,9057.0,,,,0,1,2026-10-13,False,,False,False
-youtube,France,art contemporain,views_sum,3545846.0,,,,0,1,2026-10-13,False,,False,False
-youtube,France,haute joaillerie,views_median,364314.5,,,,0,1,2026-10-13,False,,False,False
-youtube,France,haute joaillerie,views_sum,31581353.0,,,,0,1,2026-10-13,False,,False,False
-youtube,Hong Kong,Contemporary Art,views_median,28555.0,,,,0,1,2026-10-13,False,,False,False
-youtube,Hong Kong,Contemporary Art,views_sum,4392624.0,,,,0,1,2026-10-13,False,,False,False
+youtube,France,High Jewellery,views_median,1535.5,,,,0,1,2026-10-13,False,,False,False
+youtube,France,High Jewellery,views_sum,1536024.0,,,,0,1,2026-10-13,False,,False,False
+youtube,France,High Jewelry,views_median,2080.0,,,,0,1,2026-10-13,False,,False,False
+youtube,France,High Jewelry,views_sum,1665795.0,,,,0,1,2026-10-13,False,,False,False
+youtube,France,art contemporain,views_median,8741.5,,,,0,1,2026-10-13,False,,False,False
+youtube,France,art contemporain,views_sum,3466036.0,,,,0,1,2026-10-13,False,,False,False
+youtube,France,art jewellery,views_median,102156.5,,,,0,1,2026-10-13,False,,False,False
+youtube,France,art jewellery,views_sum,9675285.0,,,,0,1,2026-10-13,False,,False,False
+youtube,France,haute joaillerie,views_median,385916.0,,,,0,1,2026-10-13,False,,False,False
+youtube,France,haute joaillerie,views_sum,32428729.0,,,,0,1,2026-10-13,False,,False,False
+youtube,Hong Kong,Contemporary Art,views_median,25945.0,,,,0,1,2026-10-13,False,,False,False
+youtube,Hong Kong,Contemporary Art,views_sum,4352507.0,,,,0,1,2026-10-13,False,,False,False
 youtube,Hong Kong,High Art,views_median,1716.0,,,,0,1,2026-10-13,False,,False,False
 youtube,Hong Kong,High Art,views_sum,1392348.0,,,,0,1,2026-10-13,False,,False,False
-youtube,Hong Kong,High Jewellery,views_median,2557.0,,,,0,1,2026-10-13,False,,False,False
-youtube,Hong Kong,High Jewellery,views_sum,1906812.0,,,,0,1,2026-10-13,False,,False,False
-youtube,Hong Kong,High Jewelry,views_median,2089.5,,,,0,1,2026-10-13,False,,False,False
-youtube,Hong Kong,High Jewelry,views_sum,1569376.0,,,,0,1,2026-10-13,False,,False,False
-youtube,Hong Kong,當代藝術,views_median,132.0,,,,0,1,2026-10-13,False,,True,False
-youtube,Hong Kong,當代藝術,views_sum,1022721.0,,,,0,1,2026-10-13,False,,False,False
-youtube,Hong Kong,高級珠寶,views_median,757.5,,,,0,1,2026-10-13,False,,False,False
-youtube,Hong Kong,高級珠寶,views_sum,135446.0,,,,0,1,2026-10-13,False,,False,False
-youtube,Italy,Contemporary Art,views_median,27711.0,,,,0,1,2026-10-13,False,,False,False
-youtube,Italy,Contemporary Art,views_sum,4513789.0,,,,0,1,2026-10-13,False,,False,False
+youtube,Hong Kong,High Jewellery,views_median,2663.0,,,,0,1,2026-10-13,False,,False,False
+youtube,Hong Kong,High Jewellery,views_sum,2074584.0,,,,0,1,2026-10-13,False,,False,False
+youtube,Hong Kong,High Jewelry,views_median,2080.0,,,,0,1,2026-10-13,False,,False,False
+youtube,Hong Kong,High Jewelry,views_sum,1618152.0,,,,0,1,2026-10-13,False,,False,False
+youtube,Hong Kong,art jewellery,views_median,107072.5,,,,0,1,2026-10-13,False,,False,False
+youtube,Hong Kong,art jewellery,views_sum,10386812.0,,,,0,1,2026-10-13,False,,False,False
+youtube,Hong Kong,當代藝術,views_median,143.0,,,,0,1,2026-10-13,False,,True,False
+youtube,Hong Kong,當代藝術,views_sum,1024983.0,,,,0,1,2026-10-13,False,,False,False
+youtube,Hong Kong,高級珠寶,views_median,772.0,,,,0,1,2026-10-13,False,,False,False
+youtube,Hong Kong,高級珠寶,views_sum,170014.0,,,,0,1,2026-10-13,False,,False,False
+youtube,India,Contemporary Art,views_median,22417.0,,,,0,1,2026-10-13,False,,False,False
+youtube,India,Contemporary Art,views_sum,4263519.0,,,,0,1,2026-10-13,False,,False,False
+youtube,India,High Jewellery,views_median,1720.0,,,,0,1,2026-10-13,False,,False,False
+youtube,India,High Jewellery,views_sum,1518719.0,,,,0,1,2026-10-13,False,,False,False
+youtube,India,High Jewelry,views_median,1793.5,,,,0,1,2026-10-13,False,,False,False
+youtube,India,High Jewelry,views_sum,1606022.0,,,,0,1,2026-10-13,False,,False,False
+youtube,India,art jewellery,views_median,105908.0,,,,0,1,2026-10-13,False,,False,False
+youtube,India,art jewellery,views_sum,10290948.0,,,,0,1,2026-10-13,False,,False,False
+youtube,Italy,Contemporary Art,views_median,23821.0,,,,0,1,2026-10-13,False,,False,False
+youtube,Italy,Contemporary Art,views_sum,4477723.0,,,,0,1,2026-10-13,False,,False,False
 youtube,Italy,High Art,views_median,2042.5,,,,0,1,2026-10-13,False,,False,False
 youtube,Italy,High Art,views_sum,1400464.0,,,,0,1,2026-10-13,False,,False,False
-youtube,Italy,High Jewellery,views_median,3151.5,,,,0,1,2026-10-13,False,,False,False
-youtube,Italy,High Jewellery,views_sum,2389090.0,,,,0,1,2026-10-13,False,,False,False
-youtube,Italy,High Jewelry,views_median,2109.5,,,,0,1,2026-10-13,False,,False,False
-youtube,Italy,High Jewelry,views_sum,1609991.0,,,,0,1,2026-10-13,False,,False,False
-youtube,Italy,alta gioielleria,views_median,622.0,,,,0,1,2026-10-13,False,,False,False
-youtube,Italy,alta gioielleria,views_sum,500836.0,,,,0,1,2026-10-13,False,,False,False
-youtube,Italy,arte contemporanea,views_median,1202.0,,,,0,1,2026-10-13,False,,False,False
-youtube,Italy,arte contemporanea,views_sum,2020180.0,,,,0,1,2026-10-13,False,,False,False
-youtube,London,Contemporary Art,views_median,23772.5,,,,0,1,2026-10-13,False,,False,False
-youtube,London,Contemporary Art,views_sum,4267104.0,,,,0,1,2026-10-13,False,,False,False
+youtube,Italy,High Jewellery,views_median,3033.0,,,,0,1,2026-10-13,False,,False,False
+youtube,Italy,High Jewellery,views_sum,2523750.0,,,,0,1,2026-10-13,False,,False,False
+youtube,Italy,High Jewelry,views_median,2119.5,,,,0,1,2026-10-13,False,,False,False
+youtube,Italy,High Jewelry,views_sum,1662045.0,,,,0,1,2026-10-13,False,,False,False
+youtube,Italy,alta gioielleria,views_median,623.0,,,,0,1,2026-10-13,False,,False,False
+youtube,Italy,alta gioielleria,views_sum,527474.0,,,,0,1,2026-10-13,False,,False,False
+youtube,Italy,art jewellery,views_median,117974.0,,,,0,1,2026-10-13,False,,False,False
+youtube,Italy,art jewellery,views_sum,10643542.0,,,,0,1,2026-10-13,False,,False,False
+youtube,Italy,arte contemporanea,views_median,1279.5,,,,0,1,2026-10-13,False,,False,False
+youtube,Italy,arte contemporanea,views_sum,3192969.0,,,,0,1,2026-10-13,False,,False,False
+youtube,London,Contemporary Art,views_median,22417.0,,,,0,1,2026-10-13,False,,False,False
+youtube,London,Contemporary Art,views_sum,4263602.0,,,,0,1,2026-10-13,False,,False,False
 youtube,London,High Art,views_median,1716.0,,,,0,1,2026-10-13,False,,False,False
 youtube,London,High Art,views_sum,1392348.0,,,,0,1,2026-10-13,False,,False,False
 youtube,London,High Jewellery,views_median,2525.5,,,,0,1,2026-10-13,False,,False,False
-youtube,London,High Jewellery,views_sum,1916819.0,,,,0,1,2026-10-13,False,,False,False
-youtube,London,High Jewelry,views_median,2070.5,,,,0,1,2026-10-13,False,,False,False
-youtube,London,High Jewelry,views_sum,1559895.0,,,,0,1,2026-10-13,False,,False,False
-youtube,Mumbai,Contemporary Art,views_median,25867.5,,,,0,1,2026-10-13,False,,False,False
-youtube,Mumbai,Contemporary Art,views_sum,4302674.0,,,,0,1,2026-10-13,False,,False,False
+youtube,London,High Jewellery,views_sum,2061464.0,,,,0,1,2026-10-13,False,,False,False
+youtube,London,High Jewelry,views_median,1806.5,,,,0,1,2026-10-13,False,,False,False
+youtube,London,High Jewelry,views_sum,1596512.0,,,,0,1,2026-10-13,False,,False,False
+youtube,London,art jewellery,views_median,107072.5,,,,0,1,2026-10-13,False,,False,False
+youtube,London,art jewellery,views_sum,10375891.0,,,,0,1,2026-10-13,False,,False,False
+youtube,Mumbai,Contemporary Art,views_median,22417.0,,,,0,1,2026-10-13,False,,False,False
+youtube,Mumbai,Contemporary Art,views_sum,4263571.0,,,,0,1,2026-10-13,False,,False,False
 youtube,Mumbai,High Art,views_median,1716.0,,,,0,1,2026-10-13,False,,False,False
 youtube,Mumbai,High Art,views_sum,1436507.0,,,,0,1,2026-10-13,False,,False,False
-youtube,Mumbai,High Jewellery,views_median,1404.0,,,,0,1,2026-10-13,False,,False,False
-youtube,Mumbai,High Jewellery,views_sum,1470863.0,,,,0,1,2026-10-13,False,,False,False
-youtube,Mumbai,High Jewelry,views_median,1919.5,,,,0,1,2026-10-13,False,,False,False
-youtube,Mumbai,High Jewelry,views_sum,1555925.0,,,,0,1,2026-10-13,False,,False,False
-youtube,New York,Contemporary Art,views_median,21445.0,,,,0,1,2026-10-13,False,,False,False
-youtube,New York,Contemporary Art,views_sum,4189522.0,,,,0,1,2026-10-13,False,,False,False
+youtube,Mumbai,High Jewellery,views_median,1720.5,,,,0,1,2026-10-13,False,,False,False
+youtube,Mumbai,High Jewellery,views_sum,1518781.0,,,,0,1,2026-10-13,False,,False,False
+youtube,Mumbai,High Jewelry,views_median,1793.5,,,,0,1,2026-10-13,False,,False,False
+youtube,Mumbai,High Jewelry,views_sum,1606046.0,,,,0,1,2026-10-13,False,,False,False
+youtube,Mumbai,art jewellery,views_median,105908.0,,,,0,1,2026-10-13,False,,False,False
+youtube,Mumbai,art jewellery,views_sum,10290952.0,,,,0,1,2026-10-13,False,,False,False
+youtube,New York,Contemporary Art,views_median,19545.5,,,,0,1,2026-10-13,False,,False,False
+youtube,New York,Contemporary Art,views_sum,4165624.0,,,,0,1,2026-10-13,False,,False,False
 youtube,New York,High Art,views_median,2022.5,,,,0,1,2026-10-13,False,,False,False
 youtube,New York,High Art,views_sum,1491342.0,,,,0,1,2026-10-13,False,,False,False
-youtube,New York,High Jewellery,views_median,2551.0,,,,0,1,2026-10-13,False,,False,False
-youtube,New York,High Jewellery,views_sum,1918374.0,,,,0,1,2026-10-13,False,,False,False
-youtube,New York,High Jewelry,views_median,2070.5,,,,0,1,2026-10-13,False,,False,False
-youtube,New York,High Jewelry,views_sum,1577568.0,,,,0,1,2026-10-13,False,,False,False
+youtube,New York,High Jewellery,views_median,1841.5,,,,0,1,2026-10-13,False,,False,False
+youtube,New York,High Jewellery,views_sum,2012115.0,,,,0,1,2026-10-13,False,,False,False
+youtube,New York,High Jewelry,views_median,1793.5,,,,0,1,2026-10-13,False,,False,False
+youtube,New York,High Jewelry,views_sum,1615840.0,,,,0,1,2026-10-13,False,,False,False
+youtube,New York,art jewellery,views_median,105908.0,,,,0,1,2026-10-13,False,,False,False
+youtube,New York,art jewellery,views_sum,10329546.0,,,,0,1,2026-10-13,False,,False,False
