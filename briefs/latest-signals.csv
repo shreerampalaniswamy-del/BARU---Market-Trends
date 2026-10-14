@@ -101,34 +101,29 @@ wikipedia,fr-wiki,Joaillerie,pageviews,39.142857142857146,34.42857142857143,0.13
 wikipedia,it-wiki,Arte contemporanea,pageviews,37.42857142857143,36.57142857142857,0.023437500000000222,1.4,2,12,2026-10-13,False,,False,False,False
 wikipedia,it-wiki,Gioielleria,pageviews,10.0,12.0,-0.16666666666666663,-0.5558441558441555,-2,12,2026-10-13,False,,True,False,False
 wikipedia,zh-wiki,當代藝術,pageviews,27.714285714285715,332.85714285714283,-0.9167381974248927,-0.3822616061704738,-2,12,2026-10-13,False,,False,False,True
-youtube,Global,Contemporary Art,matched_views_median,27103.5,,,,0,1,2026-10-13,False,,False,False,False
-youtube,Global,Contemporary Art,matched_views_sum,1148809.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,Global,High Jewellery,matched_views_median,291.5,,,,0,1,2026-10-13,False,,True,False,False
-youtube,Global,High Jewellery,matched_views_sum,1405222.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,Global,High Jewelry,matched_views_median,285.0,,,,0,1,2026-10-13,False,,True,False,False
-youtube,Global,High Jewelry,matched_views_sum,35973.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,Global,art jewellery,matched_views_median,52462.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,Global,art jewellery,matched_views_sum,3666758.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,Hong Kong,art jewellery,matched_views_median,0.0,,,,0,1,2026-10-14,False,,True,False,False
-youtube,Hong Kong,art jewellery,matched_views_sum,0.0,,,,0,1,2026-10-14,False,,True,False,False
-youtube,India,Contemporary Art,matched_views_median,13248.0,,,,0,1,2026-10-14,False,,False,False,False
-youtube,India,Contemporary Art,matched_views_sum,318121.0,,,,0,1,2026-10-14,False,,False,False,False
-youtube,India,High Jewellery,matched_views_median,197.0,,,,0,1,2026-10-14,False,,True,False,False
-youtube,India,High Jewellery,matched_views_sum,24341.0,,,,0,1,2026-10-14,False,,False,False,False
-youtube,India,art jewellery,matched_views_median,0.0,,,,0,1,2026-10-14,False,,True,False,False
-youtube,India,art jewellery,matched_views_sum,0.0,,,,0,1,2026-10-14,False,,True,False,False
-youtube,Mumbai,High Jewelry,matched_views_median,1328.0,,,,0,1,2026-10-14,False,,False,False,False
-youtube,Mumbai,High Jewelry,matched_views_sum,89353.0,,,,0,1,2026-10-14,False,,False,False,False
-youtube_channel,Auction houses,Christie's,views_sum,65332.0,,,,0,1,2026-10-14,False,,False,False,False
-youtube_channel,Auction houses,Phillips,views_sum,2177.0,,,,0,1,2026-10-14,False,,False,False,False
-youtube_channel,Auction houses,Sotheby's,views_sum,201134.0,,,,0,1,2026-10-14,False,,False,False,False
-youtube_channel,Houses (international),Boucheron,views_sum,2064.0,,,,0,1,2026-10-14,False,,False,False,False
-youtube_channel,Houses (international),Cartier,views_sum,3857.0,,,,0,1,2026-10-14,False,,False,False,False
-youtube_channel,Houses (international),Chopard,views_sum,1109.0,,,,0,1,2026-10-14,False,,False,False,False
-youtube_channel,Houses (international),Harry Winston,views_sum,1432222.0,,,,0,1,2026-10-14,False,,False,False,False
+youtube_channel,Auction houses,Bonhams,views_sum,0.0,,,,0,1,2026-10-14,False,,True,False,False
+youtube_channel,Auction houses,Christie's,views_sum,0.0,,,,0,1,2026-10-14,False,,True,False,False
+youtube_channel,Auction houses,Phillips,views_sum,0.0,,,,0,1,2026-10-14,False,,True,False,False
+youtube_channel,Auction houses,Saffronart,views_sum,0.0,,,,0,1,2026-10-14,False,,True,False,False
+youtube_channel,Auction houses,Sotheby's,views_sum,0.0,,,,0,1,2026-10-14,False,,True,False,False
+youtube_channel,Houses (Hong Kong),Wallace Chan,views_sum,0.0,,,,0,1,2026-10-14,False,,True,False,False
+youtube_channel,Houses (India),Amrapali Jewels,views_sum,0.0,,,,0,1,2026-10-14,False,,True,False,False
+youtube_channel,Houses (India),Gem Palace,views_sum,98.0,,,,0,1,2026-10-14,False,,True,False,False
+youtube_channel,Houses (India),Hazoorilal Legacy,views_sum,236.0,,,,0,1,2026-10-14,False,,True,False,False
+youtube_channel,Houses (India),Sabyasachi Jewellery,views_sum,0.0,,,,0,1,2026-10-14,False,,True,False,False
+youtube_channel,Houses (India),Zoya,views_sum,1579696.0,,,,0,1,2026-10-14,False,,False,False,False
+youtube_channel,Houses (international),Boucheron,views_sum,2067.0,,,,0,1,2026-10-14,False,,False,False,False
+youtube_channel,Houses (international),Buccellati,views_sum,0.0,,,,0,1,2026-10-14,False,,True,False,False
+youtube_channel,Houses (international),Bulgari,views_sum,0.0,,,,0,1,2026-10-14,False,,True,False,False
+youtube_channel,Houses (international),Cartier,views_sum,1099.0,,,,0,1,2026-10-14,False,,False,False,False
+youtube_channel,Houses (international),Chopard,views_sum,1116.0,,,,0,1,2026-10-14,False,,False,False,False
+youtube_channel,Houses (international),Graff,views_sum,0.0,,,,0,1,2026-10-14,False,,True,False,False
+youtube_channel,Houses (international),Harry Winston,views_sum,1437872.0,,,,0,1,2026-10-14,False,,False,False,False
+youtube_channel,Houses (international),Messika,views_sum,32866.0,,,,0,1,2026-10-14,False,,False,False,False
 youtube_channel,Houses (international),Tiffany & Co.,views_sum,0.0,,,,0,1,2026-10-14,False,,True,False,False
-youtube_channel,Houses (international),Van Cleef & Arpels,views_sum,7018.0,,,,0,1,2026-10-14,False,,False,False,False
-youtube_channel,Media and publications,Business of Fashion,views_sum,42057.0,,,,0,1,2026-10-14,False,,False,False,False
-youtube_channel,Media and publications,Harper's Bazaar,views_sum,175083.0,,,,0,1,2026-10-14,False,,False,False,False
-youtube_channel,Media and publications,Vogue,views_sum,4845022.0,,,,0,1,2026-10-14,False,,False,False,False
-youtube_channel,Media and publications,Vogue India,views_sum,569157.0,,,,0,1,2026-10-14,False,,False,False,False
+youtube_channel,Houses (international),Van Cleef & Arpels,views_sum,7045.0,,,,0,1,2026-10-14,False,,False,False,False
+youtube_channel,Media and publications,Business of Fashion,views_sum,0.0,,,,0,1,2026-10-14,False,,True,False,False
+youtube_channel,Media and publications,FashionTV,views_sum,11192.0,,,,0,1,2026-10-14,False,,False,False,False
+youtube_channel,Media and publications,Harper's Bazaar,views_sum,0.0,,,,0,1,2026-10-14,False,,True,False,False
+youtube_channel,Media and publications,Vogue,views_sum,0.0,,,,0,1,2026-10-14,False,,True,False,False
+youtube_channel,Media and publications,Vogue India,views_sum,0.0,,,,0,1,2026-10-14,False,,True,False,False
