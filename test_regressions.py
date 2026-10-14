@@ -78,6 +78,27 @@ def main():
         others = md.split("## Largest other changes")[1].split("\n## ")[0] if "## Largest other changes" in md else ""
         assert "| New York | High Jewellery |" not in others, others        # |z| < 1 noise stays out
 
+        # 7. India and Global flagged the same way are one fact, not two; India/Global do not count as agreement
+        weekly(conn, "google_trends", "Global", "High Jewellery", "interest_index", [40] * 11 + [64], noise=1.5)
+        weekly(conn, "google_trends", "Mumbai", "High Jewellery", "interest_index", [40] * 11 + [64], noise=1.5)
+        signals = analyze.compute_signals(conn, cfg["analysis"], allowed=allowed)
+        header, body = analyze.render_brief(conn, cfg, signals, dt.date.today())
+        md = header + "\n" + body
+        rising = md.split("## Rising")[1].split("\n## ")[0]
+        assert "| India + Global |" in rising and "| Global |" not in rising, rising
+        agree = md.split("## Where signals agree")[1].split("\n## ")[0]
+        assert "High Jewellery" not in agree, agree        # India + Mumbai + Global is one place, one source
+        assert "exactly the same daily values" in md       # identical India/Global series are called out
+
+        # 8. a partial re-run must not hide items from the main run
+        from collect import put_item
+        put_item(conn, "2026-10-12T01:00:00Z", "youtube", "India", "High Jewellery", "https://y/1", "High Jewellery gala",
+                 "c", "2026-10-10T00:00:00Z", 5000, 1)
+        put_item(conn, "2026-10-12T05:00:00Z", "youtube", "India", "Contemporary Art", "https://y/2", "Contemporary Art fair",
+                 "c", "2026-10-10T00:00:00Z", 4000, 1)       # a later partial run
+        tbl = analyze.item_table(conn, "youtube", cfg)
+        assert "https://y/1" in tbl and "https://y/2" in tbl, tbl
+
         # 6. GDELT HTTP 429: waits 20s, 40s, 60s (config.retry_wait_seconds), then gives up
         class R:
             status_code = 429
