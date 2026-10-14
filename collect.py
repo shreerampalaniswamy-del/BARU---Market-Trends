@@ -8,6 +8,7 @@ import argparse
 import datetime as dt
 import os
 import random
+import re
 import statistics
 import sys
 import time
@@ -58,7 +59,7 @@ def get_json(url, params=None, headers=None, tries=3, wait=5):
                 timeout=30,
             )
             if r.status_code in (429, 500, 502, 503, 504):
-                last = f"HTTP {r.status_code}"
+                last = f"HTTP {r.status_code}: " + r.text.strip().replace("\n", " ")[:80]
                 time.sleep(wait * (attempt + 1))
                 continue
             return r
@@ -68,11 +69,11 @@ def get_json(url, params=None, headers=None, tries=3, wait=5):
     raise RuntimeError(last or "request failed")
 
 
-def all_terms(cfg, market):
+def all_terms(cfg, market, include_themes=True):
     """Core keywords + this market's local terms + the terms of every theme scoped to this market."""
     terms = list(cfg["keywords"]) + list(market.get("local_terms", []))
     for theme in cfg.get("themes", []):
-        if market["name"] in theme.get("markets", []):
+        if include_themes and market["name"] in theme.get("markets", []):
             terms += [t for t in theme["terms"] if t not in terms]
     return terms
 
@@ -96,6 +97,25 @@ def recent_status(conn, source, market, term, days):
         "AND run_ts>=? AND message NOT LIKE 'not refetched%' ORDER BY run_ts DESC LIMIT 1",
         (source, market, term, cutoff)).fetchone()
     return row[0] if row else None
+
+
+def youtube_terms(cfg, market):
+    """Terms searched on YouTube in a market. Theme terms only where youtube.theme_markets says so."""
+    only = cfg.get("youtube", {}).get("theme_markets")
+    return all_terms(cfg, market, include_themes=(not only or market["name"] in only))
+
+
+def word_patterns(words):
+    """Plain words from config -> case-insensitive regexes. Latin words match from a word start
+    ('jewel' matches 'jewellery'); words of 4 letters or fewer match whole words only ('ring' not 'string')."""
+    pats = []
+    for w in words or []:
+        w = str(w)
+        if w.isascii() and " " not in w:
+            pats.append(re.compile(r"\b" + re.escape(w) + (r"s?\b" if len(w) <= 4 else ""), re.I))
+        else:
+            pats.append(re.compile(re.escape(w), re.I))
+    return pats
 
 
 def kept_message(days):
@@ -240,10 +260,13 @@ def collect_youtube(conn, cfg, run_ts):
     since = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=days)).strftime("%Y-%m-%dT%H:%M:%SZ")
     today = dt.date.today().isoformat()
     base = "https://www.googleapis.com/youtube/v3"
+    need_jewel, need_art = set(ycfg.get("context_terms", [])), set(ycfg.get("art_terms", []))
+    jewel_pats, art_pats = word_patterns(ycfg.get("context_words")), word_patterns(ycfg.get("art_words"))
+    excluded = [w.casefold() for w in ycfg.get("exclude_words", [])]
     stored = 0
 
     for m in ordered_markets(cfg):
-        for term in all_terms(cfg, m):
+        for term in youtube_terms(cfg, m):
             prior = recent_status(conn, "youtube", m["name"], term, fresh_days)
             if prior:
                 log(conn, run_ts, "youtube", m["name"], term, prior, kept_message(fresh_days))
@@ -290,7 +313,14 @@ def collect_youtube(conn, cfg, run_ts):
 
                 def names_term(x):
                     sn = x.get("snippet", {})
-                    return needle in f"{sn.get('title', '')} {sn.get('description', '')}".casefold()
+                    text = f"{sn.get('title', '')} {sn.get('description', '')}".casefold()
+                    if needle not in text or any(w in text for w in excluded):
+                        return False
+                    if term in need_jewel and not any(p.search(text) for p in jewel_pats):
+                        return False
+                    if term in need_art and not any(p.search(text) for p in art_pats):
+                        return False
+                    return True
 
                 matched = [x for x in vids if names_term(x)] if must_name else list(vids)
                 views = [stat(x, "viewCount") for x in matched] or [0]

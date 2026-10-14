@@ -126,6 +126,24 @@ youtube:
   exact_phrase: true       # ask YouTube for the exact phrase, not loosely related videos
   require_phrase_in_text: true   # count a video only if its title or description contains the term
   skip_if_fresh_days: 3
+  theme_markets: [India]   # theme terms are searched on YouTube only here; worldwide results mostly repeat India's
+  # Many names are also ordinary words or people (Van Cleef the actor, Tiffany, Amrapali, Boucheron ice cream, kundan,
+  # polki). For the terms listed here a video must ALSO mention a jewellery word; for art terms, an art word.
+  context_terms: ["Cartier", "Van Cleef", "Bulgari", "Tiffany", "Harry Winston", "Boucheron", "Buccellati",
+                  "JAR jewelry", "Gem Palace", "Hazoorilal", "Amrapali", "Wallace Chan", "Michelle Ong", "Edmond Chin",
+                  "polki", "kundan", "jadau", "padparadscha", "natural pearls", "Colombian emerald",
+                  "Kashmir sapphire", "fancy colour diamond", "lab grown diamond", "Zoya jewellery",
+                  "Sabyasachi jewellery", "heirloom jewellery", "bespoke jewellery", "bridal jewellery",
+                  "jewellery auction", "jewellery investment"]
+  context_words: [jewel, jewelry, jewellery, joaill, gioiell, bijou, diamond, gem, gems, gemstone, emerald, sapphire,
+                  ruby, pearl, necklace, earring, bracelet, ring, rings, pendant, brooch, tiara, choker, bangle,
+                  "high jewelry", ज्वैलरी, गहने, आभूषण, 珠寶, 首飾]
+  art_terms: ["Contemporary Art", "art contemporain", "arte contemporanea", "當代藝術"]
+  art_words: [gallery, galerie, museum, museo, musée, exhibition, exhibit, mostra, painting, painter, sculpt,
+              installation, biennale, curator, collector, artist, 美術, 展覽, 畫廊]
+  # A video containing any of these is dropped (gold-rate spam, adult photoshoots).
+  exclude_words: ["gold rate", "gold price", "gold ret", "today gold", "aaj ka", "silver rate", "nude", "naked",
+                  "undressed", "photoshoot", "photosession"]
 
 # GDELT: daily count of news articles mentioning each term. No key needed.
 gdelt:

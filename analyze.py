@@ -156,10 +156,12 @@ CONFIG_BOUND = ("google_trends", "gdelt", "youtube")   # sources whose series co
 
 
 def configured_pairs(cfg):
-    """(market, term) pairs currently in config.yaml. Series for terms that were later removed stay in the
-    database but are left out of the brief, so editing the term list never leaves stale rows behind."""
-    from collect import all_terms
-    return {(m["name"], t) for m in cfg["markets"] for t in all_terms(cfg, m)}
+    """{source: {(market, term), ...}} currently in config.yaml. Series for terms (or YouTube theme searches)
+    that were later removed stay in the database but are left out of the brief."""
+    from collect import all_terms, youtube_terms
+    every = {(m["name"], t) for m in cfg["markets"] for t in all_terms(cfg, m)}
+    yt = {(m["name"], t) for m in cfg["markets"] for t in youtube_terms(cfg, m)}
+    return {"google_trends": every, "gdelt": every, "youtube": yt}
 
 
 def compute_signals(conn, acfg, today=None, allowed=None):
@@ -170,7 +172,7 @@ def compute_signals(conn, acfg, today=None, allowed=None):
     ).fetchall()
     series = {}
     for s, m, t, mt, d, v in rows:
-        if allowed is not None and s in CONFIG_BOUND and (m, t) not in allowed:
+        if allowed is not None and s in CONFIG_BOUND and (m, t) not in allowed.get(s, set()):
             continue
         if mt in PRIMARY.get(s, []):
             series.setdefault((s, m, t, mt), []).append((dt.date.fromisoformat(d), v))
@@ -220,7 +222,7 @@ def md_table(headers, rows):
 
 def sig_row(s, theme_of=None):
     return [
-        SHORT[(s["source"], s["metric"])], s["market"], s["term"], (theme_of or {}).get(s["term"].casefold(), "–"),
+        SHORT[(s["source"], s["metric"])], s.get("market_label", s["market"]), s["term"], (theme_of or {}).get(s["term"].casefold(), "–"),
         fmt_val(s["source"], s["current"]), fmt_val(s["source"], s["previous"]),
         fmt_pct(s), f"{s['z']:+.1f}" if s["z"] is not None else "–", fmt_streak(s["streak"]),
     ]
@@ -233,8 +235,8 @@ def cell_text(s):
     """One table cell for a series: week-over-week change with a flag mark, or why there is no number."""
     if s is None:
         return "no data"
-    if s["low_level"]:
-        return "low volume"
+    if s["low_level"] or (s["current"] == 0 and s["source"] == "google_trends"):
+        return "low volume"          # an index of 0 only means "under about 1% of the peak": unreadable
     if s["wow"] is None:
         return "new" if s["current"] > 0 else "–"
     mark = {"rising": " ▲", "cooling": " ▼"}.get(s["direction"], "")
@@ -304,9 +306,16 @@ def item_table(conn, source, cfg, per_term=3):
     latest = conn.execute("SELECT MAX(collected_at) FROM items WHERE source=?", (source,)).fetchone()[0]
     if not latest:
         return None
+    oldest = (dt.datetime.strptime(latest, "%Y-%m-%dT%H:%M:%SZ") - dt.timedelta(days=10)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    # newest collection of each series, so a partial re-run does not hide items from the main run
     rows = conn.execute(
-        "SELECT market, term, url, title, author, views, engagement FROM items "
-        "WHERE source=? AND collected_at=?", (source, latest)).fetchall()
+        "SELECT i.market, i.term, i.url, i.title, i.author, i.views, i.engagement FROM items i "
+        "JOIN (SELECT market, term, MAX(collected_at) AS m FROM items WHERE source=? AND collected_at>=? "
+        "GROUP BY market, term) x ON i.market=x.market AND i.term=x.term AND i.collected_at=x.m "
+        "WHERE i.source=?", (source, oldest, source)).fetchall()
+    allowed = configured_pairs(cfg).get(source)
+    if allowed is not None:
+        rows = [r for r in rows if (r[0], r[1]) in allowed]
     by_term = {}
     for market, term, url, title, author, views, eng in rows:
         e = by_term.setdefault(term, {}).setdefault(
@@ -347,8 +356,14 @@ def item_table(conn, source, cfg, per_term=3):
     return md_table(heads, table)
 
 
+def region(market):
+    """Mumbai sits inside India and Global includes India, so they are not independent confirmations."""
+    return "India" if market in ("India", "Mumbai") else market
+
+
 def agreement_table(flagged):
-    """Terms flagged in the same direction in 2+ markets or 2+ sources: a stronger hint than one series."""
+    """Terms flagged in the same direction in 2+ independent places or 2+ sources: a stronger hint than
+    one series. India, Mumbai and Global count as one place for this purpose."""
     groups = {}
     for sg in flagged:
         g = groups.setdefault((sg["term"].casefold(), sg["direction"]),
@@ -358,12 +373,49 @@ def agreement_table(flagged):
         name = SOURCE_NAME[sg["source"]]
         if name not in g["sources"]:
             g["sources"].append(name)
-    picked = [(d, g) for (_, d), g in groups.items() if len(g["markets"]) >= 2 or len(g["sources"]) >= 2]
-    picked.sort(key=lambda dg: (-len(dg[1]["markets"]), -len(dg[1]["sources"]), dg[1]["term"]))
+
+    def places(g):
+        return len({region(m) for m in g["markets"] if m != "Global"} or {"Global"})
+
+    picked = [(d, g) for (_, d), g in groups.items() if places(g) >= 2 or len(g["sources"]) >= 2]
+    picked.sort(key=lambda dg: (-places(dg[1]), -len(dg[1]["sources"]), dg[1]["term"]))
     if not picked:
         return None
     return md_table(["Term", "Direction", "Where", "Sources"],
                     [[g["term"], d, ", ".join(g["markets"]), ", ".join(g["sources"])] for d, g in picked])
+
+
+def merge_global(rows, key):
+    """Where Global shows the same move as India, drop the Global row and label India 'India + Global'."""
+    india = {key(s): s for s in rows if s["market"] == "India"}
+    out = []
+    for s in rows:
+        twin = india.get(key(s)) if s["market"] == "Global" else None
+        if twin is not None:
+            twin["market_label"] = "India + Global"
+            continue
+        out.append(s)
+    return out
+
+
+def identical_series_note(conn):
+    """Google Trends: terms whose daily values are exactly the same in India and Global. Global then adds
+    nothing for that term (either India dominates it, or the region was not applied)."""
+    rows = conn.execute(
+        "SELECT market, term, date, value FROM metrics WHERE source='google_trends' "
+        "AND metric='interest_index' AND market IN ('India','Global') ORDER BY date DESC").fetchall()
+    by = {}
+    for m, t, d, v in rows:
+        by.setdefault((t, m), {})[d] = v
+    both = [t for (t, m) in by if m == "India" and (t, "Global") in by]
+    same = [t for t in both
+            if (lambda a, b: len(set(a) & set(b)) >= 14 and all(a[d] == b[d] for d in set(a) & set(b)))(
+                by[(t, "India")], by[(t, "Global")])]
+    if not both or not same:
+        return None
+    return (f"**India vs Global**: {len(same)} of {len(both)} Google Trends terms have exactly the same daily "
+            f"values in both, so Global is not independent evidence for them (India probably dominates those "
+            f"searches). Terms: {', '.join(sorted(same)[:12])}{'…' if len(same) > 12 else ''}.")
 
 
 def coverage(conn, signals):
@@ -396,6 +448,9 @@ def coverage(conn, signals):
         if errors:
             line += f" — issues: {'; '.join(errors[:2])}"
         lines.append(line)
+    note = identical_series_note(conn)
+    if note:
+        lines.append("- " + note)
     return lines
 
 
@@ -412,9 +467,11 @@ def render_brief(conn, cfg, signals, today):
     def lead(sg):                       # focus markets (India first) are listed before the others
         return 0 if sg["market"] in focus else 1
 
-    rising = sorted([s for s in flagged if s["direction"] == "rising"],
+    shown = merge_global(sorted(flagged, key=lambda s: s["market"] != "India"),
+                         lambda s: (s["source"], s["term"].casefold(), s["direction"]))
+    rising = sorted([s for s in shown if s["direction"] == "rising"],
                     key=lambda s: (lead(s), -s["z"]))[:top_n]
-    cooling = sorted([s for s in flagged if s["direction"] == "cooling"],
+    cooling = sorted([s for s in shown if s["direction"] == "cooling"],
                      key=lambda s: (lead(s), s["z"]))[:top_n]
 
     latest = max((s["last_date"] for s in live), default=today.isoformat())
@@ -460,6 +517,8 @@ def render_brief(conn, cfg, signals, today):
 
     unflagged = [s for s in live if not s["flagged"] and s["wow"] is not None and not s["low_level"]
                  and (s["z"] is None or abs(s["z"]) >= 1.0)]   # |z| < 1 is within the series' normal wobble
+    unflagged = merge_global(sorted(unflagged, key=lambda s: s["market"] != "India"),
+                             lambda s: (s["source"], s["term"].casefold(), s["wow"] > 0))
     movers = sorted(unflagged, key=lambda s: -abs(s["wow"]))[:8]
     if movers:
         body.append("\n## Largest other changes (not statistically confirmed; treat as directional)\n")
