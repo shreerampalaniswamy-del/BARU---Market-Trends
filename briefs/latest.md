@@ -1,6 +1,6 @@
 # Trend brief, 2026-10-14
 
-Markets: India, Mumbai, France, New York, Hong Kong, Italy, London, Global. Core terms: High Jewellery, High Jewelry, Contemporary Art, art jewellery, plus local-language terms and 33 theme terms in 8 themes. India and Mumbai come first in the tables; the other markets are leading indicators. Latest data point: 2026-10-13.
+Markets: India, Mumbai, France, New York, Hong Kong, Italy, London, Global. Core terms: High Jewellery, High Jewelry, Contemporary Art, art jewellery, plus local-language terms and 33 theme terms in 8 themes. India and Mumbai come first in the tables; the other markets are leading indicators. Latest data point: 2026-10-14.
 
 *This week* is the 7-day average ending on each source's latest complete day; *last week* is the 7 days before it. A signal is flagged only when it is statistically unusual against its own history (|z| ≥ 2.0), has moved at least 20%, and is not a tiny number.
 
@@ -132,23 +132,79 @@ Week-over-week change in search interest and news coverage for each theme term, 
 
 ▲ / ▼ = flagged. **·** = term not tracked in that market. **no data** = tracked, but Google returned nothing (volume too low). **low volume** = too few searches to read. Each term is indexed to its own 90-day peak, so compare *changes* across cells, not levels. Mumbai = Maharashtra, New York = New York state, London = England (Google has no city-level data here).
 
-## Top new YouTube videos that name each term
+## What watched YouTube channels published
 
+Chosen sources: jewellery houses, publications and auction houses, so every video here comes from a publisher you can name. Views compare channels only loosely (subscriber counts differ hugely); the useful signal is *what* they publish and how a channel's week compares with its own earlier weeks, which appears under Rising and Cooling after about five weeks. Check the *Found as* column: if a name is not the official channel, put its handle or channel_id in `config.yaml`.
+
+### Houses (international)
+
+| Channel | Found as | Subscribers | New videos (14d) | Views | Top video |
+|---|---|---|---|---|---|
+| Harry Winston | Harry Winston | 16,400 | 4 | 1,432,222 | [The Yellowstone Suite, Majestic Escapes by Harry Winston](https://www.youtube.com/watch?v=mAX1_CKfex8) (709,101 views) |
+| Van Cleef & Arpels | Van Cleef & Arpels | 119,000 | 1 | 7,018 | [Van Cleef & Arpels' graceful High Jewelry ballerinas / A star-studded…](https://www.youtube.com/watch?v=zfn5fTVQGlU) (7,018 views) |
+| Cartier | Cartier | 305,000 | 3 | 3,857 | [Panthère de Cartier Eyewear: An Indomitable Spirit](https://www.youtube.com/watch?v=RIyF8qKJEjM) (1,428 views) |
+| Boucheron | Boucheron | 12,700 | 5 | 2,064 | [Han So-hee in Vendôme / Boucheron](https://www.youtube.com/watch?v=azzP6KASm_8) (821 views) |
+| Chopard | Chopard | 18,100 | 2 | 1,109 | [HAPPY DIAMONDS – In the Whirlwind of Life with Bella Hadid](https://www.youtube.com/watch?v=FuD56lFgkLY) (777 views) |
+| Tiffany & Co. | Tiffany & Co. | 180,000 | 0 | 0 | – |
+| Bulgari | not found | – | – | – | – |
+| Messika | not found | – | – | – | – |
+| Buccellati | not found | – | – | – | – |
+| Graff | not found | – | – | – | – |
+
+### Houses (India)
+
+| Channel | Found as | Subscribers | New videos (14d) | Views | Top video |
+|---|---|---|---|---|---|
+| Zoya | not found | – | – | – | – |
+| Hazoorilal Legacy | not found | – | – | – | – |
+| Gem Palace | not found | – | – | – | – |
+| Sabyasachi Jewellery | not found | – | – | – | – |
+| Amrapali Jewels | not found | – | – | – | – |
+
+### Houses (Hong Kong)
+
+| Channel | Found as | Subscribers | New videos (14d) | Views | Top video |
+|---|---|---|---|---|---|
+| Wallace Chan | not found | – | – | – | – |
+
+### Media and publications
+
+| Channel | Found as | Subscribers | New videos (14d) | Views | Top video |
+|---|---|---|---|---|---|
+| Vogue | Vogue | 16,900,000 | 17 | 4,845,022 | [KATSEYE’s Yoonchae Reveals Her Everyday Getting Ready Routine / Beaut…](https://www.youtube.com/watch?v=a__lB1zWApc) (2,986,299 views) |
+| Vogue India | VOGUE India | 863,000 | 9 | 569,157 | [Alia Bhatt walks for Manish Malhotra](https://www.youtube.com/watch?v=2q4H91uAqtY) (368,376 views) |
+| Harper's Bazaar | Harper's BAZAAR | 1,830,000 | 19 | 175,083 | [Sienna Miller on the Pixie Cut She Instantly Regretted / Fashion Flas…](https://www.youtube.com/watch?v=DHJBLhGwiVc) (63,594 views) |
+| Business of Fashion | The Business of Fashion | 197,000 | 3 | 42,057 | [Marc Jacobs: ‘I Don't Think That The Creative Is to Blame’](https://www.youtube.com/watch?v=c0IVvNxyJOU) (38,910 views) |
+| FashionTV | not found | – | – | – | – |
+
+### Auction houses
+
+| Channel | Found as | Subscribers | New videos (14d) | Views | Top video |
+|---|---|---|---|---|---|
+| Sotheby's | Sotheby's | 355,000 | 20 | 201,134 | [Jodi the Nanotyrannus: The Dino That Settled One of The Biggest Paleo…](https://www.youtube.com/watch?v=pCj-b-QcSWQ) (28,482 views) |
+| Christie's | Christie's | 228,000 | 10 | 65,332 | [Painting the French Riviera / Christie's visits The Royal Academy of …](https://www.youtube.com/watch?v=_7U4UWYf7Dw) (27,072 views) |
+| Phillips | PHILLIPS | 19,400 | 6 | 2,177 | [In Search of the Eternal: Modigliani’s ‘Tête’ from an Important Priva…](https://www.youtube.com/watch?v=uGHjOgdiJuM) (696 views) |
+| Bonhams | not found | – | – | – | – |
+| Saffronart | not found | – | – | – | – |
+
+## Open YouTube search: new videos naming the core terms
+
+Anyone can publish a video that uses these words, so treat this as a rough scan of the open web, not as evidence about luxury buyers. The watched-channel section above is the reliable one.
 | Term | Video | Channel | Views | Markets |
 |---|---|---|---|---|
 | High Jewellery, High Jewelry | [ZOYA with Anoushka Shankar / Her Again](https://www.youtube.com/watch?v=YvLVDl1WmxA) | ZOYA - A TATA Product | 1,350,603 | 8 markets |
 | High Jewellery, alta gioielleria | [How Expensive is Celebrity Designer Manish Malhotra's New Fine Jewellery Collection / Ani…](https://www.youtube.com/watch?v=UOebuBFnsN0) | Anisha Dixit | 473,353 | Italy |
 | High Jewellery | [New Desgins Fancy Silver Bichiya and Silver jewellery Set Today Gold Rate News‼️Aaj Ka Ta…](https://www.youtube.com/watch?v=c8KlmTF0plY) | Prime Jewellers | 118,457 | 4 markets |
-| High Jewelry | [2026 Monster High Merch at Hot Topic!  🎀🦇](https://www.youtube.com/watch?v=Kq4t7GkGjnM) | MonsterHighLuvMe | 97,879 | 6 markets |
+| High Jewelry | [2026 Monster High Merch at Hot Topic!  🎀🦇](https://www.youtube.com/watch?v=Kq4t7GkGjnM) | MonsterHighLuvMe | 97,879 | 5 markets |
 | High Jewelry | [Mechanical Kinetic Eye Ring](https://www.youtube.com/watch?v=TGXb2c4kZiQ) | Retrolix1 | 54,725 | France |
-| Contemporary Art, art contemporain | [Family Tree — Zhang Huan, 2000 #art #artist #history #identity #tradition](https://www.youtube.com/watch?v=Lr9E_QP4elM) | Stories hub | 1,072,445 | 7 markets |
-| Contemporary Art, art contemporain, 當代藝術 | [世界でバズった現代アートへの挑戦状](https://www.youtube.com/watch?v=u6o6qVS2Imw) | 世界のバズ最前線 | 983,038 | 7 markets |
-| Contemporary Art | [Oh to walk around and see skirts, corsets and earrings! @n@nataszko_#illustration #contem…](https://www.youtube.com/watch?v=81E6y2ozDz0) | TheArtRevival | 635,852 | 7 markets |
-| art jewellery | [Navratri Nail Art 💅🌺 / Festive Look Transformation ❤️‍🔥 #shorts](https://www.youtube.com/watch?v=i9wlKOWKVrE) | @itsakshaya | 1,976,054 | 7 markets |
-| art jewellery | [Today Gold Rate ‼️24K Gold Rate Down /Letest New Fancy Gold And Silver Jewellery #yt #sho…](https://www.youtube.com/watch?v=o4CCPNZzKIA) | Virat jeweller50 | 1,533,704 | 6 markets |
+| Contemporary Art, art contemporain | [Family Tree — Zhang Huan, 2000 #art #artist #history #identity #tradition](https://www.youtube.com/watch?v=Lr9E_QP4elM) | Stories hub | 1,072,445 | 6 markets |
+| Contemporary Art, art contemporain, 當代藝術 | [世界でバズった現代アートへの挑戦状](https://www.youtube.com/watch?v=u6o6qVS2Imw) | 世界のバズ最前線 | 983,038 | 6 markets |
+| Contemporary Art | [Oh to walk around and see skirts, corsets and earrings! @n@nataszko_#illustration #contem…](https://www.youtube.com/watch?v=81E6y2ozDz0) | TheArtRevival | 635,852 | 6 markets |
+| art jewellery | [Navratri Nail Art 💅🌺 / Festive Look Transformation ❤️‍🔥 #shorts](https://www.youtube.com/watch?v=i9wlKOWKVrE) | @itsakshaya | 1,976,054 | 5 markets |
+| art jewellery | [Today Gold Rate ‼️24K Gold Rate Down /Letest New Fancy Gold And Silver Jewellery #yt #sho…](https://www.youtube.com/watch?v=o4CCPNZzKIA) | Virat jeweller50 | 1,533,704 | 4 markets |
 | art jewellery | [DIY Durga Maa Neckpiece 😱 #crafteraditi #diy #navratri #shorts #durgapuja @CrafterAditi](https://www.youtube.com/watch?v=VKVC3lXXCAU) | Crafter Aditi | 1,243,948 | France |
 | haute joaillerie | [How I Mine 1 KG of Gold Daily and Make Gold Jewelry!](https://www.youtube.com/watch?v=pGDWs9QDXMA) | Crafter Duck GARAGE | 10,704,792 | France |
-| haute joaillerie, bridal jewellery | [JEWELLERY PURCHASE पर पाये FREE 24KT GOLD COIN](https://www.youtube.com/watch?v=NBr5DRcB8LQ) | SATYA JEWELS | 1,843,032 | France, India |
+| haute joaillerie | [JEWELLERY PURCHASE पर पाये FREE 24KT GOLD COIN](https://www.youtube.com/watch?v=NBr5DRcB8LQ) | SATYA JEWELS | 1,843,032 | France |
 | haute joaillerie | [New Designs Fancy ‼️ Gold Ring and Gold Jewellery Set Today Gold Price Drops by 29,000 in…](https://www.youtube.com/watch?v=ZIUp2sZncu4) | Aditya_jewellers100k | 1,838,147 | France |
 | art contemporain | [Muzeum z niszowym Austriackim malarzem](https://www.youtube.com/watch?v=ZtG4QCjB4-c) | TuffKanał | 591,330 | France |
 | 高級珠寶 | [全臺獨家「LV第一家高級珠寶暨腕錶專門店」進駐台中大遠百](https://www.youtube.com/watch?v=zPXcWyST1HU) | FEDSTW | 100,927 | Hong Kong |
@@ -161,39 +217,13 @@ Week-over-week change in search interest and news coverage for each theme term, 
 | arte contemporanea | [Difuminó su cuadro a propósito 🎨](https://www.youtube.com/watch?v=FKjalN1I6F0) |    WowCuriosidades | 1,344,013 | Italy |
 | arte contemporanea | [Esta Obra de Arte tiene un mensaje oculto...](https://www.youtube.com/watch?v=lIJT0b68Oac) | Davik | 1,113,804 | Italy |
 | arte contemporanea | [La surrealista historia de Mark Lombardi #arte #dibujo #artecontemporanea #historiadelarte](https://www.youtube.com/watch?v=_MV-JUCQ4Ro) | La.Inercia / Historia del Arte, cine y … | 260,211 | Italy |
-| sculptural jewellery | [From the Creative Process to the Final Piece / Handmade Silver Jewellery #shorts](https://www.youtube.com/watch?v=11HPJP2r1vc) | SONYJA | 121 | India |
-| artist jewellery | [New trend garbo 2026](https://www.youtube.com/watch?v=wmRYp9gOZ6Y) | All Audio Mashup MP3 🎧 | 240 | India |
-| Colombian emerald | [3.65 Carat Cushion Cut Colombian Emerald Three Stone Engagement Ring in 14K White Gold](https://www.youtube.com/watch?v=XK9XzMfwlLs) | JR Colombian Emeralds | 28,042 | India |
-| Kashmir sapphire | [100%. Natural Kashmir sapphire Weight. - 2.20,  Crt. Price Order. whatsapp - 8428682076, …](https://www.youtube.com/watch?v=WomhmK0Jblk) | TAMILNADU COIN & NOTE &. GEMS STONE GEM… | 773 | India |
-| padparadscha | [Astral Stardust Spell 🌸✨ The Ultimate Celestial Firework Cut Padparadscha Sapphire Ring](https://www.youtube.com/watch?v=Vja4m5LdPSo) | Willwork Jewelry | 8,479 | India |
-| natural pearls | [Fisherman Cuts Open Spiky Puffer Fish And Finds PEARLS Inside! 😱💎](https://www.youtube.com/watch?v=5eZ6A9PpubM) | Mowm Chn | 35,028 | India |
-| fancy colour diamond | [Aurelia Fancy Colour Diamond Pendant #bennysgemscreations #youtubeshorts  #timelesscrafts…](https://www.youtube.com/watch?v=qGEfl3HpmxQ) | Benny's Gems Creations | 163 | India |
-| lab grown diamond | [Stack These Bangles and Own The Festivities / Diamond Bangle Stacking Made Easy at Verlas](https://www.youtube.com/watch?v=vm98YR9luTA) | Verlas | 237,736 | India |
-| polki | [Bikin istri istighfar mulu tiap buka kulkas 😭 #polki](https://www.youtube.com/watch?v=-nY4F_ZiDmk) | Anne Permata | 252,934 | India |
-| kundan | [Truck driver life mini vlog #minivlog #nl01kundan #youtubeshorts #shorts](https://www.youtube.com/watch?v=Av_0wdGjeT8) | NL01 kundan  | 493,332 | India |
-| jadau | [❗️Restocked On Demand ❗️ Shop Our Latest Jadau Kundan Jali Necklace ♥️✨ . For Any Order O…](https://www.youtube.com/watch?v=cBjhlA_0hp8) | Dulhan Jewels  | 389,373 | India |
-| temple jewellery | [Dad Guesses Price of my Shaadi-Season Jewellery! #daddaughter #vaishnavithakur #weddingse…](https://www.youtube.com/watch?v=qj31rnu45b0) | Vaishnavi Thakur | 353,258 | India |
-| heirloom jewellery | [Old to New Jewellery Transformation ✨ / Turning Heirlooms into Timeless Designs](https://www.youtube.com/watch?v=MSbXWXQgRSI) | BJS Bindu Jewellers | 6,634 | India |
-| bespoke jewellery | [Why India's Elite Buy Jewellery From Bikaner / Fashionably Pernia S6E8](https://www.youtube.com/watch?v=l-9wHsvWm9s) | Fashionably Pernia | 36,130 | India |
-| jewellery auction | [💎 Jewellery Cabinet Sneak Peek / What’s Arrived at Prestige Auctions This Week?](https://www.youtube.com/watch?v=b6nR4JxilF0) | PRESTIGE AUCTIONS GRIMSBY | 725 | India |
-| jewellery investment | [सोने के गहने खरीदना फायदे का सौदा है या नुकसान? 😱 / Gold Investment Tips in Hindi](https://www.youtube.com/watch?v=y4PA6OKX7P0) | Financial Saheli | 6,959 | India |
-| Cartier | [LIL NAAY X EL AMERICANO 4KT - CARTIER REMIX (EDICION ESPECIAL LIL GRAYVEN)](https://www.youtube.com/watch?v=JQBZB1ajBLY) | Lil Grayven | 336,656 | India |
-| Van Cleef | [The Ultimate Desert Showdown / Clint Eastwood / Epic Western Masterpiece HD](https://www.youtube.com/watch?v=DXHOZw1pye0) | Classic Western | 82,683 | India |
-| Bulgari | [261006 BLACKPINK LISA Arriving at Bulgari Hotel in Paris Focus](https://www.youtube.com/watch?v=HZCEpbKoucg) | supergaga | 70,728 | India |
-| Tiffany | [Tiffin ke paise hai nahi aur waade Tiffany ke #rjashishsharma #relationshipadvice #tiffan…](https://www.youtube.com/watch?v=RN6jYJp0zyU) | RJ Ashish Sharma | 825,871 | India |
-| Harry Winston | [DIOR, GUCCI, HARRY WINSTON, MAX MARA, ARMANI... Luxury Shopping in Milan Vlog 2026.](https://www.youtube.com/watch?v=tnhArdi5NPQ) | Style and Fashion Vlog | 7,451 | India |
-| Boucheron | [#Funny #Indian Dad & Son Try Boucheron Chocolate & Oreo Rolled #icecream 😂🍫🍪 #satisfying …](https://www.youtube.com/watch?v=M0cfZuV2uAE) | Mr Roll Maker | 178,794 | India |
-| Buccellati | [Back to the 90's : MARIA CABRERA BUCCELLATI](https://www.youtube.com/watch?v=dYwfagVL1Dc) | THE BEAUTOPIA  | 1,435 | India |
-| Gem Palace | [Gem Palace - Moonstone: The Blue Magical Wonder Of Gem World](https://www.youtube.com/watch?v=gsjuh7svA_w) | Gem Palace | 26 | India |
-| Hazoorilal | [Hazoorilal Legacy X Roseroom Couture](https://www.youtube.com/watch?v=KnCwhSALmQY) | Hazoorilal Legacy | 160 | India |
-| Amrapali | [BB Reveals Scout Girlfriend Kaashvi...🥰 Love Gill & Amrapali Reaction...😉 / Bigg Boss 20](https://www.youtube.com/watch?v=PsJwflg-25g) | MuFiJuL GaminG | 1,924,569 | India |
-| Michelle Ong | [Stevienomics: Stephen CuUnjieng weighs in on accelerating PH inflation, jobs / ANC](https://www.youtube.com/watch?v=cqVojWo9wig) | ANC 24/7 | 13,102 | India |
 
 ## Coverage and data quality
 
 - **Google Trends**: 94 series; latest data 2026-10-13; 12 weeks of history; last run: 10 empty, 94 ok
 - **Wikipedia**: 8 series; latest data 2026-10-13; 12 weeks of history; last run: 8 ok
-- **YouTube**: 68 series; latest data 2026-10-13; 1 weeks of history; z-scores need 5+ weeks, so flags are not available yet; changes shown are directional only; last run: 5 empty, 66 ok
+- **YouTube search**: 18 series; latest data 2026-10-14; 1 weeks of history; z-scores need 5+ weeks, so flags are not available yet; changes shown are directional only; last run: 2 empty, 33 error, 3 ok — issues: RuntimeError: HTTP 429: {   "error": {     "code": 429,     "message": "Quota exceeded for quota metric 
+- **YouTube channels**: 13 series; latest data 2026-10-14; 1 weeks of history; z-scores need 5+ weeks, so flags are not available yet; changes shown are directional only; last run: 13 error, 13 ok — issues: handle / channel_id not found; check it in config.yaml; RuntimeError: HTTP 429: {   "error": {     "code": 429,     "message": "Quota exceeded for quota metric 
 - **Reddit**: no usable data (REDDIT_CLIENT_ID / REDDIT_CLIENT_SECRET not set)
 - **GDELT news**: no usable data (RuntimeError: HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com; 3 failures in a row (likely rate-limited); stopping GDELT for this run)
 - **India vs Global**: 16 of 33 Google Trends terms have exactly the same daily values in both, so Global is not independent evidence for them (India probably dominates those searches). Terms: Amrapali, Boucheron, Buccellati, Bulgari, Cartier, Colombian emerald, Gem Palace, Harry Winston, Hazoorilal, Michelle Ong, bespoke jewellery, jadau….

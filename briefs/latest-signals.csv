@@ -109,63 +109,26 @@ youtube,Global,High Jewelry,matched_views_median,285.0,,,,0,1,2026-10-13,False,,
 youtube,Global,High Jewelry,matched_views_sum,35973.0,,,,0,1,2026-10-13,False,,False,False,False
 youtube,Global,art jewellery,matched_views_median,52462.0,,,,0,1,2026-10-13,False,,False,False,False
 youtube,Global,art jewellery,matched_views_sum,3666758.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,Amrapali,matched_views_median,171887.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,Amrapali,matched_views_sum,14700150.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,Boucheron,matched_views_median,154.0,,,,0,1,2026-10-13,False,,True,False,False
-youtube,India,Boucheron,matched_views_sum,199211.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,Buccellati,matched_views_median,404.0,,,,0,1,2026-10-13,False,,True,False,False
-youtube,India,Buccellati,matched_views_sum,3958.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,Bulgari,matched_views_median,1187.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,Bulgari,matched_views_sum,174786.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,Cartier,matched_views_median,20453.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,Cartier,matched_views_sum,2379752.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,Colombian emerald,matched_views_median,25.0,,,,0,1,2026-10-13,False,,True,False,False
-youtube,India,Colombian emerald,matched_views_sum,58832.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,Gem Palace,matched_views_median,26.0,,,,0,1,2026-10-13,False,,True,False,False
-youtube,India,Gem Palace,matched_views_sum,26.0,,,,0,1,2026-10-13,False,,True,False,False
-youtube,India,Harry Winston,matched_views_median,12.0,,,,0,1,2026-10-13,False,,True,False,False
-youtube,India,Harry Winston,matched_views_sum,14784.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,Hazoorilal,matched_views_median,43.0,,,,0,1,2026-10-13,False,,True,False,False
-youtube,India,Hazoorilal,matched_views_sum,232.0,,,,0,1,2026-10-13,False,,True,False,False
-youtube,India,JAR jewelry,matched_views_median,0.0,,,,0,1,2026-10-13,False,,True,False,False
-youtube,India,JAR jewelry,matched_views_sum,0.0,,,,0,1,2026-10-13,False,,True,False,False
-youtube,India,Kashmir sapphire,matched_views_median,34.0,,,,0,1,2026-10-13,False,,True,False,False
-youtube,India,Kashmir sapphire,matched_views_sum,2134.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,Michelle Ong,matched_views_median,13102.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,Michelle Ong,matched_views_sum,13102.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,Tiffany,matched_views_median,75120.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,Tiffany,matched_views_sum,5836139.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,Van Cleef,matched_views_median,6766.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,Van Cleef,matched_views_sum,658884.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,Wallace Chan,matched_views_median,0.0,,,,0,1,2026-10-13,False,,True,False,False
-youtube,India,Wallace Chan,matched_views_sum,0.0,,,,0,1,2026-10-13,False,,True,False,False
-youtube,India,artist jewellery,matched_views_median,240.0,,,,0,1,2026-10-13,False,,True,False,False
-youtube,India,artist jewellery,matched_views_sum,240.0,,,,0,1,2026-10-13,False,,True,False,False
-youtube,India,bespoke jewellery,matched_views_median,186.0,,,,0,1,2026-10-13,False,,True,False,False
-youtube,India,bespoke jewellery,matched_views_sum,49962.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,bridal jewellery,matched_views_median,52260.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,bridal jewellery,matched_views_sum,6027472.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,fancy colour diamond,matched_views_median,87.0,,,,0,1,2026-10-13,False,,True,False,False
-youtube,India,fancy colour diamond,matched_views_sum,274.0,,,,0,1,2026-10-13,False,,True,False,False
-youtube,India,heirloom jewellery,matched_views_median,88.0,,,,0,1,2026-10-13,False,,True,False,False
-youtube,India,heirloom jewellery,matched_views_sum,13485.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,jadau,matched_views_median,8606.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,jadau,matched_views_sum,1486344.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,jewellery auction,matched_views_median,8.0,,,,0,1,2026-10-13,False,,True,False,False
-youtube,India,jewellery auction,matched_views_sum,735.0,,,,0,1,2026-10-13,False,,True,False,False
-youtube,India,jewellery investment,matched_views_median,193.0,,,,0,1,2026-10-13,False,,True,False,False
-youtube,India,jewellery investment,matched_views_sum,11722.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,kundan,matched_views_median,42324.5,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,kundan,matched_views_sum,4310561.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,lab grown diamond,matched_views_median,1073.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,lab grown diamond,matched_views_sum,311771.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,natural pearls,matched_views_median,115.0,,,,0,1,2026-10-13,False,,True,False,False
-youtube,India,natural pearls,matched_views_sum,55836.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,padparadscha,matched_views_median,235.0,,,,0,1,2026-10-13,False,,True,False,False
-youtube,India,padparadscha,matched_views_sum,24703.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,polki,matched_views_median,11619.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,polki,matched_views_sum,1402229.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,sculptural jewellery,matched_views_median,56.0,,,,0,1,2026-10-13,False,,True,False,False
-youtube,India,sculptural jewellery,matched_views_sum,236.0,,,,0,1,2026-10-13,False,,True,False,False
-youtube,India,temple jewellery,matched_views_median,16367.0,,,,0,1,2026-10-13,False,,False,False,False
-youtube,India,temple jewellery,matched_views_sum,2400632.0,,,,0,1,2026-10-13,False,,False,False,False
+youtube,Hong Kong,art jewellery,matched_views_median,0.0,,,,0,1,2026-10-14,False,,True,False,False
+youtube,Hong Kong,art jewellery,matched_views_sum,0.0,,,,0,1,2026-10-14,False,,True,False,False
+youtube,India,Contemporary Art,matched_views_median,13248.0,,,,0,1,2026-10-14,False,,False,False,False
+youtube,India,Contemporary Art,matched_views_sum,318121.0,,,,0,1,2026-10-14,False,,False,False,False
+youtube,India,High Jewellery,matched_views_median,197.0,,,,0,1,2026-10-14,False,,True,False,False
+youtube,India,High Jewellery,matched_views_sum,24341.0,,,,0,1,2026-10-14,False,,False,False,False
+youtube,India,art jewellery,matched_views_median,0.0,,,,0,1,2026-10-14,False,,True,False,False
+youtube,India,art jewellery,matched_views_sum,0.0,,,,0,1,2026-10-14,False,,True,False,False
+youtube,Mumbai,High Jewelry,matched_views_median,1328.0,,,,0,1,2026-10-14,False,,False,False,False
+youtube,Mumbai,High Jewelry,matched_views_sum,89353.0,,,,0,1,2026-10-14,False,,False,False,False
+youtube_channel,Auction houses,Christie's,views_sum,65332.0,,,,0,1,2026-10-14,False,,False,False,False
+youtube_channel,Auction houses,Phillips,views_sum,2177.0,,,,0,1,2026-10-14,False,,False,False,False
+youtube_channel,Auction houses,Sotheby's,views_sum,201134.0,,,,0,1,2026-10-14,False,,False,False,False
+youtube_channel,Houses (international),Boucheron,views_sum,2064.0,,,,0,1,2026-10-14,False,,False,False,False
+youtube_channel,Houses (international),Cartier,views_sum,3857.0,,,,0,1,2026-10-14,False,,False,False,False
+youtube_channel,Houses (international),Chopard,views_sum,1109.0,,,,0,1,2026-10-14,False,,False,False,False
+youtube_channel,Houses (international),Harry Winston,views_sum,1432222.0,,,,0,1,2026-10-14,False,,False,False,False
+youtube_channel,Houses (international),Tiffany & Co.,views_sum,0.0,,,,0,1,2026-10-14,False,,True,False,False
+youtube_channel,Houses (international),Van Cleef & Arpels,views_sum,7018.0,,,,0,1,2026-10-14,False,,False,False,False
+youtube_channel,Media and publications,Business of Fashion,views_sum,42057.0,,,,0,1,2026-10-14,False,,False,False,False
+youtube_channel,Media and publications,Harper's Bazaar,views_sum,175083.0,,,,0,1,2026-10-14,False,,False,False,False
+youtube_channel,Media and publications,Vogue,views_sum,4845022.0,,,,0,1,2026-10-14,False,,False,False,False
+youtube_channel,Media and publications,Vogue India,views_sum,569157.0,,,,0,1,2026-10-14,False,,False,False,False
