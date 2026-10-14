@@ -6,6 +6,8 @@ Each source is independent: a failure or a missing key in one never blocks the o
 """
 import argparse
 import datetime as dt
+import hashlib
+import json
 import os
 import random
 import re
@@ -84,7 +86,7 @@ def ordered_markets(cfg):
     return sorted(cfg["markets"], key=lambda m: rank.get(m["name"], len(rank)))
 
 
-def recent_status(conn, source, market, term, days):
+def recent_status(conn, source, market, term, days, tag=None):
     """'ok' or 'empty' if this series was really collected within the last `days` days, else None.
 
     Lets a re-run fetch only what is missing instead of hitting the rate limits all over again.
@@ -94,15 +96,26 @@ def recent_status(conn, source, market, term, days):
     cutoff = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=days)).strftime("%Y-%m-%dT%H:%M:%SZ")
     row = conn.execute(
         "SELECT status FROM runs WHERE source=? AND market=? AND term=? AND status IN ('ok','empty') "
-        "AND run_ts>=? AND message NOT LIKE 'not refetched%' ORDER BY run_ts DESC LIMIT 1",
-        (source, market, term, cutoff)).fetchone()
+        "AND run_ts>=? AND message NOT LIKE 'not refetched%' AND message LIKE ? ORDER BY run_ts DESC LIMIT 1",
+        (source, market, term, cutoff, f"%{tag}%" if tag else "%")).fetchone()
     return row[0] if row else None
 
 
 def youtube_terms(cfg, market):
     """Terms searched on YouTube in a market. Theme terms only where youtube.theme_markets says so."""
-    only = cfg.get("youtube", {}).get("theme_markets")
-    return all_terms(cfg, market, include_themes=(not only or market["name"] in only))
+    only = cfg.get("youtube", {}).get("theme_markets")      # None = themes everywhere; [] = nowhere
+    return all_terms(cfg, market, include_themes=(only is None or market["name"] in only))
+
+
+def filter_signature(ycfg):
+    keys = ("window_days", "exact_phrase", "require_phrase_in_text", "context_terms", "context_words",
+            "art_terms", "art_words", "exclude_words")
+    blob = json.dumps({k: ycfg.get(k) for k in keys}, sort_keys=True, ensure_ascii=False, default=str)
+    return hashlib.md5(blob.encode("utf-8")).hexdigest()[:8]
+
+
+def drop_items(conn, source, market, term):
+    conn.execute("DELETE FROM items WHERE source=? AND market=? AND term=?", (source, market, term))
 
 
 def word_patterns(words):
@@ -184,7 +197,9 @@ def collect_trends(conn, cfg, run_ts):
                     n += 1
                 conn.commit()
                 stored += n
-                log(conn, run_ts, "google_trends", m["name"], term, "ok", f"{n} days")
+                last = df[term].iloc[-2] if len(df) > 1 else df[term].iloc[-1]
+                log(conn, run_ts, "google_trends", m["name"], term, "ok",
+                    f"{n} days (geo {m['trends_geo'] or 'worldwide'}, recent value {last})")
         if i < len(jobs) - 1:
             time.sleep(pause + random.uniform(0, 4))
     return stored
@@ -260,6 +275,10 @@ def collect_youtube(conn, cfg, run_ts):
     since = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=days)).strftime("%Y-%m-%dT%H:%M:%SZ")
     today = dt.date.today().isoformat()
     base = "https://www.googleapis.com/youtube/v3"
+    # A fingerprint of every setting that changes which videos count. A series collected under different
+    # settings is never treated as fresh, so changing the filters always re-collects with the new rules.
+    sig = filter_signature(ycfg)
+    tag = f"[f:{sig}]"
     need_jewel, need_art = set(ycfg.get("context_terms", [])), set(ycfg.get("art_terms", []))
     jewel_pats, art_pats = word_patterns(ycfg.get("context_words")), word_patterns(ycfg.get("art_words"))
     excluded = [w.casefold() for w in ycfg.get("exclude_words", [])]
@@ -267,7 +286,7 @@ def collect_youtube(conn, cfg, run_ts):
 
     for m in ordered_markets(cfg):
         for term in youtube_terms(cfg, m):
-            prior = recent_status(conn, "youtube", m["name"], term, fresh_days)
+            prior = recent_status(conn, "youtube", m["name"], term, fresh_days, tag)
             if prior:
                 log(conn, run_ts, "youtube", m["name"], term, prior, kept_message(fresh_days))
                 continue
@@ -293,7 +312,8 @@ def collect_youtube(conn, cfg, run_ts):
                 ids = [it["id"]["videoId"] for it in sj.get("items", [])
                        if it.get("id", {}).get("videoId")]
                 if not ids:
-                    log(conn, run_ts, "youtube", m["name"], term, "empty", "no videos in window")
+                    drop_items(conn, "youtube", m["name"], term)
+                    log(conn, run_ts, "youtube", m["name"], term, "empty", f"no videos in window {tag}")
                     continue
                 v = get_json(f"{base}/videos", params={
                     "part": "snippet,statistics", "id": ",".join(ids), "key": key,
@@ -303,7 +323,8 @@ def collect_youtube(conn, cfg, run_ts):
                     continue
                 vids = v.json().get("items", [])
                 if not vids:
-                    log(conn, run_ts, "youtube", m["name"], term, "empty", "no video details")
+                    drop_items(conn, "youtube", m["name"], term)
+                    log(conn, run_ts, "youtube", m["name"], term, "empty", f"no video details {tag}")
                     continue
 
                 def stat(x, name):
@@ -335,6 +356,7 @@ def collect_youtube(conn, cfg, run_ts):
                 ):
                     put_metric(conn, run_ts, today, "youtube", m["name"], term, metric, value)
                 top = sorted(matched, key=lambda x: stat(x, "viewCount"), reverse=True)[:5]
+                drop_items(conn, "youtube", m["name"], term)      # replace, never mix with an older collection
                 for x in top:
                     sn = x.get("snippet", {})
                     put_item(conn, run_ts, "youtube", m["name"], term,
@@ -345,12 +367,141 @@ def collect_youtube(conn, cfg, run_ts):
                 stored += len(top)
                 if matched:
                     log(conn, run_ts, "youtube", m["name"], term, "ok",
-                        f"{len(matched)} of {len(vids)} videos name the term")
+                        f"{len(matched)} of {len(vids)} videos name the term {tag}")
                 else:
                     log(conn, run_ts, "youtube", m["name"], term, "empty",
-                        f"{len(vids)} videos returned, none name the term")
+                        f"{len(vids)} videos returned, none name the term {tag}")
             except Exception as e:
                 log(conn, run_ts, "youtube", m["name"], term, "error", f"{type(e).__name__}: {e}"[:200])
+    return stored
+
+
+# ---------------------------------------------------------------- YouTube channels
+
+class QuotaExhausted(Exception):
+    pass
+
+
+def collect_channels(conn, cfg, run_ts):
+    """What a curated list of channels (houses, publications, auction houses) published recently.
+
+    This is the trustworthy YouTube view: the source is chosen by us, not by whoever mentions a keyword.
+    It is also cheap (about 3 quota units per channel; a keyword search costs 100). Channels are found by
+    handle or channel id when given, otherwise by name once and then remembered. The brief shows what each
+    one resolved to so a wrong match is easy to spot.
+    """
+    ycfg = cfg.get("youtube", {})
+    channels = ycfg.get("channels") or []
+    if not channels:
+        return 0
+    key = os.environ.get("YOUTUBE_API_KEY")
+    if not key:
+        log(conn, run_ts, "youtube_channel", None, None, "skipped", "YOUTUBE_API_KEY not set")
+        return 0
+
+    window = int(ycfg.get("channel_window_days", 14))
+    fresh_days = int(ycfg.get("skip_if_fresh_days", 3))
+    lookups = int(ycfg.get("max_name_lookups", 20))      # name searches cost 100 units each
+    since = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=window)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    today = dt.date.today().isoformat()
+    base = "https://www.googleapis.com/youtube/v3"
+    stored = 0
+
+    def call(path, **params):
+        r = get_json(f"{base}/{path}", params={**params, "key": key})
+        if r.status_code == 403 and "quotaExceeded" in r.text:
+            raise QuotaExhausted()
+        if r.status_code != 200:
+            raise RuntimeError(f"{path} HTTP {r.status_code}: {r.text.strip()[:100]}")
+        return r.json()
+
+    for ch in channels:
+        name, group = ch["name"], ch.get("group", "Other")
+        prior = recent_status(conn, "youtube_channel", group, name, fresh_days)
+        if prior:
+            log(conn, run_ts, "youtube_channel", group, name, prior, kept_message(fresh_days))
+            continue
+        try:
+            spec = str(ch.get("channel_id") or ch.get("handle") or "")
+            row = conn.execute("SELECT channel_id, title, uploads, spec FROM channels WHERE name=?",
+                               (name,)).fetchone()
+            if row and row[3] == spec and row[2]:
+                channel_id, title, uploads = row[0], row[1], row[2]
+            else:
+                found = None
+                if ch.get("channel_id"):
+                    found = call("channels", part="snippet,statistics,contentDetails", id=ch["channel_id"])
+                elif ch.get("handle"):
+                    found = call("channels", part="snippet,statistics,contentDetails", forHandle=ch["handle"])
+                items = (found or {}).get("items") or []
+                if not items and (ch.get("handle") or ch.get("channel_id")):
+                    log(conn, run_ts, "youtube_channel", group, name, "error",
+                        "handle / channel_id not found; check it in config.yaml")
+                    continue
+                if not items:                                  # name only: search once, remember a miss
+                    miss_cutoff = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=14)).strftime("%Y-%m-%dT%H:%M:%SZ")
+                    missed = conn.execute(
+                        "SELECT 1 FROM runs WHERE source='youtube_channel' AND market=? AND term=? "
+                        "AND message LIKE 'not found by name%' AND run_ts>=?", (group, name, miss_cutoff)).fetchone()
+                    if missed:
+                        log(conn, run_ts, "youtube_channel", group, name, "error",
+                            "not found by name recently; add its handle or channel_id in config.yaml")
+                        continue
+                    if lookups <= 0:
+                        log(conn, run_ts, "youtube_channel", group, name, "error",
+                            "name lookup limit reached for this run; will retry next run")
+                        continue
+                    lookups -= 1
+                    hit = call("search", part="snippet", type="channel", q=ch.get("query") or name, maxResults=1)
+                    cid = ((hit.get("items") or [{}])[0].get("id") or {}).get("channelId")
+                    if cid:
+                        items = call("channels", part="snippet,statistics,contentDetails", id=cid).get("items") or []
+                    if not items:
+                        log(conn, run_ts, "youtube_channel", group, name, "error",
+                            "not found by name; add its handle or channel_id in config.yaml")
+                        continue
+                it = items[0]
+                channel_id, title = it["id"], it.get("snippet", {}).get("title", "")
+                uploads = it.get("contentDetails", {}).get("relatedPlaylists", {}).get("uploads", "")
+                conn.execute(
+                    "INSERT OR REPLACE INTO channels VALUES (?,?,?,?,?,?,?,?)",
+                    (name, spec, channel_id, title, it.get("snippet", {}).get("customUrl", ""),
+                     float(it.get("statistics", {}).get("subscriberCount", 0) or 0), uploads, run_ts))
+            if not uploads:
+                log(conn, run_ts, "youtube_channel", group, name, "error", "channel has no uploads playlist")
+                continue
+
+            pl = call("playlistItems", part="contentDetails", playlistId=uploads, maxResults=50)
+            recent = [i["contentDetails"]["videoId"] for i in pl.get("items", [])
+                      if (i.get("contentDetails", {}).get("videoPublishedAt") or "") >= since]
+            vids = []
+            if recent:
+                vids = call("videos", part="snippet,statistics", id=",".join(recent[:50])).get("items", [])
+            views = [int(v.get("statistics", {}).get("viewCount", 0) or 0) for v in vids] or [0]
+            chan = call("channels", part="statistics", id=channel_id).get("items") or []
+            subs = float((chan[0].get("statistics", {}) if chan else {}).get("subscriberCount", 0) or 0)
+            conn.execute("UPDATE channels SET subscribers=? WHERE name=?", (subs, name))
+            for metric, value in (("videos_posted", len(vids)), ("views_sum", sum(views)),
+                                  ("views_median", statistics.median(views)), ("subscribers", subs)):
+                put_metric(conn, run_ts, today, "youtube_channel", group, name, metric, value)
+            drop_items(conn, "youtube_channel", group, name)
+            for v in sorted(vids, key=lambda x: int(x.get("statistics", {}).get("viewCount", 0) or 0),
+                            reverse=True)[:3]:
+                sn, st = v.get("snippet", {}), v.get("statistics", {})
+                put_item(conn, run_ts, "youtube_channel", group, name,
+                         f"https://www.youtube.com/watch?v={v['id']}", sn.get("title"), sn.get("channelTitle"),
+                         sn.get("publishedAt"), int(st.get("viewCount", 0) or 0),
+                         int(st.get("likeCount", 0) or 0) + int(st.get("commentCount", 0) or 0))
+            conn.commit()
+            stored += len(vids)
+            log(conn, run_ts, "youtube_channel", group, name, "ok",
+                f"{len(vids)} videos in {window} days (found as '{title}')")
+        except QuotaExhausted:
+            log(conn, run_ts, "youtube_channel", None, None, "error",
+                "daily quota exhausted; stopping YouTube channels for this run")
+            return stored
+        except Exception as e:
+            log(conn, run_ts, "youtube_channel", group, name, "error", f"{type(e).__name__}: {e}"[:200])
     return stored
 
 
@@ -513,6 +664,7 @@ SOURCES = {
     "trends": collect_trends,
     "wikipedia": collect_wikipedia,
     "youtube": collect_youtube,
+    "channels": collect_channels,
     "reddit": collect_reddit,
     "gdelt": collect_gdelt,
 }

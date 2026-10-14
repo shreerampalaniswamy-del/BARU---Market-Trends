@@ -122,13 +122,13 @@ wikipedia:
     - {market: zh-wiki, project: zh.wikipedia, article: 當代藝術}
 
 youtube:
-  window_days: 7           # videos published in the last N days (collected weekly, matching this window)
+  window_days: 7           # keyword search: videos published in the last N days
   exact_phrase: true       # ask YouTube for the exact phrase, not loosely related videos
   require_phrase_in_text: true   # count a video only if its title or description contains the term
   skip_if_fresh_days: 3
-  theme_markets: [India]   # theme terms are searched on YouTube only here; worldwide results mostly repeat India's
-  # Many names are also ordinary words or people (Van Cleef the actor, Tiffany, Amrapali, Boucheron ice cream, kundan,
-  # polki). For the terms listed here a video must ALSO mention a jewellery word; for art terms, an art word.
+  # Keyword search is open to anyone, so it is noisy; it covers the core terms only. Theme terms are NOT searched
+  # (set theme_markets: [India] to search them there too; the optional context lists below then apply).
+  theme_markets: []
   context_terms: ["Cartier", "Van Cleef", "Bulgari", "Tiffany", "Harry Winston", "Boucheron", "Buccellati",
                   "JAR jewelry", "Gem Palace", "Hazoorilal", "Amrapali", "Wallace Chan", "Michelle Ong", "Edmond Chin",
                   "polki", "kundan", "jadau", "padparadscha", "natural pearls", "Colombian emerald",
@@ -144,6 +144,41 @@ youtube:
   # A video containing any of these is dropped (gold-rate spam, adult photoshoots).
   exclude_words: ["gold rate", "gold price", "gold ret", "today gold", "aaj ka", "silver rate", "nude", "naked",
                   "undressed", "photoshoot", "photosession"]
+
+  # WATCHED CHANNELS: the reliable YouTube view. Each channel is read directly (what it published in the last
+  # channel_window_days and how those videos performed), so the source is always a publisher you chose.
+  # A channel is found by `handle` or `channel_id` when given, otherwise by searching its name once (the result
+  # is remembered). The brief shows what each name was found as; if it is wrong, add `handle: "@..."` or
+  # `channel_id: "UC..."` here. Add or remove channels freely.
+  channel_window_days: 14
+  max_name_lookups: 20     # name searches cost 100 quota units each; handles and ids are almost free
+  channels:
+    - {name: Cartier, group: Houses (international), handle: "@cartier"}
+    - {name: Van Cleef & Arpels, group: Houses (international), handle: "@vancleefarpels"}
+    - {name: Bulgari, group: Houses (international), handle: "@bulgari"}
+    - {name: Tiffany & Co., group: Houses (international), handle: "@tiffanyandco"}
+    - {name: Harry Winston, group: Houses (international), handle: "@harrywinston"}
+    - {name: Boucheron, group: Houses (international), handle: "@boucheron"}
+    - {name: Chopard, group: Houses (international), handle: "@chopard"}
+    - {name: Messika, group: Houses (international), handle: "@messika"}
+    - {name: Buccellati, group: Houses (international)}
+    - {name: Graff, group: Houses (international)}
+    - {name: Zoya, group: Houses (India), query: "ZOYA - A TATA Product"}
+    - {name: Hazoorilal Legacy, group: Houses (India)}
+    - {name: Gem Palace, group: Houses (India)}
+    - {name: Sabyasachi Jewellery, group: Houses (India)}
+    - {name: Amrapali Jewels, group: Houses (India)}
+    - {name: Wallace Chan, group: Houses (Hong Kong)}
+    - {name: Vogue India, group: Media and publications, handle: "@vogueindia"}
+    - {name: Vogue, group: Media and publications, handle: "@vogue"}
+    - {name: Harper's Bazaar, group: Media and publications, handle: "@harpersbazaar"}
+    - {name: FashionTV, group: Media and publications, handle: "@fashiontv"}
+    - {name: Business of Fashion, group: Media and publications, handle: "@businessoffashion"}
+    - {name: Christie's, group: Auction houses, handle: "@christies"}
+    - {name: Sotheby's, group: Auction houses, handle: "@sothebys"}
+    - {name: Phillips, group: Auction houses, handle: "@phillipsauctioneers"}
+    - {name: Bonhams, group: Auction houses}
+    - {name: Saffronart, group: Auction houses}
 
 # GDELT: daily count of news articles mentioning each term. No key needed.
 gdelt:

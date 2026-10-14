@@ -15,7 +15,8 @@ Two layers of terms:
 |---|---|---|
 | Google Trends | Daily search-interest index per term and market (90 days, back-filled on day one) | none |
 | Wikipedia | Daily human pageviews per article, by language edition (90 days, back-filled) | none |
-| YouTube Data API | Views of recent videos that actually name each term, per market (weekly; the free search quota is about 100 searches a day, so a full pass spills into Tuesday) | free API key |
+| YouTube: watched channels | What a curated list of jewellery houses, publications and auction houses published in the last 14 days, and how it performed (the reliable YouTube view) | free API key |
+| YouTube: keyword search | Views of recent videos that name the core terms. Open to anyone, so noisy; read it as a rough scan only | free API key |
 | Reddit API | Posts and engagement mentioning each term (global) | Reddit's approval first (optional, see setup) |
 | GDELT | Daily count of news articles mentioning each term, by publisher country (about 3 months, back-filled) | none |
 
@@ -48,8 +49,10 @@ later; a series collected within the last 3 days is not fetched again, so a re-r
 - **Themes (India first)**: one table per theme with search and news change for India and Global.
 - **Where signals agree**: terms flagged the same way in 2+ markets or 2+ sources, a stronger hint than one series.
 - **Search interest grid**: week-over-week change for every term and market.
+- **What watched YouTube channels published**: one table per group (international houses, Indian houses, media, auction houses). The *Found as* column shows which channel each name resolved to, so a wrong match is easy to spot; fix it by adding a `handle` or `channel_id` in `config.yaml`.
 - **Top new YouTube videos and Reddit posts**, with links and the markets they appeared in. YouTube results are
-  kept only if the title or description contains the term.
+  kept only if the title or description contains the term, ambiguous names also need a jewellery (or art) word,
+  and gold-rate spam is dropped. All of this is editable under `youtube:` in `config.yaml`.
 - **Set aside** (in the coverage section): series just settling back after a one-off spike, hidden from the tables.
 - **Coverage and data quality**: what ran, what failed, how much history exists.
 - `briefs/latest-signals.csv` has every series, so each number can be traced.
@@ -76,4 +79,4 @@ later; a series collected within the last 3 days is not fetched again, so a re-r
 ## Files
 
 `config.yaml` (terms, markets, thresholds) · `collect.py` · `analyze.py` · `narrate.py` · `common.py` ·
-`tests/` (run each of `test_analyze.py`, `test_gdelt.py`, `test_youtube.py`, `test_trends.py`, `test_regressions.py`) · `.github/workflows/trends.yml` · `data/trends.db` (created on first run)
+`tests/` (run each of `test_analyze.py`, `test_gdelt.py`, `test_youtube.py`, `test_trends.py`, `test_regressions.py`, `test_channels.py`) · `.github/workflows/trends.yml` · `data/trends.db` (created on first run)

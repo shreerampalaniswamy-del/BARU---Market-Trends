@@ -6,7 +6,7 @@
 - **Themes**: groups of specific terms (rare stones, heritage and craft, international houses, Indian heritage houses, Hong Kong high jewellers) tracked in India
   and Global only; new "Themes (India first)" section and a Theme column in the signal tables.
 - **Gentler on free limits**: series collected within 3 days are skipped on re-runs, each source stops after 3
-  failures in a row, and YouTube moves to a weekly pass on Monday, with Tuesday picking up any searches the 100 a day quota could not cover (about 104 in total).
+  failures in a row, and YouTube moves to a weekly Monday pass (about 71 searches, under the 100 a day quota).
 - **Fixes found by checking a real brief**:
   - A series jumping from zero (France "High Jewellery" 0 to 14) produced a z-score of 14 billion and a "Rising"
     flag. The z-score now has a sensible floor, and a jump from zero is listed as a change, never flagged.
@@ -17,7 +17,27 @@
   - "Largest other changes" no longer lists low-volume noise (|z| below 1).
   - GDELT HTTP 429 (too many requests): waits 20s, 40s, 60s before giving up on a series
     (`gdelt.retry_wait_seconds`).
-- **Workflow**: timeout raised to 90 minutes; YouTube now runs on Mondays and Tuesdays.
+- **Second round of fixes (from the first India-first brief)**:
+  - YouTube relevance: names that are also ordinary words or people (Van Cleef the actor, Tiffany, Amrapali,
+    Boucheron ice cream, kundan, polki) now need a jewellery word in the title or description; art terms need an
+    art word; gold-rate spam and adult photoshoot videos are dropped. Lists live under `youtube:` in `config.yaml`.
+  - YouTube searches theme terms in India only (worldwide results repeated India's), which also cuts the weekly
+    searches from 104 to about 71.
+  - Where Global shows the same move as India, the brief shows one row, "India + Global".
+  - "Where signals agree" no longer counts India, Mumbai and Global as separate confirmations.
+  - Coverage reports Google Trends terms whose India and Global numbers are exactly identical.
+  - A search interest week that rounds to 0 shows as "low volume" instead of -100%.
+  - The YouTube table keeps items from the main run even when a later re-run only fetched a few series.
+  - Failed requests now log the first words of the error response, to help diagnose GDELT.
+- **Third round (YouTube sources)**:
+  - New **watched channels** collector: instead of asking YouTube for "videos that mention a word" (which returns
+    whatever is most viral, from anyone), it reads a curated list of channels (houses, publications, auction
+    houses) directly. Edit the list under `youtube.channels` in `config.yaml`. Costs a few quota units per channel.
+  - Keyword search now covers the core terms only (38 searches a week) and is labelled as a rough scan.
+  - Bug fix: series collected in the last 3 days were never re-collected when the YouTube filters changed, so old
+    unfiltered results stayed in the brief. A series is now re-collected whenever the filter settings change, and
+    its old items are replaced.
+- **Workflow**: timeout raised to 90 minutes; YouTube now runs on Mondays.
 
 ## Refinement update
 - **YouTube relevance**: the search now asks for the exact phrase, and a video counts only if its title or

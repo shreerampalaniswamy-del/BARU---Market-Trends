@@ -37,6 +37,16 @@ CREATE TABLE IF NOT EXISTS items (
     collected_at TEXT NOT NULL,
     PRIMARY KEY (source, market, term, url)
 );
+CREATE TABLE IF NOT EXISTS channels (
+    name TEXT PRIMARY KEY,
+    spec TEXT,
+    channel_id TEXT,
+    title TEXT,
+    handle TEXT,
+    subscribers REAL,
+    uploads TEXT,
+    resolved_at TEXT
+);
 CREATE TABLE IF NOT EXISTS runs (
     run_ts TEXT NOT NULL,
     source TEXT NOT NULL,

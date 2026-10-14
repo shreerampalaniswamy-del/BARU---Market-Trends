@@ -24,6 +24,7 @@ PRIMARY = {
     "google_trends": ["interest_index"],
     "wikipedia": ["pageviews"],
     "youtube": ["matched_views_sum", "matched_views_median"],
+    "youtube_channel": ["views_sum"],
     "reddit": ["posts_7d", "engagement"],
     "gdelt": ["articles"],
 }
@@ -33,6 +34,7 @@ MIN_LEVEL = {
     ("wikipedia", "pageviews"): 20,
     ("youtube", "matched_views_sum"): 1000,
     ("youtube", "matched_views_median"): 500,
+    ("youtube_channel", "views_sum"): 1000,
     ("reddit", "posts_7d"): 3,
     ("reddit", "engagement"): 20,
     ("gdelt", "articles"): 3,
@@ -42,6 +44,7 @@ SHORT = {
     ("wikipedia", "pageviews"): "Wikipedia daily views",
     ("youtube", "matched_views_sum"): "YouTube views (new videos naming the term)",
     ("youtube", "matched_views_median"): "YouTube median views",
+    ("youtube_channel", "views_sum"): "Watched-channel views (new videos)",
     ("reddit", "posts_7d"): "Reddit posts",
     ("reddit", "engagement"): "Reddit engagement",
     ("gdelt", "articles"): "News articles per day",
@@ -49,7 +52,8 @@ SHORT = {
 SOURCE_NAME = {
     "google_trends": "Google Trends",
     "wikipedia": "Wikipedia",
-    "youtube": "YouTube",
+    "youtube": "YouTube search",
+    "youtube_channel": "YouTube channels",
     "reddit": "Reddit",
     "gdelt": "GDELT news",
 }
@@ -361,6 +365,44 @@ def region(market):
     return "India" if market in ("India", "Mumbai") else market
 
 
+def channel_section(conn, cfg):
+    """What the curated channels published in the last window, grouped (houses, publications, auction houses)."""
+    chans = cfg.get("youtube", {}).get("channels") or []
+    if not chans:
+        return None
+    window = int(cfg.get("youtube", {}).get("channel_window_days", 14))
+
+    def latest(group, name, metric):
+        r = conn.execute("SELECT value FROM metrics WHERE source='youtube_channel' AND market=? AND term=? "
+                         "AND metric=? ORDER BY date DESC LIMIT 1", (group, name, metric)).fetchone()
+        return r[0] if r else None
+
+    out, groups = [], []
+    for ch in chans:
+        if ch.get("group", "Other") not in groups:
+            groups.append(ch.get("group", "Other"))
+    for group in groups:
+        rows = []
+        for ch in [c for c in chans if c.get("group", "Other") == group]:
+            name = ch["name"]
+            posted, views, subs = (latest(group, name, m) for m in ("videos_posted", "views_sum", "subscribers"))
+            found = conn.execute("SELECT title FROM channels WHERE name=?", (name,)).fetchone()
+            top = conn.execute("SELECT title, url, views FROM items WHERE source='youtube_channel' AND market=? "
+                               "AND term=? ORDER BY views DESC LIMIT 1", (group, name)).fetchone()
+            if posted is None:
+                rows.append((-1, [name, found[0] if found else "not found", "–", "–", "–", "–"]))
+                continue
+            top_txt = f"[{clean(top[0], 70)}]({top[1]}) ({int(top[2]):,} views)" if top else "–"
+            subs_txt = f"{int(subs):,}" if subs else "–"
+            rows.append((views or 0, [name, found[0] if found else "?", subs_txt, f"{int(posted)}",
+                                      f"{int(views or 0):,}", top_txt]))
+        rows.sort(key=lambda r: -r[0])
+        out.append(f"\n### {group}\n")
+        out.append(md_table(["Channel", "Found as", "Subscribers", f"New videos ({window}d)", "Views", "Top video"],
+                            [r[1] for r in rows]))
+    return "\n".join(out)
+
+
 def agreement_table(flagged):
     """Terms flagged in the same direction in 2+ independent places or 2+ sources: a stronger hint than
     one series. India, Mumbai and Global count as one place for this purpose."""
@@ -534,9 +576,21 @@ def render_brief(conn, cfg, signals, today):
                     "*changes* across cells, not levels. Mumbai = Maharashtra, New York = New York "
                     "state, London = England (Google has no city-level data here).")
 
+    chs = channel_section(conn, cfg)
+    if chs:
+        body.append("\n## What watched YouTube channels published\n")
+        body.append("Chosen sources: jewellery houses, publications and auction houses, so every video here comes "
+                    "from a publisher you can name. Views compare channels only loosely (subscriber counts differ "
+                    "hugely); the useful signal is *what* they publish and how a channel's week compares with its "
+                    "own earlier weeks, which appears under Rising and Cooling after about five weeks. "
+                    "Check the *Found as* column: if a name is not the official channel, put its handle or "
+                    "channel_id in `config.yaml`.")
+        body.append(chs)
     yt = item_table(conn, "youtube", cfg)
     if yt:
-        body.append("\n## Top new YouTube videos that name each term\n")
+        body.append("\n## Open YouTube search: new videos naming the core terms\n")
+        body.append("Anyone can publish a video that uses these words, so treat this as a rough scan of the open "
+                    "web, not as evidence about luxury buyers. The watched-channel section above is the reliable one.")
         body.append(yt)
     rd = item_table(conn, "reddit", cfg)
     if rd:
