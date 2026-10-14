@@ -36,6 +36,7 @@ def find(signals, market, term, source="google_trends"):
 
 def main():
     cfg = load_config()
+    cfg["youtube"]["keyword_search"] = True       # these checks exercise the keyword-search tables
     with tempfile.TemporaryDirectory() as tmp:
         conn = open_db(Path(tmp) / "r.db")
 
