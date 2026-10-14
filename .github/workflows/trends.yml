@@ -46,7 +46,8 @@ jobs:
             echo "Not Monday; skipping Google Trends."
           fi
 
-      # YouTube search is capped at about 100 searches a day by the free quota; a full pass needs about 71.
+      # YouTube keyword search is capped at about 100 searches a day by the free quota; a pass needs about 38.
+      # The watched-channel collector is cheap (a few quota units per channel).
       - name: Collect YouTube (Mondays, or when run by hand)
         continue-on-error: true
         env:
@@ -54,7 +55,7 @@ jobs:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: |
           if [ "$EVENT_NAME" = "workflow_dispatch" ] || [ "$(date -u +%u)" = "1" ]; then
-            python collect.py --sources youtube
+            python collect.py --sources youtube,channels
           else
             echo "Not Monday; skipping YouTube."
           fi
