@@ -49,6 +49,12 @@ def log(conn, run_ts, source, market, term, status, message=""):
     print(line + (f" ({message})" if message else ""), flush=True)
 
 
+def is_quota(r):
+    """YouTube reports a spent daily quota as HTTP 403 quotaExceeded or as HTTP 429 'Quota exceeded'."""
+    text = getattr(r, "text", "") or ""
+    return r.status_code in (403, 429) and any(k in text for k in ("quotaExceeded", "Quota exceeded", "RESOURCE_EXHAUSTED"))
+
+
 def get_json(url, params=None, headers=None, tries=3, wait=5):
     """GET with retry on rate limits / transient errors. Returns the Response."""
     last = None
@@ -60,6 +66,8 @@ def get_json(url, params=None, headers=None, tries=3, wait=5):
                 headers={"User-Agent": UA, **(headers or {})},
                 timeout=30,
             )
+            if is_quota(r):
+                return r                      # a spent daily quota will not clear in seconds: do not retry
             if r.status_code in (429, 500, 502, 503, 504):
                 last = f"HTTP {r.status_code}: " + r.text.strip().replace("\n", " ")[:80]
                 time.sleep(wait * (attempt + 1))
@@ -111,6 +119,12 @@ def filter_signature(ycfg):
     keys = ("window_days", "exact_phrase", "require_phrase_in_text", "context_terms", "context_words",
             "art_terms", "art_words", "exclude_words")
     blob = json.dumps({k: ycfg.get(k) for k in keys}, sort_keys=True, ensure_ascii=False, default=str)
+    return hashlib.md5(blob.encode("utf-8")).hexdigest()[:8]
+
+
+def channel_signature(ycfg):
+    blob = json.dumps({"w": ycfg.get("channel_window_days"), "r": ycfg.get("channel_relevance")},
+                      sort_keys=True, ensure_ascii=False, default=str)
     return hashlib.md5(blob.encode("utf-8")).hexdigest()[:8]
 
 
@@ -262,12 +276,15 @@ def collect_youtube(conn, cfg, run_ts):
     matched_* so their history starts clean and is never mixed with the older unfiltered numbers.
     Region/language are relevance hints, so markets sharing a language will overlap heavily.
     """
+    ycfg = cfg.get("youtube", {})
+    if ycfg.get("keyword_search") is False:
+        log(conn, run_ts, "youtube", None, None, "skipped", "keyword search is switched off (youtube.keyword_search)")
+        return 0
     key = os.environ.get("YOUTUBE_API_KEY")
     if not key:
         log(conn, run_ts, "youtube", None, None, "skipped", "YOUTUBE_API_KEY not set")
         return 0
 
-    ycfg = cfg.get("youtube", {})
     days = int(ycfg.get("window_days", 7))
     exact = bool(ycfg.get("exact_phrase", True))
     must_name = bool(ycfg.get("require_phrase_in_text", True))
@@ -300,7 +317,7 @@ def collect_youtube(conn, cfg, run_ts):
                 if m.get("youtube_lang"):
                     search_params["relevanceLanguage"] = m["youtube_lang"]
                 s = get_json(f"{base}/search", params=search_params)
-                if s.status_code == 403 and "quotaExceeded" in s.text:
+                if is_quota(s):
                     log(conn, run_ts, "youtube", None, None, "error",
                         "daily quota exhausted; stopping YouTube for this run")
                     return stored
@@ -318,6 +335,10 @@ def collect_youtube(conn, cfg, run_ts):
                 v = get_json(f"{base}/videos", params={
                     "part": "snippet,statistics", "id": ",".join(ids), "key": key,
                 })
+                if is_quota(v):
+                    log(conn, run_ts, "youtube", None, None, "error",
+                        "daily quota exhausted; stopping YouTube for this run")
+                    return stored
                 if v.status_code != 200:
                     log(conn, run_ts, "youtube", m["name"], term, "error", f"videos HTTP {v.status_code}")
                     continue
@@ -402,6 +423,20 @@ def collect_channels(conn, cfg, run_ts):
     window = int(ycfg.get("channel_window_days", 14))
     fresh_days = int(ycfg.get("skip_if_fresh_days", 3))
     lookups = int(ycfg.get("max_name_lookups", 20))      # name searches cost 100 units each
+    rel = ycfg.get("channel_relevance") or {}
+    rel_pats = word_patterns(rel.get("words"))
+    title_only = set(rel.get("title_only_groups", []))
+    tag = f"[f:{channel_signature(ycfg)}]"             # changes whenever the relevance rules change
+
+    def relevant(v, group):
+        """Only videos about jewellery count. Media and auction houses must say so in the TITLE."""
+        if not rel_pats:
+            return True
+        sn = v.get("snippet", {})
+        title = (sn.get("title") or "").casefold()
+        text = title if group in title_only else f"{title} {(sn.get('description') or '').casefold()}"
+        return any(p.search(text) for p in rel_pats)
+
     since = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=window)).strftime("%Y-%m-%dT%H:%M:%SZ")
     today = dt.date.today().isoformat()
     base = "https://www.googleapis.com/youtube/v3"
@@ -409,7 +444,7 @@ def collect_channels(conn, cfg, run_ts):
 
     def call(path, **params):
         r = get_json(f"{base}/{path}", params={**params, "key": key})
-        if r.status_code == 403 and "quotaExceeded" in r.text:
+        if is_quota(r):
             raise QuotaExhausted()
         if r.status_code != 200:
             raise RuntimeError(f"{path} HTTP {r.status_code}: {r.text.strip()[:100]}")
@@ -417,7 +452,7 @@ def collect_channels(conn, cfg, run_ts):
 
     for ch in channels:
         name, group = ch["name"], ch.get("group", "Other")
-        prior = recent_status(conn, "youtube_channel", group, name, fresh_days)
+        prior = recent_status(conn, "youtube_channel", group, name, fresh_days, tag)
         if prior:
             log(conn, run_ts, "youtube_channel", group, name, prior, kept_message(fresh_days))
             continue
@@ -434,11 +469,11 @@ def collect_channels(conn, cfg, run_ts):
                 elif ch.get("handle"):
                     found = call("channels", part="snippet,statistics,contentDetails", forHandle=ch["handle"])
                 items = (found or {}).get("items") or []
-                if not items and (ch.get("handle") or ch.get("channel_id")):
+                if not items and ch.get("channel_id"):
                     log(conn, run_ts, "youtube_channel", group, name, "error",
-                        "handle / channel_id not found; check it in config.yaml")
+                        "channel_id not found; check it in config.yaml")
                     continue
-                if not items:                                  # name only: search once, remember a miss
+                if not items:                                  # no handle, or a handle that missed: search the name
                     miss_cutoff = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=14)).strftime("%Y-%m-%dT%H:%M:%SZ")
                     missed = conn.execute(
                         "SELECT 1 FROM runs WHERE source='youtube_channel' AND market=? AND term=? "
@@ -474,14 +509,16 @@ def collect_channels(conn, cfg, run_ts):
             pl = call("playlistItems", part="contentDetails", playlistId=uploads, maxResults=50)
             recent = [i["contentDetails"]["videoId"] for i in pl.get("items", [])
                       if (i.get("contentDetails", {}).get("videoPublishedAt") or "") >= since]
-            vids = []
+            allvids = []
             if recent:
-                vids = call("videos", part="snippet,statistics", id=",".join(recent[:50])).get("items", [])
+                allvids = call("videos", part="snippet,statistics", id=",".join(recent[:50])).get("items", [])
+            vids = [v for v in allvids if relevant(v, group)]
             views = [int(v.get("statistics", {}).get("viewCount", 0) or 0) for v in vids] or [0]
             chan = call("channels", part="statistics", id=channel_id).get("items") or []
             subs = float((chan[0].get("statistics", {}) if chan else {}).get("subscriberCount", 0) or 0)
             conn.execute("UPDATE channels SET subscribers=? WHERE name=?", (subs, name))
-            for metric, value in (("videos_posted", len(vids)), ("views_sum", sum(views)),
+            for metric, value in (("videos_posted", len(vids)), ("videos_scanned", len(allvids)),
+                                  ("views_sum", sum(views)),
                                   ("views_median", statistics.median(views)), ("subscribers", subs)):
                 put_metric(conn, run_ts, today, "youtube_channel", group, name, metric, value)
             drop_items(conn, "youtube_channel", group, name)
@@ -495,7 +532,7 @@ def collect_channels(conn, cfg, run_ts):
             conn.commit()
             stored += len(vids)
             log(conn, run_ts, "youtube_channel", group, name, "ok",
-                f"{len(vids)} videos in {window} days (found as '{title}')")
+                f"{len(vids)} jewellery videos of {len(allvids)} in {window} days (found as '{title}') {tag}")
         except QuotaExhausted:
             log(conn, run_ts, "youtube_channel", None, None, "error",
                 "daily quota exhausted; stopping YouTube channels for this run")

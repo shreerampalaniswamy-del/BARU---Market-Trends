@@ -122,6 +122,9 @@ wikipedia:
     - {market: zh-wiki, project: zh.wikipedia, article: 當代藝術}
 
 youtube:
+  # Open keyword search is OFF: anyone can publish a video that uses a keyword, so it returns mostly noise.
+  # Set to true to switch it back on; the settings below down to exclude_words then apply.
+  keyword_search: false
   window_days: 7           # keyword search: videos published in the last N days
   exact_phrase: true       # ask YouTube for the exact phrase, not loosely related videos
   require_phrase_in_text: true   # count a video only if its title or description contains the term
@@ -147,10 +150,19 @@ youtube:
 
   # WATCHED CHANNELS: the reliable YouTube view. Each channel is read directly (what it published in the last
   # channel_window_days and how those videos performed), so the source is always a publisher you chose.
-  # A channel is found by `handle` or `channel_id` when given, otherwise by searching its name once (the result
+  # A channel is found by `handle` or `channel_id` when given; a missing handle (or one that fails) falls back to
+  # searching its name once (the result
   # is remembered). The brief shows what each name was found as; if it is wrong, add `handle: "@..."` or
   # `channel_id: "UC..."` here. Add or remove channels freely.
   channel_window_days: 14
+  # Only videos about jewellery are kept from these channels. A video must contain one of these words in its title or
+  # description; for the groups listed under title_only_groups (media and auction houses, which publish about
+  # everything) it must be in the TITLE. The brief shows "relevant of all new" per channel.
+  channel_relevance:
+    title_only_groups: [Media and publications, Auction houses]
+    words: [jewel, jewelry, jewellery, joaill, gioiell, bijou, "high jewelry", diamond, emerald, sapphire, tiara,
+            brooch, necklace, choker, pearl, gem, gems, gemstone, "wearable art", "Van Cleef", Boucheron,
+            "Harry Winston", Buccellati, Messika, ज्वैलरी, 珠寶]
   max_name_lookups: 20     # name searches cost 100 quota units each; handles and ids are almost free
   channels:
     - {name: Cartier, group: Houses (international), handle: "@cartier"}

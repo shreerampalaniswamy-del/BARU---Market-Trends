@@ -15,8 +15,8 @@ Two layers of terms:
 |---|---|---|
 | Google Trends | Daily search-interest index per term and market (90 days, back-filled on day one) | none |
 | Wikipedia | Daily human pageviews per article, by language edition (90 days, back-filled) | none |
-| YouTube: watched channels | What a curated list of jewellery houses, publications and auction houses published in the last 14 days, and how it performed (the reliable YouTube view) | free API key |
-| YouTube: keyword search | Views of recent videos that name the core terms. Open to anyone, so noisy; read it as a rough scan only | free API key |
+| YouTube: watched channels | What a curated list of jewellery houses, publications and auction houses published in the last 14 days **about jewellery**, and how it performed. Media and auction channels count a video only if the jewellery word is in its title | free API key |
+| YouTube: keyword search | **Off by default** (`youtube.keyword_search: false`). Open to anyone, so mostly noise; set to true to bring it back | free API key |
 | Reddit API | Posts and engagement mentioning each term (global) | Reddit's approval first (optional, see setup) |
 | GDELT | Daily count of news articles mentioning each term, by publisher country (about 3 months, back-filled) | none |
 
@@ -49,7 +49,7 @@ later; a series collected within the last 3 days is not fetched again, so a re-r
 - **Themes (India first)**: one table per theme with search and news change for India and Global.
 - **Where signals agree**: terms flagged the same way in 2+ markets or 2+ sources, a stronger hint than one series.
 - **Search interest grid**: week-over-week change for every term and market.
-- **What watched YouTube channels published**: one table per group (international houses, Indian houses, media, auction houses). The *Found as* column shows which channel each name resolved to, so a wrong match is easy to spot; fix it by adding a `handle` or `channel_id` in `config.yaml`.
+- **What watched YouTube channels published**: one table per group (international houses, Indian houses, media, auction houses). The *Found as* column shows which channel each name resolved to, so a wrong match is easy to spot; fix it by adding a `handle` or `channel_id` in `config.yaml`. A channel without a handle (or whose handle misses) is found once by name and remembered. The count column reads "jewellery videos of all new", for example 2 of 9. A channel that could not be read says why (quota used up, not found, and so on).
 - **Top new YouTube videos and Reddit posts**, with links and the markets they appeared in. YouTube results are
   kept only if the title or description contains the term, ambiguous names also need a jewellery (or art) word,
   and gold-rate spam is dropped. All of this is editable under `youtube:` in `config.yaml`.

@@ -1,5 +1,17 @@
 # Changes
 
+## Fourth round: channels only, jewellery-relevant
+- **Open YouTube keyword search switched off** (`youtube.keyword_search: false`). The brief no longer has that
+  section. Set it to true to bring it back.
+- **Relevance filter for watched channels** (`youtube.channel_relevance`): a video counts only if it mentions a
+  jewellery word. For media and auction channels (Vogue, Harper's Bazaar, Christie's, Sotheby's and others) the word
+  must be in the title. The brief shows "jewellery videos of all new" per channel (for example 1 of 9).
+- **YouTube quota**: the "HTTP 429 Quota exceeded" form is now recognised and not retried; the brief says "quota
+  used up" instead of "not found".
+- **Channel lookup**: a missing or wrong handle falls back to a one-time name search, remembered for 14 days
+  (`max_name_lookups` caps the 100-unit searches).
+- Fixed a leftover duplicate of the channel table code in analyze.py.
+
 ## India-first update (supersedes the earlier GDELT and refinement packages)
 - **India lens**: India and Mumbai are focus markets, listed first and collected first. Global is a market of its
   own. Core keywords are now High Jewellery, High Jewelry, Contemporary Art, art jewellery ("High Art" removed).

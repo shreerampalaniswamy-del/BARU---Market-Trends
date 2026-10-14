@@ -164,7 +164,8 @@ def configured_pairs(cfg):
     that were later removed stay in the database but are left out of the brief."""
     from collect import all_terms, youtube_terms
     every = {(m["name"], t) for m in cfg["markets"] for t in all_terms(cfg, m)}
-    yt = {(m["name"], t) for m in cfg["markets"] for t in youtube_terms(cfg, m)}
+    search_on = cfg.get("youtube", {}).get("keyword_search") is not False
+    yt = {(m["name"], t) for m in cfg["markets"] for t in youtube_terms(cfg, m)} if search_on else set()
     return {"google_trends": every, "gdelt": every, "youtube": yt}
 
 
@@ -365,8 +366,25 @@ def region(market):
     return "India" if market in ("India", "Mumbai") else market
 
 
+def channel_status(conn, group, name):
+    """Why a watched channel has no numbers, in plain words, from its latest run."""
+    r = conn.execute("SELECT message FROM runs WHERE source='youtube_channel' AND market=? AND term=? "
+                     "ORDER BY run_ts DESC LIMIT 1", (group, name)).fetchone()
+    msg = (r[0] if r else "") or ""
+    low = msg.lower()
+    if not r:
+        return "not collected yet"
+    if "quota" in low:
+        return "waiting: YouTube quota used up, retry tomorrow"
+    if "limit reached" in low:
+        return "waiting: name-search limit, retry next run"
+    if "not found" in low:
+        return "not found: add its handle or channel_id in config.yaml"
+    return msg[:60] or "not collected yet"
+
+
 def channel_section(conn, cfg):
-    """What the curated channels published in the last window, grouped (houses, publications, auction houses)."""
+    """Jewellery-relevant videos from the curated channels in the last window, grouped (houses, media, auctions)."""
     chans = cfg.get("youtube", {}).get("channels") or []
     if not chans:
         return None
@@ -385,21 +403,24 @@ def channel_section(conn, cfg):
         rows = []
         for ch in [c for c in chans if c.get("group", "Other") == group]:
             name = ch["name"]
-            posted, views, subs = (latest(group, name, m) for m in ("videos_posted", "views_sum", "subscribers"))
+            posted, scanned, views, subs = (latest(group, name, m)
+                                            for m in ("videos_posted", "videos_scanned", "views_sum", "subscribers"))
             found = conn.execute("SELECT title FROM channels WHERE name=?", (name,)).fetchone()
             top = conn.execute("SELECT title, url, views FROM items WHERE source='youtube_channel' AND market=? "
                                "AND term=? ORDER BY views DESC LIMIT 1", (group, name)).fetchone()
             if posted is None:
-                rows.append((-1, [name, found[0] if found else "not found", "–", "–", "–", "–"]))
+                rows.append((-1, [name, found[0] if found else channel_status(conn, group, name),
+                                  "–", "–", "–", "–"]))
                 continue
             top_txt = f"[{clean(top[0], 70)}]({top[1]}) ({int(top[2]):,} views)" if top else "–"
             subs_txt = f"{int(subs):,}" if subs else "–"
-            rows.append((views or 0, [name, found[0] if found else "?", subs_txt, f"{int(posted)}",
+            count = f"{int(posted)} of {int(scanned)}" if scanned is not None else f"{int(posted)}"
+            rows.append((views or 0, [name, found[0] if found else "?", subs_txt, count,
                                       f"{int(views or 0):,}", top_txt]))
         rows.sort(key=lambda r: -r[0])
         out.append(f"\n### {group}\n")
-        out.append(md_table(["Channel", "Found as", "Subscribers", f"New videos ({window}d)", "Views", "Top video"],
-                            [r[1] for r in rows]))
+        out.append(md_table(["Channel", "Found as", "Subscribers", f"Jewellery videos of all new ({window}d)",
+                             "Views", "Top video"], [r[1] for r in rows]))
     return "\n".join(out)
 
 
@@ -460,9 +481,12 @@ def identical_series_note(conn):
             f"searches). Terms: {', '.join(sorted(same)[:12])}{'…' if len(same) > 12 else ''}.")
 
 
-def coverage(conn, signals):
+def coverage(conn, signals, cfg=None):
     lines = []
+    search_off = (cfg or {}).get("youtube", {}).get("keyword_search") is False
     for source in PRIMARY:
+        if source == "youtube" and search_off:
+            continue
         run_ts = conn.execute("SELECT MAX(run_ts) FROM runs WHERE source=?", (source,)).fetchone()[0]
         mine = [s for s in signals if s["source"] == source]
         status = {}
@@ -579,14 +603,14 @@ def render_brief(conn, cfg, signals, today):
     chs = channel_section(conn, cfg)
     if chs:
         body.append("\n## What watched YouTube channels published\n")
-        body.append("Chosen sources: jewellery houses, publications and auction houses, so every video here comes "
-                    "from a publisher you can name. Views compare channels only loosely (subscriber counts differ "
-                    "hugely); the useful signal is *what* they publish and how a channel's week compares with its "
-                    "own earlier weeks, which appears under Rising and Cooling after about five weeks. "
-                    "Check the *Found as* column: if a name is not the official channel, put its handle or "
-                    "channel_id in `config.yaml`.")
+        body.append("Only videos about jewellery are counted: every video must name jewellery or gemstones (for media "
+                    "and auction channels, in the title). The column *Jewellery videos of all new* shows how much "
+                    "of what a channel published was relevant, which is a signal in itself. Views compare channels "
+                    "only loosely (subscriber counts differ hugely); how a channel's week compares with its own "
+                    "earlier weeks appears under Rising and Cooling after about five weeks. Check *Found as*: if a "
+                    "name is not the official channel, put its handle or channel_id in `config.yaml`.")
         body.append(chs)
-    yt = item_table(conn, "youtube", cfg)
+    yt = item_table(conn, "youtube", cfg) if cfg.get("youtube", {}).get("keyword_search") is not False else None
     if yt:
         body.append("\n## Open YouTube search: new videos naming the core terms\n")
         body.append("Anyone can publish a video that uses these words, so treat this as a rough scan of the open "
@@ -598,7 +622,7 @@ def render_brief(conn, cfg, signals, today):
         body.append(rd)
 
     body.append("\n## Coverage and data quality\n")
-    cov = coverage(conn, signals)
+    cov = coverage(conn, signals, cfg)
     if settling:
         names = "; ".join(f"{SOURCE_NAME[x['source']]}, {x['market']}, {x['term']}" for x in settling[:4])
         more = f" (and {len(settling) - 4} more)" if len(settling) > 4 else ""
@@ -660,3 +684,4 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
+
