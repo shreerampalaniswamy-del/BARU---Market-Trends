@@ -81,6 +81,7 @@ def find(signals, source, market, term, metric):
 
 def main():
     cfg = load_config()
+    cfg["youtube"]["keyword_search"] = True       # these checks exercise the keyword-search tables
     with tempfile.TemporaryDirectory() as tmp:
         conn = build(Path(tmp) / "sample.db")
         signals = analyze.compute_signals(conn, cfg["analysis"])

@@ -77,6 +77,17 @@ def main():
     assert all(len(collect.youtube_terms(default_cfg, m)) == len(collect.all_terms(default_cfg, m, include_themes=False))
                for m in default_cfg["markets"])
     cfg["youtube"]["theme_markets"] = ["India"]
+    cfg["youtube"]["keyword_search"] = True
+
+    # the shipped config has keyword search switched off: no API calls at all, logged as skipped
+    assert default_cfg["youtube"]["keyword_search"] is False
+    with tempfile.TemporaryDirectory() as tmp:
+        conn = open_db(Path(tmp) / "off.db")
+        never = mock.Mock(side_effect=AssertionError("must not call the API"))
+        with mock.patch.dict(os.environ, {"YOUTUBE_API_KEY": "test-key"}), mock.patch("collect.get_json", never):
+            assert collect.collect_youtube(conn, default_cfg, now_ts()) == 0
+        assert never.call_count == 0
+        assert conn.execute("SELECT COUNT(*) FROM runs WHERE status='skipped' AND message LIKE '%switched off%'").fetchone()[0] == 1
     with mock.patch.dict(os.environ, {"YOUTUBE_API_KEY": "test-key"}):
         # 1. default behaviour: exact phrase query, keep only videos that name the term
         with tempfile.TemporaryDirectory() as tmp:
@@ -123,6 +134,7 @@ def main():
 
         # 2. both switches off: old behaviour (unquoted query, every returned video counted)
         cfg2 = load_config()
+        cfg2["youtube"]["keyword_search"] = True
         cfg2["youtube"]["exact_phrase"] = False
         cfg2["youtube"]["require_phrase_in_text"] = False
         with tempfile.TemporaryDirectory() as tmp:
@@ -178,6 +190,7 @@ def main():
         with tempfile.TemporaryDirectory() as tmp:
             conn = open_db(Path(tmp) / "y4.db")
             cfg4 = load_config()
+            cfg4["youtube"]["keyword_search"] = True
             cfg4["youtube"]["theme_markets"] = []
             with mock.patch("collect.get_json", side_effect=fake_filter):
                 collect.collect_youtube(conn, cfg4, now_ts())
