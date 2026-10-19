@@ -41,7 +41,7 @@ Week-over-week change in search interest and news coverage for each theme term, 
 
 | Term | India: search | Global: search |
 |---|---|---|
-| Colombian emerald | -20% | new |
+| Colombian emerald | -67% | new |
 | Kashmir sapphire | low volume | +40% ▲ |
 | padparadscha | new | +31% ▲ |
 | natural pearls | low volume | low volume |
@@ -108,13 +108,13 @@ Week-over-week change in search interest and news coverage for each theme term, 
 | Signal | Market | Term | Theme | This week | Last week | Change | z-score | Streak |
 |---|---|---|---|---|---|---|---|---|
 | Google search interest | India + Global | art jewellery | Core | 45 | 57 | -22% | +1.0 | down 1w |
-| Google search interest | India | Colombian emerald | Rare stones and materials | 30 | 37 | -20% | +2.5 | down 1w |
 | Google search interest | New York | High Jewelry | Core | 81 | 68 | +20% | +3.8 | up 2w |
 | Google search interest | Global | Contemporary Art | Core | 31 | 27 | +15% | -1.0 | up 2w |
 | Google search interest | London | Contemporary Art | Core | 31 | 27 | +15% | -1.0 | up 2w |
 | Google search interest | India + Global | jewellery investment | Occasions and value | 16 | 19 | -15% | +2.0 | down 1w |
 | Google search interest | Hong Kong | 當代藝術 | Core (local language) | 39 | 45 | -14% | +2.7 | down 1w |
 | Google search interest | Global | Harry Winston | International houses | 32 | 28 | +14% | +3.3 | up 2w |
+| Google search interest | India | bridal jewellery | Occasions and value | 79 | 70 | +14% | +1.8 | up 2w |
 
 ## Google search interest, week over week by market
 
@@ -190,11 +190,11 @@ Only videos about jewellery are counted: every video must name jewellery or gems
 
 ## Coverage and data quality
 
-- **Google Trends**: 96 series; latest data 2026-10-18; 12 weeks of history; last run: 22 empty, 1 error, 81 ok — issues: TooManyRequestsError: The request failed: Google returned a response with code 429
+- **Google Trends**: 96 series; latest data 2026-10-18; 12 weeks of history; last run: 22 empty, 82 ok
 - **Wikipedia**: 8 series; latest data 2026-10-15; 12 weeks of history; last run: 8 ok
 - **YouTube channels**: 26 series; latest data 2026-10-19; 1 weeks of history; z-scores need 5+ weeks, so flags are not available yet; changes shown are directional only; last run: 26 ok
 - **Reddit**: no usable data (REDDIT_CLIENT_ID / REDDIT_CLIENT_SECRET not set)
-- **GDELT news**: no usable data (RuntimeError: HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com; 3 failures in a row (likely rate-limited); stopping GDELT for this run)
+- **GDELT news**: no usable data (RuntimeError: HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com; RuntimeError: HTTPSConnectionPool(host='api.gdeltproject.org', port=443): Read timed out. (read timeout=30))
 - **India vs Global**: 2 of 33 Google Trends terms have exactly the same daily values in both, so Global is not independent evidence for them (India probably dominates those searches). Terms: Michelle Ong, sculptural jewellery.
 
 Every number above comes from `data/trends.db`; the full per-series table is in `briefs/latest-signals.csv`. YouTube and Reddit snapshots only start accumulating from the first run, so their flags appear after about five weeks. GDELT counts news articles by the publisher's country, not the country an article is about; Mumbai, New York and London map to India, the United States and the United Kingdom.
