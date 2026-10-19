@@ -1,0 +1,66 @@
+# Events calendar used to match flagged search moves to dated events.
+# Created by the weekly research digest; each entry was confirmed by opening the source page.
+# Fields: date (YYYY-MM-DD), end (optional, YYYY-MM-DD), name, tags (words matched against
+# flagged terms), markets (optional list; omit if it applies everywhere), broad (true for
+# festivals and other events that lift many terms at once), source (URL).
+# Entries older than 120 days may be removed. Do not add events whose date is unconfirmed.
+events:
+  - date: 2026-09-15
+    name: Sabyasachi x The Met high jewellery collection, runway debut at New York Fashion Week
+    tags: [sabyasachi, sabyasachi jewellery, high jewellery, indian heritage]
+    markets: [India, Mumbai, New York, Global]
+    source: https://t2online.in/goodlife/fashion-beauty/sabyasachi-announces-landmark-collaboration-with-the-met--new-york/2007163
+  - date: 2026-10-07
+    name: Bulgari names Hudson Williams brand ambassador
+    tags: [bulgari]
+    markets: [Global]
+    source: https://www.designscene.net/2026/10/bulgari-hudson-williams-ambassador.html
+  - date: 2026-10-07
+    name: Zoya "Her Again" high jewellery collection covered (introduced on or before this date)
+    tags: [zoya, zoya jewellery, high jewellery, indian heritage]
+    markets: [India, Mumbai, Global]
+    source: https://indianretailer.com/brandlicense/archives/news/zoya-unveils-her-again-high-jewellery-collection-inspired-indias-spice-heritage.n6037
+  - date: 2026-10-13
+    name: Christie's announces Bulgari Pink, a 24 ct Fancy Intense Pink diamond ring, for Geneva sale
+    tags: [bulgari, high jewellery, high jewelry, pink diamond, jewellery auction]
+    markets: [Global, India, France, New York, Italy]
+    source: https://nationaljeweler.com/articles/15405-christie-s-geneva-to-auction-bulgari-pink-diamond
+  - date: 2026-10-16
+    end: 2026-10-18
+    name: Journées Particulières, Paris (Bulgari, Chaumet and Fred open their Paris houses)
+    tags: [bulgari, high jewelry, high jewellery, haute joaillerie, chaumet, fred]
+    markets: [France, Global]
+    source: https://www.sortiraparis.com/en/what-to-do-in-paris/shopping-fashion/guides/62580-les-journees-particulieres-2026-le-programme-des-maisons-lvmh-et-les-dates-de-reservation
+  - date: 2026-10-20
+    end: 2026-10-25
+    name: Art Basel Paris, Grand Palais (Avant Première 20 Oct, preview 21-22 Oct, public 23-25 Oct)
+    tags: [contemporary art, art contemporain, arte contemporanea, art fair]
+    markets: [France, Global, London, New York, Italy]
+    source: https://usaartnews.com/news/art-basel-paris-announces-more-than-200-exhibitors-for-its-2026-edition-artsy
+  - date: 2026-11-06
+    name: Dhanteras 2026 (start of the five-day Diwali festival)
+    tags: [bridal jewellery, polki, kundan, jadau, gold, festive, diwali, dhanteras]
+    markets: [India, Mumbai]
+    broad: true
+    source: https://www.smartpuja.com/blog/dhanteras-2026-date-puja-muhurat-vidhi-significance/
+  - date: 2026-11-08
+    name: Lakshmi Puja (Diwali) 2026
+    tags: [diwali, festive, bridal jewellery, polki, kundan, jadau]
+    markets: [India, Mumbai]
+    broad: true
+    source: https://www.bankbazaar.com/indian-holiday/lakshmi-puja-holiday.html
+  - date: 2026-11-09
+    name: Phillips, The Geneva Jewels Auction VII
+    tags: [jewellery auction, sapphire, harry winston, high jewellery, fancy colour diamond]
+    markets: [Global, India]
+    source: https://www.phillips.com/auction/CH060426
+  - date: 2026-11-10
+    name: Christie's Magnificent Jewels, Geneva (Bulgari Pink, estimate CHF 10-15 million)
+    tags: [bulgari, jewellery auction, pink diamond, high jewellery, fancy colour diamond]
+    markets: [Global, India, France, Italy, New York]
+    source: https://nationaljeweler.com/articles/15405-christie-s-geneva-to-auction-bulgari-pink-diamond
+  - date: 2026-11-11
+    name: Sotheby's Royal & Noble Jewels, Geneva (197.80 ct Romanov sapphire mounted by Cartier)
+    tags: [jewellery auction, sapphire, cartier, bulgari, high jewellery]
+    markets: [Global, India]
+    source: https://www.sothebys.com/en/buy/auction/2026/royal-noble-jewelry-ge2609
