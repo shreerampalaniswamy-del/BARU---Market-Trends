@@ -51,7 +51,7 @@ events:
     source: https://www.bankbazaar.com/indian-holiday/lakshmi-puja-holiday.html
   - date: 2026-11-09
     name: Phillips, The Geneva Jewels Auction VII
-    tags: [jewellery auction, sapphire, harry winston, high jewellery, fancy colour diamond]
+    tags: [jewellery auction, sapphire, kashmir sapphire, boucheron, harry winston, high jewellery, fancy colour diamond]
     markets: [Global, India]
     source: https://www.phillips.com/auction/CH060426
   - date: 2026-11-10
@@ -64,3 +64,21 @@ events:
     tags: [jewellery auction, sapphire, cartier, bulgari, high jewellery]
     markets: [Global, India]
     source: https://www.sothebys.com/en/buy/auction/2026/royal-noble-jewelry-ge2609
+  - date: 2026-10-01
+    end: 2026-10-31
+    name: Parcours Bijoux, Paris festival of contemporary jewellery (about 35 events)
+    tags: [artist jewellery, art jewellery, contemporary jewellery, sculptural jewellery]
+    markets: [France, Global]
+    source: https://www.sortiraparis.com/en/what-to-visit-in-paris/exhibit-museum/articles/150667-jewelry-trail-2026-paris-s-festival-of-contemporary-jewelry-and-its-quirky-happenings
+  - date: 2026-10-17
+    end: 2026-10-25
+    name: Phillips Geneva Jewels VII preview tour (Paris 17-21 Oct, London 22-24 Oct, Taipei 23-25 Oct); includes Kashmir sapphire and Boucheron lots
+    tags: [kashmir sapphire, sapphire, boucheron, jewellery auction, high jewellery]
+    markets: [France, London, Global]
+    source: https://www.phillips.com/press/release/phillips-announces-highlights-of-the-geneva-jewels-auction-vii
+  - date: 2026-10-24
+    end: 2026-10-25
+    name: Jewellery World Exhibition, JW Marriott Juhu, Mumbai (gold, polki, jadau, temple jewellery)
+    tags: [jadau, polki, temple jewellery, bridal jewellery, kundan]
+    markets: [India, Mumbai]
+    source: https://www.eventbrite.com/e/jewellery-world-exhibition-mumbai-october-2026-tickets-1985132640165

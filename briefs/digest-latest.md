@@ -1,57 +1,53 @@
-# Research digest, week of 2026-10-19
+# Research digest, week of 2026-10-26
 
-Reads the trend brief dated 2026-10-19 (Google Trends data to 18 October). "This week" is 12 to 18 October; "last week" is 5 to 11 October. **Findings** are what a source says. **Hypotheses** are my reading and are labelled. Where nothing was found, it says so. This brief had no "Why did it move? Clues" section, so every lead below is from my own searches.
+Reads the trend brief dated 2026-10-26. Google Trends data runs to 25 October, so "this week" is 19 to 25 October and "last week" is 12 to 18 October (YouTube figures run one day later). **Findings** are what a source says. **Hypotheses** are my reading and are labelled. Where nothing was found, it says so. This brief had no "Why did it move? Clues" section, so every lead below is from my own searches. The news feed (GDELT) failed this week, so there was no news data in the brief.
 
 ## Bottom line
 
-- **Bulgari is the one move with a dated clue inside the week.** Christie's announced the Bulgari Pink, a 24 ct Fancy Intense Pink diamond in a Bulgari ring, on 13 October. It had never been offered at auction. Bulgari's rise started earlier (up 4 weeks), so this can add to it but is not the whole cause.
-- **France "High Jewelry" (+153%) coincides with the Journées Particulières (16 to 18 October)**, when Bulgari, Chaumet and Fred opened their Paris houses. That is timing only. I found no source linking searches to the event.
-- **The Indian heritage names (Zoya, Hazoorilal, polki, Sabyasachi) rose without a trigger inside the week**, and the rare-stone terms (Kashmir sapphire, padparadscha) and Italy's "alta gioielleria" have no dated clue at all.
-- **Clue count:** the brief gave a dated clue for 0 of 9 flagged moves; after research, 2 of 9 have one inside the week (Bulgari, France High Jewelry).
+- **Most of the India moves have no specific trigger.** I found no dated item for Boucheron (+49%), Hazoorilal (+27%) or Mumbai "art jewellery" (+20%). For Kashmir sapphire (+31%) there is relevant sale material, but none that points at India.
+- **A pre-Diwali lift is a partial explanation, not a full one.** Heritage and bridal terms rose together (jadau +21%, temple jewellery +20%, bridal jewellery +16%, polki +15%), but Sabyasachi (-3%) and Amrapali (0%) were flat. Boucheron, Kashmir sapphire and Hazoorilal rose much more than the group, so those look specific. Diwali (Lakshmi Puja) is 8 November.
+- **Bulgari reversed.** Last week's flagged Bulgari rise is gone: India -40%, Global -81% (not flagged). That fits the Bulgari Pink news fading, but it is a hypothesis.
+- **Clue count:** the brief gave a dated clue for 0 of 8 flagged moves. After research, 2 of 8 have a dated item inside the week (jadau, jewellery investment), and both are context rather than a specific trigger.
 
 ## Flagged moves checked
 
 | Move in the brief | What I found | Fit with timing |
 |---|---|---|
-| **Bulgari** +71% (India + Global; Global alone +443%, India +71%) | Christie's will sell the Bulgari Pink at Magnificent Jewels, Geneva, on 10 Nov (estimate CHF 10 to 15 million per National Jeweler; US$18 million per Luxury Launches). Both articles are dated 13 Oct. Family lore, as reported, is that the rough came from India in the 1950s. Separately, Bulgari named Hudson Williams ambassador on 7 Oct. | **Matches** (13 Oct, pink diamond). Ambassador news is **one week early**. The 4-week streak means neither explains the full run. |
-| **High Jewelry, France** +153% | Journées Particulières ran 16 to 18 Oct. Bulgari (Place Vendôme), Chaumet and Fred (90th anniversary) took part. | **Matches** on dates only. Hypothesis, not finding. |
-| **alta gioielleria, Italy** +47% | Nothing dated to the window. | **Nothing found.** |
-| **Sabyasachi jewellery, India** +54% | Sabyasachi's high jewellery collection with The Met (Byzantine-inspired) debuted at New York Fashion Week on 15 Sept and was announced 11 Aug. SCMP listed it in an October jewellery round-up (4 Oct). I found no India launch or event in the window. | **Earlier.** Coverage may have carried it. |
-| **Zoya jewellery** +23% (Global) | "Her Again" was covered by 7 Oct. Zoya's Anoushka Shankar film has 2,249,903 views, the brief's biggest video. | **One week early**, but the film's reach could keep searches rising. |
-| **Hazoorilal** +21%, **polki** +22% (Global) | Nothing found dated to the window. Hazoorilal's channel posted 3 jewellery videos in 14 days (238 views). | **Nothing found.** |
-| **Kashmir sapphire** +40%, **padparadscha** +31% (Global; India low volume or new) | Sotheby's Geneva sale on 11 Nov leads with a 197.80 ct sapphire mounted by Cartier, with viewings in Zurich from 12 Oct and Singapore 22 to 25 Oct. The page does not say the stone is Kashmir or padparadscha. | **Thematic only.** |
+| **Boucheron**, India +49% (52 vs 35); Global -9% | Nothing dated to the window. W Magazine covered Boucheron's 2026 high jewellery collection on 8 July (no India link). Two Boucheron lots are in Phillips' Geneva sale on 9 Nov (a ruby and diamond parure, est. USD 70,000 to 100,000; a natural pearl and diamond necklace, c. 1891, est. USD 85,000 to 120,000), but the Phillips preview tour had no India stop. | **Nothing found.** The W piece is **Earlier**. The rise is India-specific (Global fell). |
+| **Kashmir sapphire**, India +31% (28 vs 22) | Phillips' 1 Oct release lists three Kashmir sapphire lots for 9 Nov: a 16.40 ct ring (USD 2.2 to 3.5 million), an 18.69 ct cabochon brooch/pendant (USD 1 to 1.5 million) and a 5.62 ct ring (USD 150,000 to 250,000). Preview stops: Paris 17 to 21 Oct, London 22 to 24 Oct, Taipei 23 to 25 Oct. Sotheby's Royal & Noble page (11 Nov) does not name Kashmir. | **Thematic only.** Tour dates overlap the window; no India stop and no source linking it to Indian searches. |
+| **Hazoorilal**, India +27% (83 vs 65) | Nothing dated to the window. Indian Jeweller reported its "Facets" high jewellery collection on 4 June. Its YouTube channel posted no videos. | **Nothing found** (Facets is **Earlier**). |
+| **art jewellery**, Mumbai +20% (75 vs 63) | Nothing found about art jewellery in Mumbai. | **Nothing found.** |
+| **jadau**, India +21% (66 vs 54) | Jewellery World Exhibition, JW Marriott Juhu, Mumbai, 24 and 25 Oct, lists jadau, polki and temple jewellery from jewellers in Jaipur, Surat, Delhi and other cities. | **Matches** only the last two days; the term was already up two weeks. Likely part of the general festive lift. |
+| **jewellery investment**, India +30% (20 vs 15, a small base) | Whalesbook (21 Oct): gold about Rs 1.48 lakh per 10 g, roughly 35% above a year ago; volume down 15% year on year through Dussehra. Upstox, citing the World Gold Council (updated 25 Oct): prices steadied after a September fall, and mutual funds paused new gold fund-of-funds subscriptions from 16 Oct. | **Matches** (dated in the window), but it is context, not a trigger. |
+| **artist jewellery**, Global +71% (24 vs 14); India +2% | Parcours Bijoux, a Paris festival of contemporary jewellery, runs 1 to 31 Oct (about 35 events). Art Basel Paris was 23 to 25 Oct (vernissage 22 Oct); the guide I opened mentions no jewellery. | **Thematic only.** |
+| **JAR jewelry**, Global +25% (14 vs 11) | Phillips says its sale includes jewels signed JAR but names no piece. Sotheby's page does not mention JAR. | **Thematic only.** |
 
 ## Not explained
 
-Italy's alta gioielleria, Kashmir sapphire and padparadscha, Hazoorilal, polki, and the Sabyasachi jump inside the week. YouTube oddities: Bulgari's channel posted 5 videos, none about jewellery by the brief's filter, so its search rise is not coming from its own channel. Graff is matched to "Doony Graff - Topic", the wrong channel (the brief warns of this). Messika posted 20 jewellery videos of 20, the highest of any house.
+Boucheron in India, Hazoorilal, and Mumbai art jewellery have no dated clue. On YouTube, Sotheby's top jewellery video ("Cartier's Tutti Frutti, But Not as You Know It", 8,629 views, +137% for the channel) has no date or sale link that I could verify; the Sotheby's Tutti Frutti page I found is from 2020, and the 11 Nov sale page does not list Tutti Frutti. Zoya's -100% looks like a counting effect: its top video is the same one in both weeks (2,251,674 views last week, 1,100 this week), so treat it as unreliable (hypothesis). Graff is still matched to the wrong channel ("Doony Graff - Topic").
 
 ## Hypotheses to test (not findings)
 
-1. **Specific, not seasonal.** In India, kundan (0%), jadau (0%), temple jewellery (+1%) and bridal jewellery (+14%, not flagged) are flat, so this is not a general festive lift yet. Dhanteras is 6 Nov and Lakshmi Puja 8 Nov; watch whether those terms move in the next two briefs.
-2. **Indian heritage names moving together globally.** Zoya (+23%), polki (+22%) and Hazoorilal (+21%) rose together in Global but not in India (Zoya +4%, polki +8%). Possible diaspora pre-Diwali interest.
-3. **Bulgari news is attracting the curious.** A "never auctioned" pink diamond is a story that travels; Global +443% is far above India's +71%.
+1. **Festive lift is partial.** Watch jadau, polki, temple jewellery and bridal jewellery in the 2 and 9 November briefs; a broad move through Dhanteras (6 Nov) would confirm it.
+2. **Kashmir sapphire and Hazoorilal are building.** Both are up two weeks in India. If Kashmir sapphire keeps rising into the 9 to 11 Nov Geneva sales, auction publicity is a plausible driver.
+3. **Boucheron's India rise is not from its own content.** Its channel posted 12 jewellery videos in 14 days (2,671 views, top video 590), too small to explain it.
 
 ## What this suggests for Bāru (judgement)
 
-- Public search data mostly reflects the general public, not HNI or UHNI clients, so treat these as signals of what is in the conversation, not of buyer intent.
-- The Bulgari Pink story has an Indian-sourced rough stone attached. Provenance told this way draws attention; Bāru could prepare its own provenance narrative for stones it sources.
-- Plan for Geneva auction week (9 to 11 Nov: Phillips, Christie's, Sotheby's) and Lakshmi Puja (8 Nov) landing together. Expect high jewellery coverage to peak then.
-- Zoya shows a campaign film can carry a house for two weeks. A film with a cultural figure is a credible benchmark.
+- Public search mostly reflects the general public, not HNI or UHNI clients. Read these as what is being talked about, not buyer intent.
+- With gold near Rs 1.48 lakh per 10 g and mass-market buyers moving to lighter, lower-carat pieces (Whalesbook), a stone-led story (origin, rarity, provenance) separates high jewellery from gold-weight buying.
+- Geneva sales (9 to 11 Nov) fall one day after Lakshmi Puja. Kashmir sapphire is already being searched in India, so Bāru could prepare stone-origin content before then.
+- Mass jadau and polki shows, such as Jewellery World in Mumbai, compete for the same search terms. For HNI clients, private viewings are the better format.
 
 ## Sources
 
-- [Bulgari Pink, National Jeweler, 13 Oct 2026](https://www.nationaljeweler.com/articles/15405-christie-s-geneva-to-auction-bulgari-pink-diamond)
-- [Bulgari Pink, Luxury Launches, 13 Oct 2026](https://luxurylaunches.com/auctions/bulgari-pink-diamond-10132026.php)
-- [Bulgari names Hudson Williams ambassador, Designscene, 7 Oct 2026](https://www.designscene.net/2026/10/bulgari-hudson-williams-ambassador.html)
-- [Bulgari at the Journées Particulières, Sortiraparis](https://www.sortiraparis.com/en/what-to-do-in-paris/shopping-fashion/articles/281673-bulgari-on-place-vendome-unveils-itself-for-the-2026-journees-particulieres)
-- [Journées Particulières 2026 programme, Sortiraparis](https://www.sortiraparis.com/en/what-to-do-in-paris/shopping-fashion/guides/62580-les-journees-particulieres-2026-le-programme-des-maisons-lvmh-et-les-dates-de-reservation)
-- [Sabyasachi and The Met, T2, 11 Aug 2026](https://t2online.in/goodlife/fashion-beauty/sabyasachi-announces-landmark-collaboration-with-the-met--new-york/2007163)
-- [Sabyasachi and The Met, Outlook Luxe, 13 Aug 2026](https://luxe.outlookindia.com/watches-jewellery/jewellery/how-sabyasachi-and-the-met-are-turning-5000-years-of-art-into-jewellery)
-- [Sabyasachi x The Met, Indian Retailer, 26 Aug 2026](https://indianretailer.com/brandlicense/archives/news/sabyasachi-x-metropolitan-museum-art-marks-new-era-indian-luxury.n5840)
-- [Thematic jewellery collections for October, SCMP, 4 Oct 2026](https://www.scmp.com/magazines/style/luxury/jewellery/article/3369507/7-thematic-jewellery-collections-october-bulgari-chanel-sabyasachi-and-more)
-- [Zoya "Her Again", Indian Retailer, 7 Oct 2026](https://indianretailer.com/brandlicense/archives/news/zoya-unveils-her-again-high-jewellery-collection-inspired-indias-spice-heritage.n6037)
-- [Sotheby's Royal & Noble Jewels, Geneva](https://www.sothebys.com/en/buy/auction/2026/royal-noble-jewelry-ge2609)
-- [Phillips Geneva Jewels Auction VII](https://www.phillips.com/auction/CH060426)
-- [Art Basel Paris 2026, USA Art News](https://usaartnews.com/news/art-basel-paris-announces-more-than-200-exhibitors-for-its-2026-edition-artsy)
-- [Dhanteras 2026, SmartPuja](https://www.smartpuja.com/blog/dhanteras-2026-date-puja-muhurat-vidhi-significance/)
-- [Lakshmi Puja 2026, BankBazaar](https://www.bankbazaar.com/indian-holiday/lakshmi-puja-holiday.html)
+- [Phillips, Geneva Jewels Auction VII highlights (release 1 Oct 2026)](https://www.phillips.com/press/release/phillips-announces-highlights-of-the-geneva-jewels-auction-vii)
+- [Sotheby's, Royal & Noble Jewels, Geneva](https://www.sothebys.com/en/buy/auction/2026/royal-noble-jewelry-ge2609)
+- [Sotheby's, Frank's Files: Tutti Frutti (2020)](https://www.sothebys.com/en/videos/frank-files-tutti-frutti)
+- [W Magazine, Boucheron high jewelry 2026 (8 Jul 2026)](https://www.wmagazine.com/fashion/boucheron-high-jewelry-2026)
+- [Indian Jeweller, Hazoorilal Legacy "Facets" (4 Jun 2026)](https://www.indianjeweller.in/Indian-Jewellery-News/16255/hazoorilal-legacy-launches-high-jewellery-collection-facets)
+- [Jewellery World Exhibition Mumbai, 24 to 25 Oct 2026](https://www.eventbrite.com/e/jewellery-world-exhibition-mumbai-october-2026-tickets-1985132640165)
+- [Whalesbook, gold and festive jewellery demand (21 Oct 2026)](https://www.whalesbook.com/news/English/consumer-products/Gold-Hits-indian-rupee148-Lakh-Festive-Jewellery-Demand-Stagnates/6ad9028879a16deaeaf947d1)
+- [Upstox, gold market ahead of Diwali per the World Gold Council (updated 25 Oct 2026)](https://upstox.com/news/personal-finance/commodities/pre-diwali-2026-5-key-trends-in-the-gold-market-according-to-wgc/article-202346/)
+- [Sortiraparis, Parcours Bijoux 2026](https://www.sortiraparis.com/en/what-to-visit-in-paris/exhibit-museum/articles/150667-jewelry-trail-2026-paris-s-festival-of-contemporary-jewelry-and-its-quirky-happenings)
+- [Haute Living, luxury brands at Art Basel Paris 2026 (12 Oct 2026)](https://hauteliving.com/2026/10/luxury-brands-art-basel-paris-2026/798912/)
