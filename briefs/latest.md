@@ -1,6 +1,6 @@
-# Trend brief, 2026-10-19
+# Trend brief, 2026-10-26
 
-Markets: India, Mumbai, France, New York, Hong Kong, Italy, London, Global. Core terms: High Jewellery, High Jewelry, Contemporary Art, art jewellery, plus local-language terms and 33 theme terms in 8 themes. India and Mumbai come first in the tables; the other markets are leading indicators. Latest data point: 2026-10-19.
+Markets: India, Mumbai, France, New York, Hong Kong, Italy, London, Global. Core terms: High Jewellery, High Jewelry, Contemporary Art, art jewellery, plus local-language terms and 33 theme terms in 8 themes. India and Mumbai come first in the tables; the other markets are leading indicators. Latest data point: 2026-10-26.
 
 *This week* is the 7-day average ending on each source's latest complete day; *last week* is the 7 days before it. A signal is flagged only when it is statistically unusual against its own history (|z| ≥ 2.0), has moved at least 20%, and is not a tiny number.
 
@@ -8,15 +8,14 @@ Markets: India, Mumbai, France, New York, Hong Kong, Italy, London, Global. Core
 
 | Signal | Market | Term | Theme | This week | Last week | Change | z-score | Streak |
 |---|---|---|---|---|---|---|---|---|
-| Google search interest | India + Global | Bulgari | International houses | 31 | 18 | +71% | +3.1 | up 4w |
-| Google search interest | India | Sabyasachi jewellery | Indian heritage houses | 14 | 9 | +54% | +2.0 | up 1w |
-| Google search interest | France | High Jewelry | Core | 36 | 14 | +153% | +8.5 | up 2w |
-| Google search interest | Italy | alta gioielleria | Core (local language) | 50 | 34 | +47% | +4.8 | up 2w |
-| Google search interest | Global | Kashmir sapphire | Rare stones and materials | 43 | 31 | +40% | +4.5 | up 2w |
-| Google search interest | Global | padparadscha | Rare stones and materials | 45 | 34 | +31% | +4.2 | up 2w |
-| Google search interest | Global | Zoya jewellery | Indian heritage houses | 72 | 58 | +23% | +4.0 | up 2w |
-| Google search interest | Global | polki | Heritage and craft | 71 | 58 | +22% | +3.9 | up 2w |
-| Google search interest | Global | Hazoorilal | Indian heritage houses | 59 | 49 | +21% | +3.9 | up 2w |
+| Google search interest | India | Boucheron | International houses | 52 | 35 | +49% | +4.9 | up 2w |
+| Google search interest | India | Kashmir sapphire | Rare stones and materials | 28 | 22 | +31% | +4.2 | up 2w |
+| Google search interest | India | Hazoorilal | Indian heritage houses | 83 | 65 | +27% | +4.1 | up 2w |
+| Google search interest | Mumbai | art jewellery | Core | 75 | 63 | +20% | +3.9 | up 2w |
+| Google search interest | India | jadau | Heritage and craft | 66 | 54 | +21% | +2.9 | up 2w |
+| Google search interest | India | jewellery investment | Occasions and value | 20 | 15 | +30% | +2.1 | up 2w |
+| Google search interest | Global | artist jewellery | Art and jewellery | 24 | 14 | +71% | +5.6 | up 2w |
+| Google search interest | Global | JAR jewelry | International houses | 14 | 11 | +25% | +4.0 | up 2w |
 
 ## Cooling
 
@@ -34,102 +33,102 @@ Week-over-week change in search interest and news coverage for each theme term, 
 
 | Term | India: search | Global: search |
 |---|---|---|
-| sculptural jewellery | low volume | low volume |
-| artist jewellery | low volume | -79% |
+| sculptural jewellery | no data | low volume |
+| artist jewellery | +2% | +71% ▲ |
 
 ### Rare stones and materials
 
 | Term | India: search | Global: search |
 |---|---|---|
-| Colombian emerald | -67% | new |
-| Kashmir sapphire | low volume | +40% ▲ |
-| padparadscha | new | +31% ▲ |
-| natural pearls | low volume | low volume |
+| Colombian emerald | new | low volume |
+| Kashmir sapphire | +31% ▲ | low volume |
+| padparadscha | +0% | low volume |
+| natural pearls | -36% | -68% |
 | fancy colour diamond | low volume | no data |
-| lab grown diamond | +7% | +0% |
+| lab grown diamond | +25% | +23% |
 
 ### Heritage and craft
 
 | Term | India: search | Global: search |
 |---|---|---|
-| polki | +8% | +22% ▲ |
-| kundan | -0% | +4% |
-| jadau | -0% | +3% |
-| temple jewellery | +1% | -9% |
+| polki | +15% | low volume |
+| kundan | +6% | +4% |
+| jadau | +21% ▲ | no data |
+| temple jewellery | +20% | low volume |
 | heirloom jewellery | no data | no data |
 
 ### Bespoke and provenance
 
 | Term | India: search | Global: search |
 |---|---|---|
-| bespoke jewellery | low volume | +9% |
-| jewellery auction | low volume | -7% |
+| bespoke jewellery | low volume | -1% |
+| jewellery auction | new | +5% |
 
 ### Occasions and value
 
 | Term | India: search | Global: search |
 |---|---|---|
-| bridal jewellery | +14% | -5% |
-| jewellery investment | -15% | -13% |
+| bridal jewellery | +16% | -11% |
+| jewellery investment | +30% ▲ | low volume |
 
 ### International houses
 
 | Term | India: search | Global: search |
 |---|---|---|
-| Cartier | -2% | -5% |
-| Van Cleef | -11% | -8% |
-| Bulgari | +71% ▲ | +443% ▲ |
-| Tiffany | -2% | -7% |
-| Harry Winston | -2% | +14% |
-| Boucheron | -1% | -2% |
-| Buccellati | low volume | +8% |
-| JAR jewelry | low volume | low volume |
+| Cartier | +10% | -3% |
+| Van Cleef | +5% | -5% |
+| Bulgari | -40% | -81% |
+| Tiffany | +2% | +12% |
+| Harry Winston | -6% | -12% |
+| Boucheron | +49% ▲ | -9% |
+| Buccellati | low volume | +9% |
+| JAR jewelry | low volume | +25% ▲ |
 
 ### Indian heritage houses
 
 | Term | India: search | Global: search |
 |---|---|---|
-| Sabyasachi jewellery | +54% ▲ | -3% |
-| Zoya jewellery | +4% | +23% ▲ |
-| Gem Palace | low volume | +13% |
-| Hazoorilal | +11% | +21% ▲ |
-| Amrapali | +7% | +7% |
+| Sabyasachi jewellery | -3% | no data |
+| Zoya jewellery | +8% | low volume |
+| Gem Palace | low volume | low volume |
+| Hazoorilal | +27% ▲ | low volume |
+| Amrapali | -0% | -21% |
 
 ### Hong Kong high jewellers
 
 | Term | India: search | Global: search |
 |---|---|---|
-| Wallace Chan | no data | no data |
-| Michelle Ong | low volume | low volume |
-| Edmond Chin | no data | no data |
+| Wallace Chan | low volume | no data |
+| Michelle Ong | no data | no data |
+| Edmond Chin | no data | low volume |
 
 ## Largest other changes (not statistically confirmed; treat as directional)
 
 | Signal | Market | Term | Theme | This week | Last week | Change | z-score | Streak |
 |---|---|---|---|---|---|---|---|---|
-| Google search interest | India + Global | art jewellery | Core | 45 | 57 | -22% | +1.0 | down 1w |
-| Google search interest | New York | High Jewelry | Core | 81 | 68 | +20% | +3.8 | up 2w |
-| Google search interest | Global | Contemporary Art | Core | 31 | 27 | +15% | -1.0 | up 2w |
-| Google search interest | London | Contemporary Art | Core | 31 | 27 | +15% | -1.0 | up 2w |
-| Google search interest | India + Global | jewellery investment | Occasions and value | 16 | 19 | -15% | +2.0 | down 1w |
-| Google search interest | Hong Kong | 當代藝術 | Core (local language) | 39 | 45 | -14% | +2.7 | down 1w |
-| Google search interest | Global | Harry Winston | International houses | 32 | 28 | +14% | +3.3 | up 2w |
-| Google search interest | India | bridal jewellery | Occasions and value | 79 | 70 | +14% | +1.8 | up 2w |
+| Watched-channel views (new videos) | Auction houses | Sotheby's | – | 8,629 | 3,645 | +137% | – | up 1w |
+| Watched-channel views (new videos) | Houses (India) | Zoya | – | 1,100 | 2,251,674 | -100% | – | down 1w |
+| Watched-channel views (new videos) | Media and publications | FashionTV | – | 716 | 12,381 | -94% | – | down 1w |
+| Watched-channel views (new videos) | Houses (international) | Van Cleef & Arpels | – | 1,833 | 8,929 | -79% | – | down 1w |
+| Watched-channel views (new videos) | Houses (international) | Boucheron | International houses | 2,671 | 1,811 | +47% | – | up 1w |
+| Watched-channel views (new videos) | Houses (international) | Messika | – | 5,385 | 9,664 | -44% | – | down 1w |
+| Watched-channel views (new videos) | Houses (international) | Tiffany & Co. | – | 3,077 | 2,217 | +39% | – | up 1w |
+| Google search interest | Italy | High Jewelry | Core | 24 | 38 | -37% | +1.9 | down 1w |
 
 ## Google search interest, week over week by market
 
 | Search term | India | Mumbai | France | New York | Hong Kong | Italy | London | Global |
 |---|---|---|---|---|---|---|---|---|
-| High Jewellery | +1% | low volume | new | low volume | new | low volume | +0% | +0% |
-| High Jewelry | -6% | low volume | +153% ▲ | +20% | low volume | low volume | -13% | -13% |
-| Contemporary Art | low volume | low volume | -6% | -10% | low volume | -6% | +15% | +15% |
-| art jewellery | -22% | +0% | no data | low volume | new | low volume | -8% | -8% |
-| haute joaillerie | · | · | -7% | · | · | · | · | · |
-| art contemporain | · | · | +5% | · | · | · | · | · |
+| High Jewellery | +6% | low volume | new | no data | new | low volume | -10% | -10% |
+| High Jewelry | -12% | low volume | low volume | -16% | low volume | -37% | +2% | +2% |
+| Contemporary Art | low volume | low volume | +6% | +5% | -18% | -12% | -17% | -17% |
+| art jewellery | +15% | +20% ▲ | no data | low volume | new | no data | -3% | -3% |
+| haute joaillerie | · | · | -3% | · | · | · | · | · |
+| art contemporain | · | · | +11% | · | · | · | · | · |
 | 高級珠寶 | · | · | · | · | low volume | · | · | · |
-| 當代藝術 | · | · | · | · | -14% | · | · | · |
-| alta gioielleria | · | · | · | · | · | +47% ▲ | · | · |
-| arte contemporanea | · | · | · | · | · | +6% | · | · |
+| 當代藝術 | · | · | · | · | low volume | · | · | · |
+| alta gioielleria | · | · | · | · | · | -10% | · | · |
+| arte contemporanea | · | · | · | · | · | -18% | · | · |
 
 ▲ / ▼ = flagged. **·** = term not tracked in that market. **no data** = tracked, but Google returned nothing (volume too low). **low volume** = too few searches to read. Each term is indexed to its own 90-day peak, so compare *changes* across cells, not levels. Mumbai = Maharashtra, New York = New York state, London = England (Google has no city-level data here).
 
@@ -141,24 +140,24 @@ Only videos about jewellery are counted: every video must name jewellery or gems
 
 | Channel | Found as | Subscribers | Jewellery videos of all new (14d) | Views | Top video |
 |---|---|---|---|---|---|
-| Messika | Messika | 5,500 | 20 of 20 | 9,664 | [#MessikaHighJewelry 2026 Show, Terres de Contrastes up close. #Messika](https://www.youtube.com/watch?v=dIWlJfRx7IM) (1,762 views) |
-| Van Cleef & Arpels | Van Cleef & Arpels | 119,000 | 2 of 2 | 8,929 | [Van Cleef & Arpels' graceful High Jewelry ballerinas / A star-studded…](https://www.youtube.com/watch?v=zfn5fTVQGlU) (7,413 views) |
-| Cartier | Cartier | 305,000 | 2 of 3 | 3,487 | [LOVE Unlimited: A Testament to Cartier’s Expertise in Jewelry-Making](https://www.youtube.com/watch?v=n2-qhnTJNgo) (1,912 views) |
-| Tiffany & Co. | Tiffany & Co. | 180,000 | 2 of 4 | 2,217 | [Tiffany & Co. x Crystal Bridges Museum of American Art: A Celebration…](https://www.youtube.com/watch?v=572EzS3vMUI) (1,346 views) |
-| Boucheron | Boucheron | 12,700 | 6 of 6 | 1,811 | [Stone Hunters / Boucheron](https://www.youtube.com/watch?v=_jRpNiEUZ1E) (733 views) |
-| Chopard | Chopard | 18,100 | 1 of 1 | 368 | [HAPPY DIAMONDS – Behind a Cinematic Icon](https://www.youtube.com/watch?v=SweomHN9tx8) (368 views) |
-| Bulgari | Bvlgari | 308,000 | 0 of 5 | 0 | – |
-| Harry Winston | Harry Winston | 16,500 | 0 of 0 | 0 | – |
-| Buccellati | Buccellati | 3,000 | 0 of 0 | 0 | – |
-| Graff | Doony Graff - Topic | 23,300 | 0 of 0 | 0 | – |
+| Messika | Messika | 5,520 | 6 of 6 | 5,385 | [Féroce - Terres de Contrastes collection. Two Angles, One Story. #Mes…](https://www.youtube.com/watch?v=6QFPLkrXFK8) (1,332 views) |
+| Cartier | Cartier | 305,000 | 2 of 3 | 4,212 | [LOVE Unlimited: A Testament to Cartier’s Expertise in Jewelry-Making](https://www.youtube.com/watch?v=n2-qhnTJNgo) (2,336 views) |
+| Tiffany & Co. | Tiffany & Co. | 180,000 | 2 of 4 | 3,077 | [Tiffany & Co. x Crystal Bridges Museum of American Art: A Celebration…](https://www.youtube.com/watch?v=572EzS3vMUI) (1,833 views) |
+| Boucheron | Boucheron | 12,800 | 12 of 12 | 2,671 | [Les Animaux / Boucheron](https://www.youtube.com/watch?v=4zKQ1fT4198) (590 views) |
+| Van Cleef & Arpels | Van Cleef & Arpels | 119,000 | 1 of 1 | 1,833 | [Van Cleef & Arpels' graceful High Jewelry ballerinas / Whirl into a b…](https://www.youtube.com/watch?v=p6P29Mf5RFk) (1,833 views) |
+| Buccellati | Buccellati | 3,000 | 2 of 2 | 977 | [Buccellati - Making of Torsadé - Teaser](https://www.youtube.com/watch?v=-cDGmlPMtTM) (771 views) |
+| Bulgari | Bvlgari | 308,000 | 0 of 4 | 0 | – |
+| Harry Winston | Harry Winston | 16,600 | 0 of 0 | 0 | – |
+| Chopard | Chopard | 18,100 | 0 of 1 | 0 | – |
+| Graff | Doony Graff - Topic | 23,500 | 0 of 0 | 0 | – |
 
 ### Houses (India)
 
 | Channel | Found as | Subscribers | Jewellery videos of all new (14d) | Views | Top video |
 |---|---|---|---|---|---|
-| Zoya | ZOYA - A TATA Product | 10,800 | 3 of 3 | 2,251,674 | [ZOYA with Anoushka Shankar / her again](https://www.youtube.com/watch?v=YvLVDl1WmxA) (2,249,903 views) |
-| Hazoorilal Legacy | Hazoorilal Legacy | 4,780 | 3 of 3 | 238 | [Hazoorilal Legacy X Roseroom Couture](https://www.youtube.com/watch?v=KnCwhSALmQY) (161 views) |
-| Gem Palace | Gem Palace | 724 | 1 of 1 | 214 | [Gem Palace - Moonstone: The Blue Magical Wonder Of Gem World](https://www.youtube.com/watch?v=gsjuh7svA_w) (214 views) |
+| Zoya | ZOYA - A TATA Product | 10,800 | 1 of 1 | 1,100 | [ZOYA with Anoushka Shankar / 'her again'](https://www.youtube.com/watch?v=ViyU7Ck_3LU) (1,100 views) |
+| Gem Palace | Gem Palace | 724 | 2 of 2 | 331 | [Gem Palace - Moonstone: The Blue Magical Wonder Of Gem World](https://www.youtube.com/watch?v=gsjuh7svA_w) (218 views) |
+| Hazoorilal Legacy | Hazoorilal Legacy | 4,780 | 0 of 0 | 0 | – |
 | Sabyasachi Jewellery | SabyasachiOfficial | 192,000 | 0 of 0 | 0 | – |
 | Amrapali Jewels | Amrapali Jewels | 237 | 0 of 0 | 0 | – |
 
@@ -166,35 +165,35 @@ Only videos about jewellery are counted: every video must name jewellery or gems
 
 | Channel | Found as | Subscribers | Jewellery videos of all new (14d) | Views | Top video |
 |---|---|---|---|---|---|
-| Wallace Chan | Wallace Chan | 3,230 | 0 of 0 | 0 | – |
+| Wallace Chan | Wallace Chan | 3,240 | 0 of 0 | 0 | – |
 
 ### Media and publications
 
 | Channel | Found as | Subscribers | Jewellery videos of all new (14d) | Views | Top video |
 |---|---|---|---|---|---|
-| FashionTV | FashionTV | 822,000 | 3 of 35 | 12,381 | [Adriana Lima & Irina Shayk Ignite the Grand Palais for MESSIKA High J…](https://www.youtube.com/watch?v=2UQUwIE50M8) (6,525 views) |
-| Vogue India | VOGUE India | 863,000 | 0 of 11 | 0 | – |
-| Vogue | Vogue | 16,900,000 | 0 of 27 | 0 | – |
-| Harper's Bazaar | Harper's BAZAAR | 1,830,000 | 0 of 27 | 0 | – |
-| Business of Fashion | The Business of Fashion | 197,000 | 0 of 3 | 0 | – |
+| Vogue India | VOGUE India | 863,000 | 1 of 7 | 18,582 | [Twinkle Khanna on her favourite jewellery / Vogue Playbook](https://www.youtube.com/watch?v=OxIgiFLqOM0) (18,582 views) |
+| FashionTV | FashionTV | 823,000 | 1 of 33 | 716 | [CUOIO DI TOSCANA: Gemstones, Crystals, and Woven Leather / Milan Fash…](https://www.youtube.com/watch?v=0XnSDawXy6Y) (716 views) |
+| Vogue | Vogue | 17,000,000 | 0 of 22 | 0 | – |
+| Harper's Bazaar | Harper's BAZAAR | 1,830,000 | 0 of 16 | 0 | – |
+| Business of Fashion | The Business of Fashion | 197,000 | 0 of 2 | 0 | – |
 
 ### Auction houses
 
 | Channel | Found as | Subscribers | Jewellery videos of all new (14d) | Views | Top video |
 |---|---|---|---|---|---|
-| Sotheby's | Sotheby's | 355,000 | 1 of 24 | 3,645 | [Cartier's Tutti Frutti, But Not as You Know It / Sotheby’s #sothebys …](https://www.youtube.com/watch?v=2-D5tw3egXU) (3,645 views) |
-| Christie's | Christie's | 228,000 | 1 of 19 | 899 | [By the Numbers: 260 Years of Jewels at Christie's](https://www.youtube.com/watch?v=44o1aQwSRdo) (899 views) |
-| Phillips | PHILLIPS | 19,400 | 2 of 8 | 615 | [Centuries of Brilliance / The Geneva Jewels Auction at Phiilips](https://www.youtube.com/watch?v=nZu5yflFTgk) (371 views) |
-| Bonhams | Bonhams Auctioneers | 15,500 | 0 of 8 | 0 | – |
+| Sotheby's | Sotheby's | 356,000 | 1 of 28 | 8,629 | [Cartier's Tutti Frutti, But Not as You Know It / Sotheby’s #sothebys …](https://www.youtube.com/watch?v=2-D5tw3egXU) (8,629 views) |
+| Christie's | Christie's | 228,000 | 1 of 18 | 1,164 | [By the Numbers: 260 Years of Jewels at Christie's](https://www.youtube.com/watch?v=44o1aQwSRdo) (1,164 views) |
+| Phillips | PHILLIPS | 19,500 | 2 of 6 | 695 | [Centuries of Brilliance / The Geneva Jewels Auction at Phiilips](https://www.youtube.com/watch?v=nZu5yflFTgk) (406 views) |
+| Bonhams | Bonhams Auctioneers | 15,500 | 0 of 4 | 0 | – |
 | Saffronart | Saffronart  | 21,700 | 0 of 0 | 0 | – |
 
 ## Coverage and data quality
 
-- **Google Trends**: 96 series; latest data 2026-10-18; 12 weeks of history; last run: 22 empty, 82 ok
-- **Wikipedia**: 8 series; latest data 2026-10-15; 12 weeks of history; last run: 8 ok
-- **YouTube channels**: 26 series; latest data 2026-10-19; 1 weeks of history; z-scores need 5+ weeks, so flags are not available yet; changes shown are directional only; last run: 26 ok
+- **Google Trends**: 98 series; latest data 2026-10-25; 12 weeks of history; last run: 20 empty, 84 ok
+- **Wikipedia**: 8 series; latest data 2026-10-25; 12 weeks of history; last run: 8 ok
+- **YouTube channels**: 26 series; latest data 2026-10-26; 2 weeks of history; z-scores need 5+ weeks, so flags are not available yet; changes shown are directional only; last run: 26 ok
 - **Reddit**: no usable data (REDDIT_CLIENT_ID / REDDIT_CLIENT_SECRET not set)
-- **GDELT news**: no usable data (RuntimeError: HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com; RuntimeError: HTTPSConnectionPool(host='api.gdeltproject.org', port=443): Read timed out. (read timeout=30))
-- **India vs Global**: 2 of 33 Google Trends terms have exactly the same daily values in both, so Global is not independent evidence for them (India probably dominates those searches). Terms: Michelle Ong, sculptural jewellery.
+- **GDELT news**: no usable data (RuntimeError: HTTP 429: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com; 3 failures in a row (likely rate-limited); stopping GDELT for this run)
+- **India vs Global**: 1 of 33 Google Trends terms have exactly the same daily values in both, so Global is not independent evidence for them (India probably dominates those searches). Terms: Michelle Ong.
 
 Every number above comes from `data/trends.db`; the full per-series table is in `briefs/latest-signals.csv`. YouTube and Reddit snapshots only start accumulating from the first run, so their flags appear after about five weeks. GDELT counts news articles by the publisher's country, not the country an article is about; Mumbai, New York and London map to India, the United States and the United Kingdom.
