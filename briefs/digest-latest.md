@@ -1,53 +1,50 @@
-# Research digest, week of 2026-10-26
+# Research digest, week of 2026-11-02
 
-Reads the trend brief dated 2026-10-26. Google Trends data runs to 25 October, so "this week" is 19 to 25 October and "last week" is 12 to 18 October (YouTube figures run one day later). **Findings** are what a source says. **Hypotheses** are my reading and are labelled. Where nothing was found, it says so. This brief had no "Why did it move? Clues" section, so every lead below is from my own searches. The news feed (GDELT) failed this week, so there was no news data in the brief.
+Reads the trend brief dated 2026-11-02. Google Trends data runs to 1 November, so "this week" is 26 October to 1 November and "last week" is 19 to 25 October (YouTube figures run one day later). **Findings** are what a source says. **Hypotheses** are my reading and are labelled. Where nothing was found, it says so. This brief had no "Why did it move? Clues" section and the news feed (GDELT) failed again, so every lead below is from my own searches.
 
 ## Bottom line
 
-- **Most of the India moves have no specific trigger.** I found no dated item for Boucheron (+49%), Hazoorilal (+27%) or Mumbai "art jewellery" (+20%). For Kashmir sapphire (+31%) there is relevant sale material, but none that points at India.
-- **A pre-Diwali lift is a partial explanation, not a full one.** Heritage and bridal terms rose together (jadau +21%, temple jewellery +20%, bridal jewellery +16%, polki +15%), but Sabyasachi (-3%) and Amrapali (0%) were flat. Boucheron, Kashmir sapphire and Hazoorilal rose much more than the group, so those look specific. Diwali (Lakshmi Puja) is 8 November.
-- **Bulgari reversed.** Last week's flagged Bulgari rise is gone: India -40%, Global -81% (not flagged). That fits the Bulgari Pink news fading, but it is a hypothesis.
-- **Clue count:** the brief gave a dated clue for 0 of 8 flagged moves. After research, 2 of 8 have a dated item inside the week (jadau, jewellery investment), and both are context rather than a specific trigger.
+- **Only Global Tiffany (+120%) has a dated item inside the week.** Tiffany revealed its 2026 holiday campaign with Amanda Seyfried on 28 October. Whether it explains a rise of this size is a hypothesis. The other five flagged moves have no dated trigger that I could find.
+- **The India rises look specific, not seasonal.** Festive terms were flat (polki +9%, kundan +3%, jadau 0%, temple jewellery +1%, bridal jewellery -10%), so a general pre-Diwali lift does not explain Colombian emerald (+158%), natural pearls (+26%), artist jewellery (+45%) or Harry Winston (+23%). Diwali (Lakshmi Puja) is 8 November.
+- **A stone-and-auction thread is plausible but unproven.** Phillips' Geneva sale on 9 November lists Harry Winston emerald earrings of Colombian origin, and Sotheby's Geneva sale (to 11 November) lists emerald and natural pearl lots. Neither source mentions India.
+- **Clue count:** the brief gave a dated clue for 0 of 6 flagged moves. After research, 1 of 6 has a dated item inside the week (Tiffany).
 
 ## Flagged moves checked
 
 | Move in the brief | What I found | Fit with timing |
 |---|---|---|
-| **Boucheron**, India +49% (52 vs 35); Global -9% | Nothing dated to the window. W Magazine covered Boucheron's 2026 high jewellery collection on 8 July (no India link). Two Boucheron lots are in Phillips' Geneva sale on 9 Nov (a ruby and diamond parure, est. USD 70,000 to 100,000; a natural pearl and diamond necklace, c. 1891, est. USD 85,000 to 120,000), but the Phillips preview tour had no India stop. | **Nothing found.** The W piece is **Earlier**. The rise is India-specific (Global fell). |
-| **Kashmir sapphire**, India +31% (28 vs 22) | Phillips' 1 Oct release lists three Kashmir sapphire lots for 9 Nov: a 16.40 ct ring (USD 2.2 to 3.5 million), an 18.69 ct cabochon brooch/pendant (USD 1 to 1.5 million) and a 5.62 ct ring (USD 150,000 to 250,000). Preview stops: Paris 17 to 21 Oct, London 22 to 24 Oct, Taipei 23 to 25 Oct. Sotheby's Royal & Noble page (11 Nov) does not name Kashmir. | **Thematic only.** Tour dates overlap the window; no India stop and no source linking it to Indian searches. |
-| **Hazoorilal**, India +27% (83 vs 65) | Nothing dated to the window. Indian Jeweller reported its "Facets" high jewellery collection on 4 June. Its YouTube channel posted no videos. | **Nothing found** (Facets is **Earlier**). |
-| **art jewellery**, Mumbai +20% (75 vs 63) | Nothing found about art jewellery in Mumbai. | **Nothing found.** |
-| **jadau**, India +21% (66 vs 54) | Jewellery World Exhibition, JW Marriott Juhu, Mumbai, 24 and 25 Oct, lists jadau, polki and temple jewellery from jewellers in Jaipur, Surat, Delhi and other cities. | **Matches** only the last two days; the term was already up two weeks. Likely part of the general festive lift. |
-| **jewellery investment**, India +30% (20 vs 15, a small base) | Whalesbook (21 Oct): gold about Rs 1.48 lakh per 10 g, roughly 35% above a year ago; volume down 15% year on year through Dussehra. Upstox, citing the World Gold Council (updated 25 Oct): prices steadied after a September fall, and mutual funds paused new gold fund-of-funds subscriptions from 16 Oct. | **Matches** (dated in the window), but it is context, not a trigger. |
-| **artist jewellery**, Global +71% (24 vs 14); India +2% | Parcours Bijoux, a Paris festival of contemporary jewellery, runs 1 to 31 Oct (about 35 events). Art Basel Paris was 23 to 25 Oct (vernissage 22 Oct); the guide I opened mentions no jewellery. | **Thematic only.** |
-| **JAR jewelry**, Global +25% (14 vs 11) | Phillips says its sale includes jewels signed JAR but names no piece. Sotheby's page does not mention JAR. | **Thematic only.** |
+| **Colombian emerald**, India +158% (37 vs 14); Global "new" | Phillips' fall 2026 tour article names "Pair of emerald and diamond earrings weighing 9.67 and 10.29 carats, Colombian origin" by Harry Winston, for the 9 Nov sale. Sotheby's Royal & Noble page lists twelve emerald lots but names none as Colombian. Nothing found in Indian trade press or on a celebrity or event link. | **Thematic only.** Phillips' tour (to 25 Oct, no India stop) ended before the rise. |
+| **artist jewellery**, India +45% (46 vs 32); Global -36% | Nothing found for India. Parcours Bijoux in Paris (1 to 31 Oct, in the events file) is a French event and Global fell. | **Nothing found.** The rise is India-specific. |
+| **natural pearls**, India +26% (32 vs 25) | Sotheby's Royal & Noble page lists natural pearl lots (1020, 1031, 1032, 1033), including pendants, earclips and bracelets. No estimates or India link on the page. | **Thematic only.** |
+| **Harry Winston**, India +23% (77 vs 62); Global -28% | Nothing India-specific. Its Shanghai exhibition ran 7 to 13 Sept (release dated 25 Aug) and does not mention India. The Phillips emerald earrings above are the only dated item. | **Earlier** (Shanghai); otherwise **Nothing found**. India-specific. |
+| **Tiffany**, Global +120% (53 vs 24); India -5% | retailboss (28 Oct) reports Tiffany's "Love Is a Gift" holiday campaign with Amanda Seyfried, showing HardWear pieces. Tiffany's own press page, as I fetched it, listed nothing after 6 July 2026. | **Matches** (28 Oct is inside the week). Whether a campaign alone moves search by 120% is a hypothesis. |
+| **Amrapali**, Global +42% (57 vs 40); India +25% | Tribe Amrapali made the jewellery for the film *Ramayana*. Hollywood Reporter India and T2 (both 19 Oct) describe 4,000-plus and 4,500 pieces respectively. T2 gives the film's release as 5 Nov 2026. | **One week early / Earlier.** Coverage was 19 Oct; the release is after the window. Hypothesis: build-up to the release is feeding searches. |
 
 ## Not explained
 
-Boucheron in India, Hazoorilal, and Mumbai art jewellery have no dated clue. On YouTube, Sotheby's top jewellery video ("Cartier's Tutti Frutti, But Not as You Know It", 8,629 views, +137% for the channel) has no date or sale link that I could verify; the Sotheby's Tutti Frutti page I found is from 2020, and the 11 Nov sale page does not list Tutti Frutti. Zoya's -100% looks like a counting effect: its top video is the same one in both weeks (2,251,674 views last week, 1,100 this week), so treat it as unreliable (hypothesis). Graff is still matched to the wrong channel ("Doony Graff - Topic").
+Colombian emerald in India has no dated cause, and it is the biggest move in the brief. Artist jewellery in India has none either. The two sources disagree on Amrapali's piece count (4,000-plus against 4,500). On YouTube, Sotheby's top jewellery video ("Lost Royal Jewels, Romanov Sapphires and Cartier Icons", 35,719 views, channel views +314%) fits the 11 Nov Royal & Noble sale, but I could not verify the upload date. Boucheron's top video is a Christie's monograph feature (2,261 views); date also unverified. Zoya's and Cartier's -100% are zero-video weeks, and Graff is still matched to "Doony Graff - Topic", a wrong channel.
 
 ## Hypotheses to test (not findings)
 
-1. **Festive lift is partial.** Watch jadau, polki, temple jewellery and bridal jewellery in the 2 and 9 November briefs; a broad move through Dhanteras (6 Nov) would confirm it.
-2. **Kashmir sapphire and Hazoorilal are building.** Both are up two weeks in India. If Kashmir sapphire keeps rising into the 9 to 11 Nov Geneva sales, auction publicity is a plausible driver.
-3. **Boucheron's India rise is not from its own content.** Its channel posted 12 jewellery videos in 14 days (2,671 views, top video 590), too small to explain it.
+1. **Auction publicity reaches India.** If Colombian emerald, Harry Winston and natural pearls stay up through the 9 to 11 Nov Geneva sales, auction coverage is a plausible driver. Check the 9 Nov brief.
+2. **Tiffany's spike is short.** A campaign reveal usually fades; if Tiffany is back near 24 next week, it was a one-week event.
+3. **Amrapali follows the film.** Expect a further lift around 5 Nov; if it does not come, the film is not the driver.
 
 ## What this suggests for Bāru (judgement)
 
 - Public search mostly reflects the general public, not HNI or UHNI clients. Read these as what is being talked about, not buyer intent.
-- With gold near Rs 1.48 lakh per 10 g and mass-market buyers moving to lighter, lower-carat pieces (Whalesbook), a stone-led story (origin, rarity, provenance) separates high jewellery from gold-weight buying.
-- Geneva sales (9 to 11 Nov) fall one day after Lakshmi Puja. Kashmir sapphire is already being searched in India, so Bāru could prepare stone-origin content before then.
-- Mass jadau and polki shows, such as Jewellery World in Mumbai, compete for the same search terms. For HNI clients, private viewings are the better format.
+- Colombian emerald and natural pearls are rising in India while festive terms are not. A stone-led message on origin and rarity may reach people who already look for it, but this is one week of data.
+- The Geneva sales (9 to 11 Nov) land right after Diwali. Notes on how Indian collectors read those results could be useful content for clients.
+- Amrapali's film tie-up shows how entertainment can drive heritage jewellery interest. For HNI clients, private viewings are likely a better route than mass visibility.
 
 ## Sources
 
-- [Phillips, Geneva Jewels Auction VII highlights (release 1 Oct 2026)](https://www.phillips.com/press/release/phillips-announces-highlights-of-the-geneva-jewels-auction-vii)
+- [Phillips, The Geneva Jewels Global Tour Fall 2026](https://www.phillips.com/article/the-geneva-jewels-global-tour-fall-2026-phillips-auction)
 - [Sotheby's, Royal & Noble Jewels, Geneva](https://www.sothebys.com/en/buy/auction/2026/royal-noble-jewelry-ge2609)
-- [Sotheby's, Frank's Files: Tutti Frutti (2020)](https://www.sothebys.com/en/videos/frank-files-tutti-frutti)
-- [W Magazine, Boucheron high jewelry 2026 (8 Jul 2026)](https://www.wmagazine.com/fashion/boucheron-high-jewelry-2026)
-- [Indian Jeweller, Hazoorilal Legacy "Facets" (4 Jun 2026)](https://www.indianjeweller.in/Indian-Jewellery-News/16255/hazoorilal-legacy-launches-high-jewellery-collection-facets)
-- [Jewellery World Exhibition Mumbai, 24 to 25 Oct 2026](https://www.eventbrite.com/e/jewellery-world-exhibition-mumbai-october-2026-tickets-1985132640165)
-- [Whalesbook, gold and festive jewellery demand (21 Oct 2026)](https://www.whalesbook.com/news/English/consumer-products/Gold-Hits-indian-rupee148-Lakh-Festive-Jewellery-Demand-Stagnates/6ad9028879a16deaeaf947d1)
-- [Upstox, gold market ahead of Diwali per the World Gold Council (updated 25 Oct 2026)](https://upstox.com/news/personal-finance/commodities/pre-diwali-2026-5-key-trends-in-the-gold-market-according-to-wgc/article-202346/)
-- [Sortiraparis, Parcours Bijoux 2026](https://www.sortiraparis.com/en/what-to-visit-in-paris/exhibit-museum/articles/150667-jewelry-trail-2026-paris-s-festival-of-contemporary-jewelry-and-its-quirky-happenings)
-- [Haute Living, luxury brands at Art Basel Paris 2026 (12 Oct 2026)](https://hauteliving.com/2026/10/luxury-brands-art-basel-paris-2026/798912/)
+- [National Jeweler, Christie's Geneva to auction Bulgari Pink](https://nationaljeweler.com/articles/15405-christie-s-geneva-to-auction-bulgari-pink-diamond)
+- [retailboss, Tiffany & Co. features Amanda Seyfried in its 2026 holiday campaign (28 Oct 2026)](https://retailboss.co/tiffany-co-features-amanda-seyfried-in-its-2026-holiday-campaign)
+- [Tiffany press page](https://press.tiffany.com/)
+- [Hollywood Reporter India, The jewellery of Ramayana (19 Oct 2026)](https://www.hollywoodreporterindia.com/features/interviews/exclusive-the-jewellery-of-ramayana-how-amrapali-crafted-4000-pieces-for-indian-cinemas-grandest-epic)
+- [T2, How Tribe Amrapali is bringing three kingdoms to life in Ramayana (19 Oct 2026)](https://t2online.in/screen/bollywood/how-tribe-amrapali-is-bringing-three-legendary-kingdoms-to-life-through-jewellery-in-ramayana/2008741)
+- [Kyodo News PR Wire, Harry Winston Rare Jewels of the World, Shanghai (25 Aug 2026)](https://kyodonewsprwire.jp/release/202608254679)
+- [Outlook Luxe, The biggest jewellery trends of 2026 (9 Feb 2026, checked for emerald, pearl and artist-jewellery mentions)](https://luxe.outlookindia.com/watches-jewellery/jewellery/the-biggest-jewellery-trends-of-2026)

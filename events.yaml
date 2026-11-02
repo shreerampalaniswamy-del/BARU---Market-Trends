@@ -51,7 +51,7 @@ events:
     source: https://www.bankbazaar.com/indian-holiday/lakshmi-puja-holiday.html
   - date: 2026-11-09
     name: Phillips, The Geneva Jewels Auction VII
-    tags: [jewellery auction, sapphire, kashmir sapphire, boucheron, harry winston, high jewellery, fancy colour diamond]
+    tags: [jewellery auction, sapphire, kashmir sapphire, boucheron, harry winston, high jewellery, fancy colour diamond, emerald, colombian emerald]
     markets: [Global, India]
     source: https://www.phillips.com/auction/CH060426
   - date: 2026-11-10
@@ -61,7 +61,7 @@ events:
     source: https://nationaljeweler.com/articles/15405-christie-s-geneva-to-auction-bulgari-pink-diamond
   - date: 2026-11-11
     name: Sotheby's Royal & Noble Jewels, Geneva (197.80 ct Romanov sapphire mounted by Cartier)
-    tags: [jewellery auction, sapphire, cartier, bulgari, high jewellery]
+    tags: [jewellery auction, sapphire, cartier, bulgari, high jewellery, emerald, natural pearls, pearl]
     markets: [Global, India]
     source: https://www.sothebys.com/en/buy/auction/2026/royal-noble-jewelry-ge2609
   - date: 2026-10-01
@@ -82,3 +82,13 @@ events:
     tags: [jadau, polki, temple jewellery, bridal jewellery, kundan]
     markets: [India, Mumbai]
     source: https://www.eventbrite.com/e/jewellery-world-exhibition-mumbai-october-2026-tickets-1985132640165
+  - date: 2026-10-28
+    name: Tiffany & Co. reveals "Love Is a Gift" 2026 holiday campaign with Amanda Seyfried
+    tags: [tiffany]
+    markets: [Global]
+    source: https://retailboss.co/tiffany-co-features-amanda-seyfried-in-its-2026-holiday-campaign
+  - date: 2026-11-05
+    name: Ramayana Part 1 worldwide release (jewellery by Tribe Amrapali; coverage from 19 Oct)
+    tags: [amrapali, tribe amrapali, heritage, indian heritage]
+    markets: [India, Mumbai, Global]
+    source: https://t2online.in/screen/bollywood/how-tribe-amrapali-is-bringing-three-legendary-kingdoms-to-life-through-jewellery-in-ramayana/2008741
