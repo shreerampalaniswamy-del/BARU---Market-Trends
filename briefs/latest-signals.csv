@@ -1,137 +1,138 @@
 source,market,term,metric,current,previous,wow,z,streak,weeks,last_date,flagged,direction,low_level,stale,rolloff
-google_trends,France,Contemporary Art,interest_index,21.571428571428573,30.428571428571427,-0.29107981220657264,1.885563663652737,-1,12,2026-11-01,False,,False,False,False
-google_trends,France,High Jewellery,interest_index,14.285714285714286,0.0,,5.714285714285714,1,12,2026-10-18,False,,False,True,False
-google_trends,France,High Jewelry,interest_index,23.0,26.857142857142858,-0.1436170212765958,2.662705072365183,-1,12,2026-11-01,False,,False,False,False
-google_trends,France,art contemporain,interest_index,57.857142857142854,68.14285714285714,-0.15094339622641506,0.8786416042567271,-1,12,2026-11-01,False,,False,False,False
+google_trends,France,Contemporary Art,interest_index,13.571428571428571,12.571428571428571,0.07954545454545459,0.992374758091591,2,12,2026-11-08,False,,False,False,False
+google_trends,France,High Jewellery,interest_index,0.0,0.0,,-0.31622776601683794,0,12,2026-11-08,False,,True,False,False
+google_trends,France,High Jewelry,interest_index,24.428571428571427,25.714285714285715,-0.050000000000000044,2.988352388859118,-1,12,2026-11-08,False,,False,False,False
+google_trends,France,art contemporain,interest_index,55.285714285714285,59.42857142857143,-0.06971153846153855,0.48798923934276045,-2,12,2026-11-08,False,,False,False,False
 google_trends,France,art jewellery,interest_index,0.0,0.0,,0.0,0,12,2026-11-01,False,,True,False,False
-google_trends,France,haute joaillerie,interest_index,80.28571428571429,78.71428571428571,0.019963702359346858,3.231721507152114,2,12,2026-11-01,False,,False,False,False
-google_trends,Global,Amrapali,interest_index,56.57142857142857,39.714285714285715,0.42446043165467606,4.6387655748800904,2,12,2026-11-01,True,rising,False,False,False
-google_trends,Global,Boucheron,interest_index,14.428571428571429,13.857142857142858,0.04123711340206193,1.5828100900290147,2,12,2026-11-01,False,,False,False,False
-google_trends,Global,Buccellati,interest_index,75.0,72.57142857142857,0.0334645669291338,3.2786843378163097,2,12,2026-11-01,False,,False,False,False
-google_trends,Global,Bulgari,interest_index,3.4285714285714284,3.4285714285714284,0.0,-0.549092917689497,0,12,2026-11-01,False,,True,False,False
-google_trends,Global,Cartier,interest_index,47.857142857142854,49.0,-0.023323615160349864,-1.6599532822656404,-8,12,2026-11-01,False,,False,False,False
-google_trends,Global,Colombian emerald,interest_index,27.285714285714285,0.0,,10.914285714285715,1,12,2026-11-01,False,,False,False,False
-google_trends,Global,Contemporary Art,interest_index,18.571428571428573,21.428571428571427,-0.1333333333333332,-1.6993487088540342,-2,12,2026-11-01,False,,False,False,False
-google_trends,Global,Edmond Chin,interest_index,0.0,0.0,,-0.467064524636057,0,12,2026-10-25,False,,True,False,False
-google_trends,Global,Gem Palace,interest_index,0.0,0.0,,-0.47060853438716643,0,12,2026-10-25,False,,True,False,False
-google_trends,Global,Harry Winston,interest_index,27.428571428571427,37.857142857142854,-0.2754716981132075,2.018271228572963,-1,12,2026-11-01,False,,False,False,False
-google_trends,Global,Hazoorilal,interest_index,0.0,0.0,,-0.31622776601683794,0,12,2026-10-25,False,,True,False,False
-google_trends,Global,High Jewellery,interest_index,28.714285714285715,25.571428571428573,0.12290502793296088,1.2267592777909275,3,12,2026-11-01,False,,False,False,False
-google_trends,Global,High Jewelry,interest_index,12.857142857142858,13.857142857142858,-0.07216494845360821,-0.03256111225887425,-1,12,2026-11-01,False,,False,False,False
-google_trends,Global,JAR jewelry,interest_index,12.428571428571429,35.857142857142854,-0.6533864541832669,0.8894693338959665,-1,12,2026-11-01,False,,False,False,False
+google_trends,France,haute joaillerie,interest_index,72.85714285714286,76.42857142857143,-0.04672897196261683,2.9997306776363595,-1,12,2026-11-08,False,,False,False,False
+google_trends,Global,Amrapali,interest_index,23.142857142857142,18.714285714285715,0.23664122137404564,3.1308745769058763,3,12,2026-11-08,True,rising,False,False,False
+google_trends,Global,Boucheron,interest_index,21.428571428571427,22.571428571428573,-0.05063291139240522,1.199041002678574,-1,12,2026-11-08,False,,False,False,False
+google_trends,Global,Buccellati,interest_index,1.4285714285714286,2.5714285714285716,-0.4444444444444444,-0.025343881399022605,-1,12,2026-11-08,False,,True,False,False
+google_trends,Global,Bulgari,interest_index,3.7142857142857144,3.2857142857142856,0.1304347826086958,-0.37917829833336963,2,12,2026-11-08,False,,True,False,False
+google_trends,Global,Cartier,interest_index,46.857142857142854,48.714285714285715,-0.0381231671554253,-1.6388949789501088,-9,12,2026-11-08,False,,False,False,False
+google_trends,Global,Colombian emerald,interest_index,14.285714285714286,11.428571428571429,0.25,4.031904016714684,2,12,2026-11-08,True,rising,False,False,False
+google_trends,Global,Contemporary Art,interest_index,18.571428571428573,18.285714285714285,0.015625000000000222,-1.1934793354511932,2,12,2026-11-08,False,,False,False,False
+google_trends,Global,Edmond Chin,interest_index,0.0,0.0,,-0.467064524636057,0,12,2026-10-25,False,,True,True,False
+google_trends,Global,Gem Palace,interest_index,0.0,0.0,,-0.31622776601683794,0,12,2026-11-08,False,,True,False,False
+google_trends,Global,Harry Winston,interest_index,24.714285714285715,21.857142857142858,0.130718954248366,1.9823531473445128,1,12,2026-11-08,False,,False,False,False
+google_trends,Global,Hazoorilal,interest_index,0.0,0.0,,-0.31622776601683794,0,12,2026-10-25,False,,True,True,False
+google_trends,Global,High Jewellery,interest_index,28.0,26.428571428571427,0.05945945945945952,0.927915012127798,2,12,2026-11-08,False,,False,False,False
+google_trends,Global,High Jewelry,interest_index,13.428571428571429,13.285714285714286,0.010752688172043001,0.36255013934462843,2,12,2026-11-08,False,,False,False,False
+google_trends,Global,JAR jewelry,interest_index,20.428571428571427,25.571428571428573,-0.2011173184357543,2.462689976689788,-1,12,2026-11-08,False,,False,False,False
 google_trends,Global,Kashmir sapphire,interest_index,0.0,14.285714285714286,-1.0,-0.31622776601683794,-1,12,2026-11-01,False,,False,False,False
 google_trends,Global,Michelle Ong,interest_index,0.0,0.0,,-0.4702351763970036,0,12,2026-10-12,False,,True,True,False
 google_trends,Global,Sabyasachi jewellery,interest_index,0.0,0.0,,-0.31622776601683794,0,12,2026-11-01,False,,True,False,False
-google_trends,Global,Tiffany,interest_index,52.714285714285715,24.0,1.1964285714285716,11.41818181818182,2,12,2026-11-01,True,rising,False,False,False
-google_trends,Global,Van Cleef,interest_index,49.714285714285715,49.57142857142857,0.0028818443804035088,-1.550899130762192,1,12,2026-11-01,False,,False,False,False
+google_trends,Global,Tiffany,interest_index,24.0,54.857142857142854,-0.5625,-0.4440627852476743,-1,12,2026-11-08,False,,False,False,False
+google_trends,Global,Van Cleef,interest_index,55.857142857142854,53.42857142857143,0.045454545454545414,-0.7610224912548897,2,12,2026-11-08,False,,False,False,False
 google_trends,Global,Wallace Chan,interest_index,0.0,0.0,,-0.31622776601683794,0,12,2026-11-01,False,,True,False,False
-google_trends,Global,Zoya jewellery,interest_index,0.0,1.0,-1.0,-0.3399138523002096,-2,12,2026-10-25,False,,True,False,False
-google_trends,Global,art jewellery,interest_index,25.714285714285715,28.428571428571427,-0.09547738693467334,2.0394624827702605,-1,12,2026-11-01,False,,False,False,False
-google_trends,Global,artist jewellery,interest_index,21.428571428571427,33.42857142857143,-0.35897435897435903,1.9135834046147115,-1,12,2026-11-01,False,,False,False,False
-google_trends,Global,bespoke jewellery,interest_index,12.0,11.0,0.09090909090909083,1.9692701389389813,2,12,2026-11-01,False,,False,False,False
-google_trends,Global,bridal jewellery,interest_index,16.571428571428573,16.142857142857142,0.026548672566371723,0.9476585911040588,3,12,2026-11-01,False,,False,False,False
+google_trends,Global,Zoya jewellery,interest_index,0.0,1.0,-1.0,-0.3399138523002096,-2,12,2026-10-25,False,,True,True,False
+google_trends,Global,art jewellery,interest_index,19.142857142857142,19.285714285714285,-0.007407407407407418,2.782031386719026,-1,12,2026-11-08,False,,False,False,False
+google_trends,Global,artist jewellery,interest_index,33.57142857142857,24.571428571428573,0.3662790697674416,4.436381391852499,2,12,2026-11-08,True,rising,False,False,False
+google_trends,Global,bespoke jewellery,interest_index,14.0,15.714285714285714,-0.10909090909090902,1.9457775441340364,-1,12,2026-11-08,False,,False,False,False
+google_trends,Global,bridal jewellery,interest_index,13.285714285714286,16.285714285714285,-0.18421052631578938,1.4627358238059462,-1,12,2026-11-08,False,,False,False,False
 google_trends,Global,heirloom jewellery,interest_index,14.285714285714286,0.0,,5.714285714285714,1,12,2026-11-01,False,,False,False,False
 google_trends,Global,jadau,interest_index,0.0,14.285714285714286,-1.0,-0.31622776601683794,-1,12,2026-11-01,False,,False,False,False
-google_trends,Global,jewellery auction,interest_index,9.571428571428571,9.428571428571429,0.015151515151515138,1.5814808314136701,2,12,2026-11-01,False,,True,False,False
-google_trends,Global,jewellery investment,interest_index,1.1428571428571428,0.0,,-0.037947331922020565,1,12,2026-11-01,False,,True,False,False
-google_trends,Global,kundan,interest_index,64.28571428571429,75.42857142857143,-0.1477272727272727,2.6484075403910174,-1,12,2026-11-01,False,,False,False,False
-google_trends,Global,lab grown diamond,interest_index,34.714285714285715,36.0,-0.0357142857142857,-0.9709177903603944,-1,12,2026-11-01,False,,False,False,False
-google_trends,Global,natural pearls,interest_index,1.1428571428571428,1.1428571428571428,0.0,-0.06355133525935687,0,12,2026-11-01,False,,True,False,False
-google_trends,Global,padparadscha,interest_index,33.857142857142854,32.857142857142854,0.0304347826086957,3.2681452166174947,2,12,2026-11-01,False,,False,False,False
-google_trends,Global,polki,interest_index,27.142857142857142,28.142857142857142,-0.035532994923857864,2.707788334736814,-1,12,2026-11-01,False,,False,False,False
-google_trends,Global,sculptural jewellery,interest_index,0.0,0.0,,-0.31622776601683794,0,12,2026-10-25,False,,True,False,False
-google_trends,Global,temple jewellery,interest_index,14.285714285714286,0.0,,5.714285714285714,1,12,2026-11-01,False,,False,False,False
-google_trends,Hong Kong,Contemporary Art,interest_index,47.714285714285715,65.0,-0.2659340659340659,2.237224568809234,-1,12,2026-11-01,False,,False,False,False
+google_trends,Global,jewellery auction,interest_index,13.428571428571429,13.428571428571429,0.0,2.0399408842023683,0,12,2026-11-08,False,,False,False,False
+google_trends,Global,jewellery investment,interest_index,2.5714285714285716,0.0,,0.0023925772978695883,1,12,2026-11-08,False,,True,False,False
+google_trends,Global,kundan,interest_index,19.428571428571427,19.857142857142858,-0.021582733812949728,2.169041441994464,-1,12,2026-11-08,False,,False,False,False
+google_trends,Global,lab grown diamond,interest_index,31.285714285714285,36.57142857142857,-0.14453125,-1.0152246486757142,-1,12,2026-11-08,False,,False,False,False
+google_trends,Global,natural pearls,interest_index,85.71428571428571,33.0,1.5974025974025974,8.718851263035674,2,12,2026-11-08,True,rising,False,False,False
+google_trends,Global,padparadscha,interest_index,0.8571428571428571,1.1428571428571428,-0.25,-0.13345780404464938,-1,12,2026-11-08,False,,True,False,False
+google_trends,Global,polki,interest_index,26.714285714285715,25.142857142857142,0.0625,2.9340438528748027,2,12,2026-11-08,False,,False,False,False
+google_trends,Global,sculptural jewellery,interest_index,0.0,0.0,,-0.31622776601683794,0,12,2026-10-25,False,,True,True,False
+google_trends,Global,temple jewellery,interest_index,12.428571428571429,14.285714285714286,-0.13,2.7100719547643015,-1,12,2026-11-08,False,,False,False,False
+google_trends,Hong Kong,Contemporary Art,interest_index,8.428571428571429,5.0,0.6857142857142857,1.5843534239466572,2,12,2026-11-08,False,,True,False,False
 google_trends,Hong Kong,High Jewellery,interest_index,14.285714285714286,0.0,,5.714285714285714,1,12,2026-10-18,False,,False,True,False
-google_trends,Hong Kong,High Jewelry,interest_index,0.0,1.7142857142857142,-1.0,-0.35588747745239835,-1,12,2026-11-01,False,,True,False,False
-google_trends,Hong Kong,art jewellery,interest_index,14.285714285714286,0.0,,5.714285714285714,1,12,2026-11-01,False,,False,False,False
-google_trends,Hong Kong,當代藝術,interest_index,26.571428571428573,66.71428571428571,-0.601713062098501,1.069215508652221,-1,12,2026-11-01,False,,False,False,False
-google_trends,Hong Kong,高級珠寶,interest_index,0.0,0.0,,-0.31622776601683794,0,12,2026-10-25,False,,True,False,False
-google_trends,India,Amrapali,interest_index,53.142857142857146,42.57142857142857,0.2483221476510069,0.48139497528705527,1,12,2026-11-01,False,,False,False,False
-google_trends,India,Boucheron,interest_index,26.857142857142858,52.57142857142857,-0.48913043478260865,1.4608347886647406,-1,12,2026-11-01,False,,False,False,False
+google_trends,Hong Kong,High Jewelry,interest_index,14.285714285714286,9.142857142857142,0.5625000000000002,5.118936962397565,2,12,2026-11-08,True,rising,False,False,False
+google_trends,Hong Kong,art jewellery,interest_index,0.0,0.0,,-0.31622776601683794,0,12,2026-11-08,False,,True,False,False
+google_trends,Hong Kong,當代藝術,interest_index,28.0,55.42857142857143,-0.4948453608247423,1.4409553874169314,-1,12,2026-11-08,False,,False,False,False
+google_trends,Hong Kong,高級珠寶,interest_index,14.285714285714286,0.0,,5.714285714285714,1,12,2026-11-08,False,,False,False,False
+google_trends,India,Amrapali,interest_index,64.85714285714286,49.57142857142857,0.3083573487031701,1.809927648182175,4,12,2026-11-08,False,,False,False,False
+google_trends,India,Boucheron,interest_index,57.42857142857143,20.285714285714285,1.830985915492958,9.531372102479342,2,12,2026-11-08,True,rising,False,False,False
 google_trends,India,Buccellati,interest_index,0.0,0.0,,0.0,0,12,2026-10-18,False,,True,True,False
-google_trends,India,Bulgari,interest_index,17.142857142857142,18.285714285714285,-0.0625,-0.1675758263211862,-2,12,2026-11-01,False,,False,False,False
-google_trends,India,Cartier,interest_index,51.285714285714285,55.142857142857146,-0.06994818652849744,-0.8812609612630664,-1,12,2026-11-01,False,,False,False,False
-google_trends,India,Colombian emerald,interest_index,36.857142857142854,14.285714285714286,1.5799999999999996,8.658316233541022,2,12,2026-11-01,True,rising,False,False,False
-google_trends,India,Contemporary Art,interest_index,8.0,9.428571428571429,-0.1515151515151515,-0.282924443751377,-1,12,2026-11-01,False,,True,False,False
-google_trends,India,Gem Palace,interest_index,24.857142857142858,62.57142857142857,-0.6027397260273972,1.0656442526046868,-1,12,2026-11-01,False,,False,False,False
-google_trends,India,Harry Winston,interest_index,76.57142857142857,62.142857142857146,0.23218390804597688,3.9699306441792,2,12,2026-11-01,True,rising,False,False,False
-google_trends,India,Hazoorilal,interest_index,82.71428571428571,77.14285714285714,0.07222222222222219,3.4135030520595335,2,12,2026-11-01,False,,False,False,False
-google_trends,India,High Jewellery,interest_index,34.142857142857146,34.0,0.004201680672268893,2.002425881943392,3,12,2026-11-01,False,,False,False,False
-google_trends,India,High Jewelry,interest_index,6.285714285714286,9.571428571428571,-0.34328358208955223,0.4428329905322963,-1,12,2026-11-01,False,,True,False,False
-google_trends,India,JAR jewelry,interest_index,5.0,8.142857142857142,-0.38596491228070173,0.655210287063761,-1,12,2026-11-01,False,,True,False,False
-google_trends,India,Kashmir sapphire,interest_index,3.0,4.142857142857143,-0.27586206896551735,0.3184236585937159,-1,12,2026-11-01,False,,True,False,False
+google_trends,India,Bulgari,interest_index,16.714285714285715,16.714285714285715,0.0,0.039709035699890705,0,12,2026-11-08,False,,False,False,False
+google_trends,India,Cartier,interest_index,54.0,48.857142857142854,0.10526315789473695,0.11786235828537688,1,12,2026-11-08,False,,False,False,False
+google_trends,India,Colombian emerald,interest_index,22.0,8.285714285714286,1.6551724137931032,8.498701298701299,2,12,2026-11-08,True,rising,False,False,False
+google_trends,India,Contemporary Art,interest_index,7.142857142857143,7.285714285714286,-0.019607843137254832,-0.2203330692778866,-1,12,2026-11-08,False,,True,False,False
+google_trends,India,Edmond Chin,interest_index,0.0,0.0,,-0.31622776601683794,0,12,2026-11-08,False,,True,False,False
+google_trends,India,Gem Palace,interest_index,51.0,45.0,0.1333333333333333,3.6260783836597414,2,12,2026-11-08,False,,False,False,False
+google_trends,India,Harry Winston,interest_index,9.142857142857142,9.428571428571429,-0.030303030303030387,1.1247365220879957,-1,12,2026-11-08,False,,True,False,False
+google_trends,India,Hazoorilal,interest_index,60.0,56.285714285714285,0.06598984771573613,3.391823703520703,2,12,2026-11-08,False,,False,False,False
+google_trends,India,High Jewellery,interest_index,34.857142857142854,34.857142857142854,0.0,1.733957201781814,0,12,2026-11-08,False,,False,False,False
+google_trends,India,High Jewelry,interest_index,12.0,11.428571428571429,0.050000000000000044,1.452018523691974,2,12,2026-11-08,False,,False,False,False
+google_trends,India,JAR jewelry,interest_index,4.714285714285714,3.5714285714285716,0.32000000000000006,0.7479618396551035,2,12,2026-11-08,False,,True,False,False
+google_trends,India,Kashmir sapphire,interest_index,22.0,44.857142857142854,-0.5095541401273884,1.3897908188001158,-1,12,2026-11-08,False,,False,False,False
 google_trends,India,Michelle Ong,interest_index,0.0,0.0,,-0.4702351763970036,0,12,2026-10-12,False,,True,True,False
-google_trends,India,Sabyasachi jewellery,interest_index,14.571428571428571,16.142857142857142,-0.09734513274336287,2.0072045865044377,-1,12,2026-11-01,False,,False,False,False
-google_trends,India,Tiffany,interest_index,37.57142857142857,39.42857142857143,-0.04710144927536242,-0.821628879529303,-1,12,2026-11-01,False,,False,False,False
-google_trends,India,Van Cleef,interest_index,33.57142857142857,34.42857142857143,-0.02489626556016611,-0.44449947333867884,-1,12,2026-11-01,False,,False,False,False
-google_trends,India,Wallace Chan,interest_index,20.571428571428573,0.0,,8.22857142857143,1,12,2026-11-01,False,,False,False,False
-google_trends,India,Zoya jewellery,interest_index,17.0,15.142857142857142,0.12264150943396235,2.522766187390716,2,12,2026-11-01,False,,False,False,False
-google_trends,India,art jewellery,interest_index,57.285714285714285,56.142857142857146,0.020356234096692072,1.73746816376171,2,12,2026-11-01,False,,False,False,False
-google_trends,India,artist jewellery,interest_index,45.714285714285715,31.571428571428573,0.44796380090497734,4.720522172350897,2,12,2026-11-01,True,rising,False,False,False
-google_trends,India,bespoke jewellery,interest_index,0.0,0.0,,-0.31622776601683794,0,12,2026-11-01,False,,True,False,False
-google_trends,India,bridal jewellery,interest_index,75.28571428571429,83.42857142857143,-0.0976027397260274,1.2422732828506242,-1,12,2026-11-01,False,,False,False,False
+google_trends,India,Sabyasachi jewellery,interest_index,67.28571428571429,70.0,-0.03877551020408154,3.027396837520382,-1,12,2026-11-08,False,,False,False,False
+google_trends,India,Tiffany,interest_index,45.57142857142857,40.142857142857146,0.13523131672597843,0.07526359554995843,1,12,2026-11-08,False,,False,False,False
+google_trends,India,Van Cleef,interest_index,46.57142857142857,41.857142857142854,0.11262798634812299,0.04071128504200005,3,12,2026-11-08,False,,False,False,False
+google_trends,India,Wallace Chan,interest_index,9.714285714285714,19.857142857142858,-0.5107913669064749,1.3854871187356423,-1,12,2026-11-08,False,,False,False,False
+google_trends,India,Zoya jewellery,interest_index,57.57142857142857,69.42857142857143,-0.17078189300411528,2.568211918659381,-1,12,2026-11-08,False,,False,False,False
+google_trends,India,art jewellery,interest_index,61.285714285714285,64.0,-0.0424107142857143,1.4576247116754881,-1,12,2026-11-08,False,,False,False,False
+google_trends,India,artist jewellery,interest_index,3.5714285714285716,5.857142857142857,-0.3902439024390243,0.1268031216350667,-1,12,2026-11-08,False,,True,False,False
+google_trends,India,bespoke jewellery,interest_index,0.0,14.285714285714286,-1.0,-0.31622776601683794,-1,12,2026-11-08,False,,False,False,False
+google_trends,India,bridal jewellery,interest_index,78.85714285714286,76.85714285714286,0.026022304832713727,1.5363524034581995,1,12,2026-11-08,False,,False,False,False
 google_trends,India,fancy colour diamond,interest_index,0.0,0.0,,-0.31622776601683794,0,12,2026-11-01,False,,True,False,False
 google_trends,India,heirloom jewellery,interest_index,14.285714285714286,0.0,,5.714285714285714,1,12,2026-11-01,False,,False,False,False
-google_trends,India,jadau,interest_index,59.857142857142854,60.0,-0.0023809523809524835,1.9017481966726646,-1,12,2026-11-01,False,,False,False,False
-google_trends,India,jewellery auction,interest_index,3.142857142857143,1.0,2.142857142857143,0.4288632715937223,2,12,2026-11-01,False,,True,False,False
-google_trends,India,jewellery investment,interest_index,24.142857142857142,22.428571428571427,0.07643312101910826,2.853942386687153,2,12,2026-11-01,False,,False,False,False
-google_trends,India,kundan,interest_index,87.28571428571429,84.57142857142857,0.03209459459459474,1.6179775280898887,2,12,2026-11-01,False,,False,False,False
-google_trends,India,lab grown diamond,interest_index,66.71428571428571,63.285714285714285,0.05417607223476284,2.4322362052274933,3,12,2026-11-01,False,,False,False,False
-google_trends,India,natural pearls,interest_index,31.571428571428573,25.0,0.2628571428571429,4.076627657908493,2,12,2026-11-01,True,rising,False,False,False
-google_trends,India,padparadscha,interest_index,0.0,41.285714285714285,-1.0,-0.31622776601683794,-1,12,2026-11-01,False,,False,False,False
-google_trends,India,polki,interest_index,70.57142857142857,65.0,0.08571428571428563,3.1282322340055324,3,12,2026-11-01,False,,False,False,False
+google_trends,India,jadau,interest_index,52.714285714285715,53.285714285714285,-0.01072386058981234,2.591300649164603,-1,12,2026-11-08,False,,False,False,False
+google_trends,India,jewellery auction,interest_index,0.0,14.285714285714286,-1.0,-0.31622776601683794,-1,12,2026-11-08,False,,False,False,False
+google_trends,India,jewellery investment,interest_index,20.0,18.857142857142858,0.06060606060606055,1.7754842801722746,3,12,2026-11-08,False,,False,False,False
+google_trends,India,kundan,interest_index,74.28571428571429,75.85714285714286,-0.020715630885122405,1.1457521434138742,-2,12,2026-11-08,False,,False,False,False
+google_trends,India,lab grown diamond,interest_index,69.42857142857143,68.71428571428571,0.010395010395010562,2.094992500736193,7,12,2026-11-08,False,,False,False,False
+google_trends,India,natural pearls,interest_index,26.571428571428573,44.42857142857143,-0.40192926045016075,1.7641645467498839,-1,12,2026-11-08,False,,False,False,False
+google_trends,India,padparadscha,interest_index,0.0,25.0,-1.0,-0.31622776601683794,-1,12,2026-11-08,False,,False,False,False
+google_trends,India,polki,interest_index,62.714285714285715,66.14285714285714,-0.05183585313174943,1.644979148914198,-1,12,2026-11-08,False,,False,False,False
 google_trends,India,sculptural jewellery,interest_index,0.0,0.0,,-0.31622776601683794,0,12,2026-10-12,False,,True,True,False
-google_trends,India,temple jewellery,interest_index,73.57142857142857,73.0,0.007827788649706457,1.5710699215135744,2,12,2026-11-01,False,,False,False,False
-google_trends,Italy,Contemporary Art,interest_index,28.285714285714285,26.857142857142858,0.05319148936170204,2.5137267415803084,2,12,2026-11-01,False,,False,False,False
-google_trends,Italy,High Jewellery,interest_index,0.8571428571428571,0.0,,-0.10751744044572491,1,12,2026-10-25,False,,True,False,False
-google_trends,Italy,High Jewelry,interest_index,23.857142857142858,37.857142857142854,-0.3698113207547169,1.8758869742583746,-1,12,2026-10-25,False,,False,False,False
-google_trends,Italy,alta gioielleria,interest_index,43.42857142857143,61.42857142857143,-0.2930232558139535,2.1429946748210833,-1,12,2026-11-01,False,,False,False,False
+google_trends,India,temple jewellery,interest_index,69.14285714285714,73.14285714285714,-0.0546875,1.2142889469548688,-1,12,2026-11-08,False,,False,False,False
+google_trends,Italy,Contemporary Art,interest_index,22.714285714285715,23.857142857142858,-0.0479041916167664,2.0928723309176567,-1,12,2026-11-08,False,,False,False,False
+google_trends,Italy,High Jewellery,interest_index,0.0,0.0,,0.0,0,12,2026-11-08,False,,True,False,False
+google_trends,Italy,High Jewelry,interest_index,23.857142857142858,37.857142857142854,-0.3698113207547169,1.8758869742583746,-1,12,2026-10-25,False,,False,True,False
+google_trends,Italy,alta gioielleria,interest_index,50.714285714285715,53.142857142857146,-0.045698924731182866,3.00331370252013,-1,12,2026-11-08,False,,False,False,False
 google_trends,Italy,art jewellery,interest_index,0.0,0.0,,-0.31622776601683794,0,12,2026-10-12,False,,True,True,False
-google_trends,Italy,arte contemporanea,interest_index,59.714285714285715,55.714285714285715,0.07179487179487176,1.3516057957078242,1,12,2026-11-01,False,,False,False,False
-google_trends,London,Contemporary Art,interest_index,18.571428571428573,21.428571428571427,-0.1333333333333332,-1.6993487088540342,-2,12,2026-11-01,False,,False,False,False
-google_trends,London,High Jewellery,interest_index,28.714285714285715,25.571428571428573,0.12290502793296088,1.2267592777909275,3,12,2026-11-01,False,,False,False,False
-google_trends,London,High Jewelry,interest_index,12.857142857142858,13.857142857142858,-0.07216494845360821,-0.03256111225887425,-1,12,2026-11-01,False,,False,False,False
-google_trends,London,art jewellery,interest_index,25.714285714285715,28.428571428571427,-0.09547738693467334,2.0394624827702605,-1,12,2026-11-01,False,,False,False,False
-google_trends,Mumbai,Contemporary Art,interest_index,4.0,8.0,-0.5,1.309090909090909,-1,12,2026-11-01,False,,True,False,False
-google_trends,Mumbai,High Jewellery,interest_index,44.42857142857143,58.57142857142857,-0.24146341463414633,2.3223458621382904,-1,12,2026-11-01,False,,False,False,False
-google_trends,Mumbai,High Jewelry,interest_index,14.285714285714286,0.0,,5.714285714285714,1,12,2026-11-01,False,,False,False,False
-google_trends,Mumbai,art jewellery,interest_index,73.71428571428571,73.14285714285714,0.0078125,3.189453483810451,2,12,2026-11-01,False,,False,False,False
-google_trends,New York,Contemporary Art,interest_index,27.285714285714285,30.428571428571427,-0.10328638497652576,2.1522022764638415,-1,12,2026-11-01,False,,False,False,False
-google_trends,New York,High Jewellery,interest_index,0.0,14.285714285714286,-1.0,-0.31622776601683794,-1,12,2026-10-12,False,,False,True,False
-google_trends,New York,High Jewelry,interest_index,12.571428571428571,15.428571428571429,-0.18518518518518523,1.441046675084324,-1,12,2026-11-01,False,,False,False,False
-google_trends,New York,art jewellery,interest_index,13.571428571428571,14.285714285714286,-0.050000000000000044,2.9883523888591186,-1,12,2026-11-01,False,,False,False,False
-wikipedia,en-wiki,Contemporary art,pageviews,196.14285714285714,228.28571428571428,-0.14080100125156447,-1.8931830381105745,-5,12,2026-11-01,False,,False,False,False
-wikipedia,en-wiki,High culture,pageviews,160.42857142857142,176.28571428571428,-0.08995137763371153,-1.16317333142571,-1,12,2026-11-01,False,,False,False,False
-wikipedia,en-wiki,Jewellery,pageviews,308.14285714285717,312.0,-0.012362637362637319,-1.001251564455569,-3,12,2026-11-01,False,,False,False,False
-wikipedia,fr-wiki,Art contemporain,pageviews,73.71428571428571,82.71428571428571,-0.10880829015544047,-0.32091135326947534,-1,12,2026-11-01,False,,False,False,False
-wikipedia,fr-wiki,Joaillerie,pageviews,29.285714285714285,33.42857142857143,-0.12393162393162405,-1.5298701298701303,-4,12,2026-11-01,False,,False,False,False
-wikipedia,it-wiki,Arte contemporanea,pageviews,27.714285714285715,27.428571428571427,0.01041666666666674,-0.8467532467532471,1,12,2026-11-01,False,,False,False,False
-wikipedia,it-wiki,Gioielleria,pageviews,8.0,10.142857142857142,-0.21126760563380276,-0.9636363636363636,-2,12,2026-11-01,False,,True,False,False
-wikipedia,zh-wiki,當代藝術,pageviews,11.571428571428571,13.857142857142858,-0.1649484536082475,-0.4962231811595339,-5,12,2026-11-01,False,,True,False,False
-youtube_channel,Auction houses,Bonhams,views_sum,0.0,0.0,,,0,3,2026-11-02,False,,True,False,False
-youtube_channel,Auction houses,Christie's,views_sum,0.0,1164.0,-1.0,,-1,3,2026-11-02,False,,False,False,False
-youtube_channel,Auction houses,Phillips,views_sum,0.0,695.0,-1.0,,-1,3,2026-11-02,False,,True,False,False
-youtube_channel,Auction houses,Saffronart,views_sum,0.0,0.0,,,0,3,2026-11-02,False,,True,False,False
-youtube_channel,Auction houses,Sotheby's,views_sum,35719.0,8629.0,3.1394136052845054,,2,3,2026-11-02,False,,False,False,False
-youtube_channel,Houses (Hong Kong),Wallace Chan,views_sum,0.0,0.0,,,0,3,2026-11-02,False,,True,False,False
-youtube_channel,Houses (India),Amrapali Jewels,views_sum,0.0,0.0,,,0,3,2026-11-02,False,,True,False,False
-youtube_channel,Houses (India),Gem Palace,views_sum,135.0,331.0,-0.5921450151057401,,-1,3,2026-11-02,False,,True,False,False
-youtube_channel,Houses (India),Hazoorilal Legacy,views_sum,620.0,0.0,,,1,3,2026-11-02,False,,True,False,False
-youtube_channel,Houses (India),Sabyasachi Jewellery,views_sum,0.0,0.0,,,0,3,2026-11-02,False,,True,False,False
-youtube_channel,Houses (India),Zoya,views_sum,0.0,1100.0,-1.0,,-2,3,2026-11-02,False,,False,False,False
-youtube_channel,Houses (international),Boucheron,views_sum,5572.0,2671.0,1.0861100711344065,,2,3,2026-11-02,False,,False,False,False
-youtube_channel,Houses (international),Buccellati,views_sum,1806.0,977.0,0.8485158648925282,,2,3,2026-11-02,False,,False,False,False
-youtube_channel,Houses (international),Bulgari,views_sum,0.0,0.0,,,0,3,2026-11-02,False,,True,False,False
-youtube_channel,Houses (international),Cartier,views_sum,0.0,4212.0,-1.0,,-1,3,2026-11-02,False,,False,False,False
-youtube_channel,Houses (international),Chopard,views_sum,0.0,0.0,,,0,3,2026-11-02,False,,True,False,False
+google_trends,Italy,arte contemporanea,interest_index,60.57142857142857,64.0,-0.0535714285714286,0.7179171921825078,-3,12,2026-11-08,False,,False,False,False
+google_trends,London,Contemporary Art,interest_index,18.571428571428573,18.285714285714285,0.015625000000000222,-1.1934793354511932,2,12,2026-11-08,False,,False,False,False
+google_trends,London,High Jewellery,interest_index,28.0,26.428571428571427,0.05945945945945952,0.927915012127798,2,12,2026-11-08,False,,False,False,False
+google_trends,London,High Jewelry,interest_index,13.428571428571429,13.285714285714286,0.010752688172043001,0.36255013934462843,2,12,2026-11-08,False,,False,False,False
+google_trends,London,art jewellery,interest_index,19.142857142857142,19.285714285714285,-0.007407407407407418,2.782031386719026,-1,12,2026-11-08,False,,False,False,False
+google_trends,Mumbai,Contemporary Art,interest_index,2.142857142857143,4.142857142857143,-0.48275862068965525,0.11238482068013497,-1,12,2026-11-08,False,,True,False,False
+google_trends,Mumbai,High Jewellery,interest_index,53.57142857142857,31.428571428571427,0.7045454545454546,5.613042846798874,2,12,2026-11-08,True,rising,False,False,False
+google_trends,Mumbai,High Jewelry,interest_index,0.0,0.0,,-0.4712845830141954,0,12,2026-11-08,False,,True,False,False
+google_trends,Mumbai,art jewellery,interest_index,25.428571428571427,26.571428571428573,-0.043010752688172116,2.2521608588928195,-1,12,2026-11-08,False,,False,False,False
+google_trends,New York,Contemporary Art,interest_index,34.0,30.857142857142858,0.10185185185185186,2.425738910872976,2,12,2026-11-08,False,,False,False,False
+google_trends,New York,High Jewellery,interest_index,0.0,0.0,,-0.31622776601683794,0,12,2026-11-08,False,,True,False,False
+google_trends,New York,High Jewelry,interest_index,18.857142857142858,16.714285714285715,0.1282051282051282,1.9651441409884471,3,12,2026-11-08,False,,False,False,False
+google_trends,New York,art jewellery,interest_index,0.0,0.0,,-0.31622776601683794,0,12,2026-11-08,False,,True,False,False
+wikipedia,en-wiki,Contemporary art,pageviews,221.0,215.0,0.027906976744185963,-0.7971445568114216,1,12,2026-11-06,False,,False,False,False
+wikipedia,en-wiki,High culture,pageviews,166.42857142857142,171.42857142857142,-0.029166666666666674,-0.7785853061811899,-1,12,2026-11-06,False,,False,False,False
+wikipedia,en-wiki,Jewellery,pageviews,309.42857142857144,306.2857142857143,0.010261194029850929,-0.9486000835771002,1,12,2026-11-06,False,,False,False,False
+wikipedia,fr-wiki,Art contemporain,pageviews,68.71428571428571,76.71428571428571,-0.1042830540037244,-0.348750075522577,-1,12,2026-11-06,False,,False,False,False
+wikipedia,fr-wiki,Joaillerie,pageviews,29.428571428571427,31.714285714285715,-0.07207207207207211,-1.438961038961039,-3,12,2026-11-06,False,,False,False,False
+wikipedia,it-wiki,Arte contemporanea,pageviews,27.428571428571427,27.142857142857142,0.010526315789473717,-0.9558441558441565,1,12,2026-11-06,False,,False,False,False
+wikipedia,it-wiki,Gioielleria,pageviews,10.428571428571429,9.142857142857142,0.140625,-0.4649350649350648,1,12,2026-11-06,False,,True,False,False
+wikipedia,zh-wiki,當代藝術,pageviews,12.428571428571429,13.285714285714286,-0.06451612903225812,-0.4717225266900597,-1,12,2026-11-06,False,,True,False,False
+youtube_channel,Auction houses,Bonhams,views_sum,0.0,0.0,,,0,4,2026-11-09,False,,True,False,False
+youtube_channel,Auction houses,Christie's,views_sum,6557.0,0.0,,,1,4,2026-11-09,False,,False,False,False
+youtube_channel,Auction houses,Phillips,views_sum,0.0,0.0,,,0,4,2026-11-09,False,,True,False,False
+youtube_channel,Auction houses,Saffronart,views_sum,0.0,0.0,,,0,4,2026-11-09,False,,True,False,False
+youtube_channel,Auction houses,Sotheby's,views_sum,55149.0,35719.0,0.5439681961981018,,3,4,2026-11-09,False,,False,False,False
+youtube_channel,Houses (Hong Kong),Wallace Chan,views_sum,0.0,0.0,,,0,4,2026-11-09,False,,True,False,False
+youtube_channel,Houses (India),Amrapali Jewels,views_sum,0.0,0.0,,,0,4,2026-11-09,False,,True,False,False
+youtube_channel,Houses (India),Gem Palace,views_sum,52.0,135.0,-0.6148148148148148,,-2,4,2026-11-09,False,,True,False,False
+youtube_channel,Houses (India),Hazoorilal Legacy,views_sum,648.0,620.0,0.04516129032258065,,2,4,2026-11-09,False,,True,False,False
+youtube_channel,Houses (India),Sabyasachi Jewellery,views_sum,0.0,0.0,,,0,4,2026-11-09,False,,True,False,False
+youtube_channel,Houses (India),Zoya,views_sum,0.0,0.0,,,0,4,2026-11-09,False,,True,False,False
+youtube_channel,Houses (international),Boucheron,views_sum,4861.0,5572.0,-0.12760229720028715,,-1,4,2026-11-09,False,,False,False,False
+youtube_channel,Houses (international),Buccellati,views_sum,725.0,1806.0,-0.5985603543743079,,-1,4,2026-11-09,False,,False,False,False
+youtube_channel,Houses (international),Bulgari,views_sum,2455.0,0.0,,,1,4,2026-11-09,False,,False,False,False
+youtube_channel,Houses (international),Cartier,views_sum,520.0,0.0,,,1,4,2026-11-09,False,,True,False,False
+youtube_channel,Houses (international),Chopard,views_sum,618.0,0.0,,,1,4,2026-11-09,False,,True,False,False
 youtube_channel,Houses (international),Graff,views_sum,0.0,0.0,,,0,3,2026-11-02,False,,True,False,False
-youtube_channel,Houses (international),Harry Winston,views_sum,0.0,0.0,,,0,3,2026-11-02,False,,True,False,False
-youtube_channel,Houses (international),Messika,views_sum,2286.0,5385.0,-0.5754874651810584,,-2,3,2026-11-02,False,,False,False,False
-youtube_channel,Houses (international),Tiffany & Co.,views_sum,0.0,3077.0,-1.0,,-1,3,2026-11-02,False,,False,False,False
-youtube_channel,Houses (international),Van Cleef & Arpels,views_sum,5491.0,1833.0,1.995635570103655,,1,3,2026-11-02,False,,False,False,False
-youtube_channel,Media and publications,Business of Fashion,views_sum,0.0,0.0,,,0,3,2026-11-02,False,,True,False,False
-youtube_channel,Media and publications,FashionTV,views_sum,0.0,716.0,-1.0,,-2,3,2026-11-02,False,,True,False,False
-youtube_channel,Media and publications,Harper's Bazaar,views_sum,8764.0,0.0,,,1,3,2026-11-02,False,,False,False,False
-youtube_channel,Media and publications,Vogue,views_sum,0.0,0.0,,,0,3,2026-11-02,False,,True,False,False
-youtube_channel,Media and publications,Vogue India,views_sum,20250.0,18582.0,0.08976428802066505,,2,3,2026-11-02,False,,False,False,False
+youtube_channel,Houses (international),Harry Winston,views_sum,13677.0,0.0,,,1,4,2026-11-09,False,,False,False,False
+youtube_channel,Houses (international),Messika,views_sum,3754.0,2286.0,0.6421697287839021,,1,4,2026-11-09,False,,False,False,False
+youtube_channel,Houses (international),Tiffany & Co.,views_sum,0.0,0.0,,,0,4,2026-11-09,False,,True,False,False
+youtube_channel,Houses (international),Van Cleef & Arpels,views_sum,16000.0,5491.0,1.91385904206884,,2,4,2026-11-09,False,,False,False,False
+youtube_channel,Media and publications,Business of Fashion,views_sum,0.0,0.0,,,0,4,2026-11-09,False,,True,False,False
+youtube_channel,Media and publications,FashionTV,views_sum,0.0,0.0,,,0,4,2026-11-09,False,,True,False,False
+youtube_channel,Media and publications,Harper's Bazaar,views_sum,14897.0,8764.0,0.6997946143313556,,2,4,2026-11-09,False,,False,False,False
+youtube_channel,Media and publications,Vogue,views_sum,0.0,0.0,,,0,4,2026-11-09,False,,True,False,False
+youtube_channel,Media and publications,Vogue India,views_sum,0.0,20250.0,-1.0,,-1,4,2026-11-09,False,,False,False,False
