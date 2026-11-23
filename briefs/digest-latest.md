@@ -1,50 +1,47 @@
-# Research digest, week of 2026-11-02
+# Research digest, week of 2026-11-23
 
-Reads the trend brief dated 2026-11-02. Google Trends data runs to 1 November, so "this week" is 26 October to 1 November and "last week" is 19 to 25 October (YouTube figures run one day later). **Findings** are what a source says. **Hypotheses** are my reading and are labelled. Where nothing was found, it says so. This brief had no "Why did it move? Clues" section and the news feed (GDELT) failed again, so every lead below is from my own searches.
+Reads the trend brief dated 2026-11-23. Google Trends data runs to 22 November, so "this week" is 16 to 22 November and "last week" is 9 to 15 November (YouTube runs one day later: 17 to 23 November against 10 to 16 November). **Findings** are what a source says. **Hypotheses** are my reading and are labelled. Where nothing was found, it says so. The brief had no "Why did it move? Clues" section, and the news feed (GDELT) failed again (HTTP 429), so every lead below is from my own searches. The previous brief was dated 2 November; there was no brief or digest for 9 or 16 November, so this digest cannot say what changed since last week.
 
 ## Bottom line
 
-- **Only Global Tiffany (+120%) has a dated item inside the week.** Tiffany revealed its 2026 holiday campaign with Amanda Seyfried on 28 October. Whether it explains a rise of this size is a hypothesis. The other five flagged moves have no dated trigger that I could find.
-- **The India rises look specific, not seasonal.** Festive terms were flat (polki +9%, kundan +3%, jadau 0%, temple jewellery +1%, bridal jewellery -10%), so a general pre-Diwali lift does not explain Colombian emerald (+158%), natural pearls (+26%), artist jewellery (+45%) or Harry Winston (+23%). Diwali (Lakshmi Puja) is 8 November.
-- **A stone-and-auction thread is plausible but unproven.** Phillips' Geneva sale on 9 November lists Harry Winston emerald earrings of Colombian origin, and Sotheby's Geneva sale (to 11 November) lists emerald and natural pearl lots. Neither source mentions India.
-- **Clue count:** the brief gave a dated clue for 0 of 6 flagged moves. After research, 1 of 6 has a dated item inside the week (Tiffany).
+- **No flagged move has a dated trigger inside its week.** The nearest items fall one week early: Boucheron's holiday campaign coverage (11 November) and the Geneva jewellery sales (9 to 11 November). Coverage may have carried them forward; that is a hypothesis.
+- **The Boucheron rise is specific to India and YouTube.** Boucheron search was +2% worldwide against +82% in India, and its YouTube views rose +144% (11,847 vs 4,861), all 12 of its new videos being jewellery.
+- **The High Jewellery rise is not a general festive lift.** India festive terms were flat (polki +1%, kundan -4%, jadau -3%, bridal jewellery -2%) and several India house terms fell (Tiffany -36%, Gem Palace -23%, Van Cleef -16%). High Jewellery rose +16% in Global and London as well, so it is not India-only.
+- **Clue count:** the brief gave a dated clue for 0 of 5 flagged moves. After research, 0 of 5 have a dated item inside the week; 3 have a plausible earlier item.
 
 ## Flagged moves checked
 
 | Move in the brief | What I found | Fit with timing |
 |---|---|---|
-| **Colombian emerald**, India +158% (37 vs 14); Global "new" | Phillips' fall 2026 tour article names "Pair of emerald and diamond earrings weighing 9.67 and 10.29 carats, Colombian origin" by Harry Winston, for the 9 Nov sale. Sotheby's Royal & Noble page lists twelve emerald lots but names none as Colombian. Nothing found in Indian trade press or on a celebrity or event link. | **Thematic only.** Phillips' tour (to 25 Oct, no India stop) ended before the rise. |
-| **artist jewellery**, India +45% (46 vs 32); Global -36% | Nothing found for India. Parcours Bijoux in Paris (1 to 31 Oct, in the events file) is a French event and Global fell. | **Nothing found.** The rise is India-specific. |
-| **natural pearls**, India +26% (32 vs 25) | Sotheby's Royal & Noble page lists natural pearl lots (1020, 1031, 1032, 1033), including pendants, earclips and bracelets. No estimates or India link on the page. | **Thematic only.** |
-| **Harry Winston**, India +23% (77 vs 62); Global -28% | Nothing India-specific. Its Shanghai exhibition ran 7 to 13 Sept (release dated 25 Aug) and does not mention India. The Phillips emerald earrings above are the only dated item. | **Earlier** (Shanghai); otherwise **Nothing found**. India-specific. |
-| **Tiffany**, Global +120% (53 vs 24); India -5% | retailboss (28 Oct) reports Tiffany's "Love Is a Gift" holiday campaign with Amanda Seyfried, showing HardWear pieces. Tiffany's own press page, as I fetched it, listed nothing after 6 July 2026. | **Matches** (28 Oct is inside the week). Whether a campaign alone moves search by 120% is a hypothesis. |
-| **Amrapali**, Global +42% (57 vs 40); India +25% | Tribe Amrapali made the jewellery for the film *Ramayana*. Hollywood Reporter India and T2 (both 19 Oct) describe 4,000-plus and 4,500 pieces respectively. T2 gives the film's release as 5 Nov 2026. | **One week early / Earlier.** Coverage was 19 Oct; the release is after the window. Hypothesis: build-up to the release is feeding searches. |
+| **Boucheron**, search India +82% (52 vs 29); Global +2% | T2 (11 Nov) covers Boucheron's winter holiday campaign: Paris setting, ambassadors Daisy Edgar-Jones and Han So-hee, Plume de Paon and Quatre pieces. The page gives no campaign dates and does not mention India. | **One week early.** 11 Nov is in last week. Nothing found for India specifically. |
+| **Boucheron**, YouTube views +144% (11,847 vs 4,861) | Top video is "Daisy Edgar-Jones - Plume- Winter in Paris / Boucheron" (2,695 views), which matches the campaign T2 describes. I could not verify the upload date. | **Thematic only** until the upload dates are checked. |
+| **High Jewellery**, search India +30% (43 vs 33); Global +16%, London +16% | Christie's Geneva sale on 10 Nov made $14.8 million for the Bulgari Pink; sale total CHF 41.5 million (Rapaport, 11 Nov; National Jeweler, 12 Nov). Phillips' Geneva sale on 9 Nov made CHF 8,069,595. Galerie (19 Nov) previews Christie's New York sale on 8 Dec. Neither source mentions India. | **One week early** (Geneva); the 19 Nov preview is inside the week but is only a preview. |
+| **High Jewelry**, search France +252% (40 vs 11) | Nothing found. The French-language terms did not move (haute joaillerie -3%). Last week's base was low (11). | **Nothing found.** |
+| **Christie's**, YouTube views +46% (9,582 vs 6,557) | Top video is "The Bulgari Pink" (7,864 views), the lot sold on 10 Nov. Upload date not verified. | **One week early** if uploaded around the sale; otherwise unverified. |
 
 ## Not explained
 
-Colombian emerald in India has no dated cause, and it is the biggest move in the brief. Artist jewellery in India has none either. The two sources disagree on Amrapali's piece count (4,000-plus against 4,500). On YouTube, Sotheby's top jewellery video ("Lost Royal Jewels, Romanov Sapphires and Cartier Icons", 35,719 views, channel views +314%) fits the 11 Nov Royal & Noble sale, but I could not verify the upload date. Boucheron's top video is a Christie's monograph feature (2,261 views); date also unverified. Zoya's and Cartier's -100% are zero-video weeks, and Graff is still matched to "Doony Graff - Topic", a wrong channel.
+France High Jewelry (+252%) has no cause I could find, and it is the largest move. Why Boucheron rose in India but not elsewhere is open. The brief's "Largest other changes" show Sotheby's and Van Cleef & Arpels at 0 views after 55,149 and 16,000, which look like quiet weeks, not collapses. Reddit has no credentials, GDELT failed, and one YouTube playlist returned a 404, so coverage is thinner than usual.
 
 ## Hypotheses to test (not findings)
 
-1. **Auction publicity reaches India.** If Colombian emerald, Harry Winston and natural pearls stay up through the 9 to 11 Nov Geneva sales, auction coverage is a plausible driver. Check the 9 Nov brief.
-2. **Tiffany's spike is short.** A campaign reveal usually fades; if Tiffany is back near 24 next week, it was a one-week event.
-3. **Amrapali follows the film.** Expect a further lift around 5 Nov; if it does not come, the film is not the driver.
+1. **Boucheron's rise follows the holiday campaign.** If its YouTube uploads dated 17 to 23 November are campaign films, and India search stays above about 50 next week, the campaign is a plausible driver.
+2. **High Jewellery follows Geneva coverage.** If it falls back toward 33 next week, it was a news bump from the 9 to 11 November sales.
+3. **France High Jewelry is a small-base spike.** If it returns near 11, treat it as noise.
 
 ## What this suggests for Bāru (judgement)
 
 - Public search mostly reflects the general public, not HNI or UHNI clients. Read these as what is being talked about, not buyer intent.
-- Colombian emerald and natural pearls are rising in India while festive terms are not. A stone-led message on origin and rarity may reach people who already look for it, but this is one week of data.
-- The Geneva sales (9 to 11 Nov) land right after Diwali. Notes on how Indian collectors read those results could be useful content for clients.
-- Amrapali's film tie-up shows how entertainment can drive heritage jewellery interest. For HNI clients, private viewings are likely a better route than mass visibility.
+- Geneva's results were led by coloured gemstones (a Kashmir sapphire ring at CHF 1.5 million, a 5.39-ct Colombian emerald ring at CHF 972,800). Stone-led storytelling on origin suits clients who follow these sales.
+- Boucheron is building attention with ambassadors, not just collections. For Bāru, a named relationship with a respected Indian figure may matter more than volume of posts.
+- The New York sales (Christie's 8 Dec, Sotheby's 9 Dec) and Art Basel Miami Beach (2 to 6 Dec) fall in the next six weeks. They are worth a short note to clients afterwards.
 
 ## Sources
 
-- [Phillips, The Geneva Jewels Global Tour Fall 2026](https://www.phillips.com/article/the-geneva-jewels-global-tour-fall-2026-phillips-auction)
-- [Sotheby's, Royal & Noble Jewels, Geneva](https://www.sothebys.com/en/buy/auction/2026/royal-noble-jewelry-ge2609)
-- [National Jeweler, Christie's Geneva to auction Bulgari Pink](https://nationaljeweler.com/articles/15405-christie-s-geneva-to-auction-bulgari-pink-diamond)
-- [retailboss, Tiffany & Co. features Amanda Seyfried in its 2026 holiday campaign (28 Oct 2026)](https://retailboss.co/tiffany-co-features-amanda-seyfried-in-its-2026-holiday-campaign)
-- [Tiffany press page](https://press.tiffany.com/)
-- [Hollywood Reporter India, The jewellery of Ramayana (19 Oct 2026)](https://www.hollywoodreporterindia.com/features/interviews/exclusive-the-jewellery-of-ramayana-how-amrapali-crafted-4000-pieces-for-indian-cinemas-grandest-epic)
-- [T2, How Tribe Amrapali is bringing three kingdoms to life in Ramayana (19 Oct 2026)](https://t2online.in/screen/bollywood/how-tribe-amrapali-is-bringing-three-legendary-kingdoms-to-life-through-jewellery-in-ramayana/2008741)
-- [Kyodo News PR Wire, Harry Winston Rare Jewels of the World, Shanghai (25 Aug 2026)](https://kyodonewsprwire.jp/release/202608254679)
-- [Outlook Luxe, The biggest jewellery trends of 2026 (9 Feb 2026, checked for emerald, pearl and artist-jewellery mentions)](https://luxe.outlookindia.com/watches-jewellery/jewellery/the-biggest-jewellery-trends-of-2026)
+- [Phillips, Geneva Jewels Auction VII results (9 Nov 2026)](https://www.phillips.com/press/release/phillips-geneva-jewels-auction-vii-achieves-over-chf-8-million-us-10-million-)
+- [National Jeweler, 24-carat Bulgari Pink sells for $14.8M (12 Nov 2026)](https://nationaljeweler.com/articles/15495-24-carat-bulgari-pink-diamond-sells-for-14-8m)
+- [Rapaport, Bulgari Pink rakes in nearly $15M at Christie's (11 Nov 2026)](https://rapaport.com/news/bulgari-pink-diamond-rakes-in-nearly-15m-at-christies/)
+- [T2, Boucheron Paris edit: Daisy Edgar-Jones and Han So-hee (11 Nov 2026)](https://t2online.in/goodlife/fashion-beauty/boucheron-paris-edit--daisy-edgar-jones-and-han-so-hee-bring-the-ultimate-holiday-glam-glow-up/2009185)
+- [Galerie, Jewels once owned by Jacqueline Kennedy Onassis to lead Christie's sale (19 Nov 2026)](https://galeriemagazine.com/jewels-once-owned-by-jacqueline-kennedy-onassis-to-lead-upcoming-christies-sale/)
+- [Sotheby's, High Jewelry, New York (9 Dec 2026)](https://www.sothebys.com/en/buy/auction/2026/high-jewelry-3)
+- [Art Basel, Miami Beach 2026 exhibitors and showfloor](https://www.artbasel.com/stories/art-basel-announces-exhibitors-and-a-reconfigured-showfloor-for-miami-beach-2026)
