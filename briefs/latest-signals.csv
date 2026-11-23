@@ -102,7 +102,7 @@ google_trends,New York,Contemporary Art,interest_index,21.0,20.714285714285715,0
 google_trends,New York,High Jewellery,interest_index,0.0,0.0,,-0.31622776601683794,0,12,2026-11-22,False,,True,False,False
 google_trends,New York,High Jewelry,interest_index,27.142857142857142,24.857142857142858,0.09195402298850563,2.5768468226601096,3,12,2026-11-22,False,,False,False,False
 google_trends,New York,art jewellery,interest_index,0.0,0.0,,-0.31622776601683794,0,12,2026-11-08,False,,True,True,False
-wikipedia,en-wiki,Contemporary art,pageviews,219.71428571428572,267.2857142857143,-0.17797969000534464,-0.8950002690920835,-1,12,2026-11-21,False,,False,False,False
+wikipedia,en-wiki,Contemporary art,pageviews,210.14285714285714,270.85714285714283,-0.22415611814345981,-1.2981984404409797,-1,12,2026-11-22,False,,False,False,False
 wikipedia,en-wiki,High culture,pageviews,163.28571428571428,176.85714285714286,-0.07673667205169632,-0.9883887614678898,-1,12,2026-11-22,False,,False,False,False
 wikipedia,en-wiki,Jewellery,pageviews,282.57142857142856,301.14285714285717,-0.061669829222011474,-0.9990485252140822,-2,12,2026-11-22,False,,False,False,False
 wikipedia,fr-wiki,Art contemporain,pageviews,61.857142857142854,66.42857142857143,-0.0688172043010753,-0.3678080573680594,-1,12,2026-11-22,False,,False,False,False
